@@ -9,578 +9,624 @@
 </head>
 <body>
 
+<!-- HEADER -->
 <div class="hdr">
   <div class="hdr-gold"></div>
   <div class="hdr-inner">
     <img src="orn-logo.png" alt="ORN" class="hdr-logo"
          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-    <span style="display:none;font-size:18px;font-weight:800;color:var(--navy);font-family:'Plus Jakarta Sans',sans-serif">Trip<em style="color:var(--gold);font-style:normal">Factory</em> ORN</span>
+    <span style="display:none;font-size:16px;font-weight:800;color:var(--navy)">ORN</span>
     <div class="hdr-div"></div>
-    <div>
-      <div style="font-size:12px;font-weight:700;color:var(--navy);line-height:1">Supply Division</div>
-      <div style="font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px">Structure &amp; Operating Model · May 2026</div>
-    </div>
-    <div class="hdr-right">
-      <span class="hpill hp-gold">Head of Supply: Sachin Keni</span>
-      <span class="hpill hp-teal">Admin &amp; QC: Disha</span>
+    <div class="hdr-sub">Supply Division &nbsp;·&nbsp; Structure &amp; Operating Model &nbsp;·&nbsp; May 2026</div>
+    <div class="hdr-pills">
+      <span class="pill pill-gold">Head of Supply: Sachin Keni</span>
+      <span class="pill pill-teal">Admin &amp; QC: Disha</span>
     </div>
   </div>
 </div>
 
+<!-- TABS -->
 <div class="tabs">
   <button class="tab on" id="tab1" onclick="switchTab(1)">📊 &nbsp;Visual Infographic</button>
   <button class="tab"    id="tab2" onclick="switchTab(2)">🏗️ &nbsp;Detailed Structure &amp; Roles</button>
 </div>
 
+<!-- TAB 1: INFOGRAPHIC + SIDEBAR LAYOUT -->
 <div class="panel on" id="p1">
-  <div class="svg-wrap">
-    <div class="svg-box">
-      <div class="svg-top">
-        <div>
-          <h2>Supply Division — Structure, Workflow &amp; Model</h2>
-          <p>All layers · supply types · workflow · destinations · growth path</p>
+  <div class="inf-layout">
+
+    <!-- SVG column (shrinks when sidebar opens) -->
+    <div class="inf-svg-col" id="svg-col">
+      <div class="svg-box">
+        <div class="svg-top">
+          <div>
+            <h2>Supply Division — Structure, Workflow &amp; Model</h2>
+            <p>All layers · supply types · workflow · destinations · growth path</p>
+          </div>
+          <a class="svg-dl" href="orn_supply_model_infographic.svg" download>⬇ Download</a>
         </div>
-        <a class="svg-dl" href="orn_supply_model_infographic.svg" download>⬇ Download</a>
-      </div>
-      <div class="svg-hint">
-        <span style="font-size:16px">👆</span>
-        <strong>Click any box</strong>&nbsp;to open the detail panel · use&nbsp;<strong>← →</strong>&nbsp;keys to navigate between all 33 sections
-      </div>
-      <div class="svg-body" id="svg-body">
-<svg viewBox="0 0 800 1304" id="main-svg" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:800px;height:auto;display:block;margin:0 auto;background:#0D1B2A">
-<defs>
-  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-    <path d="M1 1L9 5L1 9" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </marker>
-</defs>
+        <div class="svg-hint">
+          <span style="font-size:15px">👆</span>
+          <strong>Click any box</strong>&nbsp; to open its full explanation in the sidebar &nbsp;·&nbsp; use <strong>← →</strong> keys to navigate
+        </div>
+        <div class="svg-body">
+<svg viewBox="0 0 860 1454" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:860px;height:auto;display:block;margin:0 auto;background:#FFFFFF">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--navy:#0D1B2A;--brand:#1B4F8A;--gold:#C9A84C;--teal:#0A7E8C;--green:#0B6E4F;--purple:#6B2FA0;--orange:#C2410C;--slate:#475569;--muted:#94A3B8;--border:#E2E8F0;--bg:#F8FAFC;--white:#fff}
-body{font-family:"Plus Jakarta Sans",sans-serif;background:var(--bg);color:var(--navy)}
+:root{
+  --navy:#0D1B2A;--brand:#1B4F8A;--gold:#C9A84C;
+  --teal:#0A7E8C;--green:#0B6E4F;--muted:#64748B;
+  --border:#E2E8F0;--bg:#F8FAFC;--white:#fff;
+}
+body{font-family:"Plus Jakarta Sans",sans-serif;background:var(--bg);color:var(--navy);line-height:1.5}
 
-/* HEADER */
-.hdr{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+/* ── HEADER ──────────────────────────────────────────────────────────────── */
+.hdr{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 6px rgba(0,0,0,.06)}
 .hdr-gold{height:3px;background:var(--gold)}
-.hdr-inner{max-width:1080px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.hdr-logo{height:36px;width:auto}
-.hdr-div{width:1px;height:24px;background:var(--border)}
-.hdr-right{margin-left:auto;display:flex;gap:8px}
-.hpill{font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;border:1.5px solid}
-.hp-gold{color:#92400E;border-color:rgba(201,168,76,.5);background:#FFFBEB}
-.hp-teal{color:#0F766E;border-color:rgba(10,118,110,.3);background:#F0FDFA}
+.hdr-inner{max-width:100%;padding:8px 20px;display:flex;align-items:center;gap:14px}
+.hdr-logo{height:32px;width:auto;display:block}
+.hdr-div{width:1px;height:22px;background:var(--border);flex-shrink:0}
+.hdr-sub{font-size:11px;color:var(--muted);font-family:"DM Mono",monospace}
+.hdr-pills{margin-left:auto;display:flex;gap:8px;flex-shrink:0}
+.pill{font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;border:1.5px solid;white-space:nowrap}
+.pill-gold{color:#92400E;border-color:rgba(201,168,76,.5);background:#FFFBEB}
+.pill-teal{color:#0F766E;border-color:rgba(10,118,110,.3);background:#F0FDFA}
 
-/* TABS */
-.tabs{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:57px;z-index:99;display:flex}
-.tab{padding:13px 28px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;transition:.18s;font-family:"Plus Jakarta Sans",sans-serif}
+/* ── TABS ────────────────────────────────────────────────────────────────── */
+.tabs{background:#fff;border-bottom:2px solid var(--border);display:flex;position:sticky;top:49px;z-index:99}
+.tab{padding:11px 24px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;font-family:"Plus Jakarta Sans",sans-serif;transition:.15s}
 .tab:hover{color:var(--navy);background:var(--bg)}
 .tab.on{color:var(--brand);border-bottom-color:var(--gold)}
 .panel{display:none}.panel.on{display:block}
 
-/* SVG PANEL */
-.svg-wrap{max-width:860px;margin:0 auto;padding:24px 20px 60px}
-.svg-box{background:#0D1B2A;border:1px solid #1e2533;border-radius:14px;overflow:hidden}
-.svg-top{padding:14px 20px;border-bottom:1px solid #1e2533;display:flex;align-items:center;gap:12px}
-.svg-top h2{font-size:14px;font-weight:800;color:#fff}
-.svg-top p{font-size:11px;color:#64748B;margin-top:2px}
-.svg-dl{margin-left:auto;font-size:11px;font-weight:600;padding:4px 12px;border-radius:7px;border:1.5px solid rgba(201,168,76,.4);background:rgba(201,168,76,.08);color:#C9A84C;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
-.svg-dl:hover{background:rgba(201,168,76,.18)}
-.svg-hint{padding:9px 20px;background:#071520;border-bottom:1px solid #1e2533;font-size:11px;color:#64748B;display:flex;align-items:center;gap:8px}
-.svg-hint strong{color:#C9A84C}
-.svg-body{padding:16px;overflow-x:auto}
-/* Critical: only izone rects get pointer events */
-.svg-body svg > *:not(.izone){pointer-events:none}
-.svg-body svg .izone{pointer-events:all;cursor:pointer}
-.svg-legend{display:flex;gap:12px;flex-wrap:wrap;padding:10px 20px;border-top:1px solid #1e2533;background:#071520}
-.leg{display:flex;align-items:center;gap:5px;font-size:10px;color:#64748B}
-.ldot{width:8px;height:8px;border-radius:2px}
+/* ── INFOGRAPHIC TAB LAYOUT: SVG left, sidebar right ─────────────────────── */
+/* When panel is closed: full-width SVG                                       */
+/* When panel is open:   SVG shrinks, sidebar appears beside it               */
+.inf-layout{display:flex;align-items:flex-start;min-height:calc(100vh - 100px)}
+.inf-svg-col{flex:1;min-width:0;transition:all .3s ease;padding:20px}
+.inf-sidebar{width:0;overflow:hidden;transition:width .3s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+.inf-sidebar.open{width:400px}
 
-/* STRUCTURE TAB */
-.wrap{max-width:1080px;margin:0 auto;padding:28px 24px 80px}
-.intro{background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:12px;padding:22px 26px;margin-bottom:24px}
-.intro h1{font-size:21px;font-weight:800;color:var(--navy);margin-bottom:6px}
-.intro p{font-size:12px;color:var(--slate);max-width:680px;line-height:1.75}
-.tips{display:flex;gap:18px;margin-top:12px;flex-wrap:wrap}
-.tip{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--slate)}
-.tdot{width:7px;height:7px;border-radius:50%}
-.section{margin-bottom:12px;border:1.5px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
-.sec-hdr{display:flex;align-items:center;gap:10px;padding:14px 18px;cursor:pointer;user-select:none;transition:.15s}
+/* SVG box */
+.svg-box{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.svg-top{padding:12px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;background:#fff}
+.svg-top h2{font-size:13px;font-weight:800;color:var(--navy)}
+.svg-top p{font-size:10px;color:var(--muted);margin-top:1px}
+.svg-dl{margin-left:auto;font-size:10px;font-weight:600;padding:4px 10px;border-radius:6px;border:1.5px solid var(--gold);color:#92400E;background:#FFFBEB;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;transition:.15s}
+.svg-dl:hover{background:#FEF3C7}
+.svg-hint{padding:8px 18px;background:#F8FAFC;border-bottom:1px solid var(--border);font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.svg-hint strong{color:var(--brand)}
+.svg-body{overflow-x:auto;background:#fff;padding:12px}
+.svg-body svg>*:not(.izone){pointer-events:none}
+.svg-body svg .izone{pointer-events:all;cursor:pointer}
+.svg-legend{display:flex;gap:10px;flex-wrap:wrap;padding:8px 18px;border-top:1px solid var(--border);background:#F8FAFC}
+.leg{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted)}
+.ldot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+
+/* ── SIDEBAR PANEL ───────────────────────────────────────────────────────── */
+.sidebar{height:calc(100vh - 100px);position:sticky;top:100px;display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.sb-head{padding:16px 18px 14px;border-bottom:1px solid var(--border);background:var(--navy);flex-shrink:0}
+.sb-eyebrow{font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--gold);font-family:"DM Mono",monospace;margin-bottom:8px}
+.sb-title-row{display:flex;align-items:flex-start;gap:10px}
+.sb-emoji{font-size:24px;flex-shrink:0;line-height:1;margin-top:2px}
+.sb-title{font-size:15px;font-weight:800;color:#fff;line-height:1.3;flex:1}
+.sb-x{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#94A3B8;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s;font-family:sans-serif}
+.sb-x:hover{background:#C8102E;color:#fff;border-color:#C8102E}
+.sb-nav{display:flex;align-items:center;padding:8px 18px;border-bottom:1px solid var(--border);background:#F8FAFC;flex-shrink:0;gap:8px}
+.sb-nav button{font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;transition:.15s}
+.sb-nav button:hover:not(:disabled){border-color:var(--brand);color:var(--brand)}
+.sb-nav button:disabled{opacity:.35;cursor:default}
+.sb-cnt{font-size:10px;color:var(--muted);font-family:"DM Mono",monospace;margin:0 auto}
+.sb-body{padding:16px 18px;flex:1;overflow-y:auto}
+.sb-body::-webkit-scrollbar{width:3px}
+.sb-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.sb-item{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #F1F5F9}
+.sb-item:last-child{border-bottom:none}
+.sb-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px}
+.sb-text{font-size:12px;color:#334155;line-height:1.7;flex:1}
+.sb-text strong{color:var(--navy);font-weight:700}
+.sb-foot{padding:10px 18px;border-top:1px solid var(--border);background:#F8FAFC;flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+.sb-foot span{font-size:9px;color:var(--muted);font-family:"DM Mono",monospace}
+.sb-default{color:var(--muted);font-size:12px;text-align:center;padding:40px 0;line-height:1.6}
+.sb-default div{font-size:28px;margin-bottom:10px}
+
+/* ── STRUCTURE TAB ───────────────────────────────────────────────────────── */
+.wrap{max-width:1080px;margin:0 auto;padding:24px 20px 60px}
+.intro{background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:10px;padding:20px 24px;margin-bottom:20px}
+.intro h1{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:5px}
+.intro p{font-size:12px;color:var(--muted);max-width:680px;line-height:1.75}
+.tips{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap}
+.tip{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
+.tdot{width:6px;height:6px;border-radius:50%}
+.section{margin-bottom:10px;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;background:#fff}
+.sec-hdr{display:flex;align-items:center;gap:10px;padding:12px 16px;cursor:pointer;user-select:none;transition:.12s}
 .sec-hdr:hover{background:var(--bg)}
-.sec-layer{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 9px;border-radius:20px;color:#fff;white-space:nowrap;flex-shrink:0}
+.sec-layer{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 8px;border-radius:20px;color:#fff;white-space:nowrap}
 .sec-title{font-size:13px;font-weight:700;color:var(--navy)}
-.sec-sub{font-size:11px;color:var(--muted);margin-left:4px}
-.sec-chev{margin-left:auto;font-size:13px;color:var(--muted);transition:.25s;flex-shrink:0}
+.sec-sub{font-size:11px;color:var(--muted);margin-left:2px}
+.sec-chev{margin-left:auto;font-size:12px;color:var(--muted);transition:.2s;flex-shrink:0}
 .section.open .sec-chev{transform:rotate(180deg)}
 .sec-body{display:none;border-top:1px solid var(--border)}
 .section.open .sec-body{display:block}
-.sec-intro{padding:16px 18px;background:var(--bg);border-bottom:1px solid var(--border);font-size:12px;color:var(--slate);line-height:1.7}
+.sec-intro{padding:14px 16px;background:var(--bg);border-bottom:1px solid var(--border);font-size:12px;color:var(--muted);line-height:1.7}
 .sec-intro strong{color:var(--navy)}
-.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px;padding:14px 18px}
-.card-grid.two{grid-template-columns:repeat(auto-fill,minmax(420px,1fr))}
-.card{border:1.5px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:.18s;background:#fff}
-.card:hover{box-shadow:0 4px 16px rgba(0,0,0,.09);border-color:var(--brand);transform:translateY(-1px)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;padding:12px 16px}
+.card-grid.two{grid-template-columns:repeat(auto-fill,minmax(400px,1fr))}
+.card{border:1.5px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;background:#fff;transition:.15s}
+.card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);border-color:var(--brand);transform:translateY(-1px)}
 .card.open{border-color:var(--brand)}
-.card-top{padding:14px 14px 10px;display:flex;gap:10px;align-items:flex-start}
-.card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.card-top{padding:12px 14px 8px;display:flex;gap:10px}
+.card-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
 .card-info{flex:1;min-width:0}
 .card-title{font-size:13px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:2px}
-.card-sub{font-size:11px;color:var(--slate);margin-bottom:5px}
-.card-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
-.ctag{font-size:9px;font-weight:600;padding:2px 7px;border-radius:20px;text-transform:uppercase;letter-spacing:.2px}
-.card-hint{font-size:10px;color:var(--muted);padding:0 14px 8px;text-align:right}
-.card-body{display:none;padding:12px 14px 14px;border-top:1px solid var(--border)}
+.card-sub{font-size:11px;color:var(--muted);margin-bottom:4px}
+.card-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:5px}
+.ctag{font-size:9px;font-weight:600;padding:2px 7px;border-radius:20px;text-transform:uppercase}
+.card-hint{font-size:10px;color:var(--muted);padding:0 14px 7px;text-align:right}
+.card-body{display:none;padding:10px 14px 12px;border-top:1px solid var(--border)}
 .card.open .card-body{display:block}
-.blabel{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);font-family:"DM Mono",monospace;margin:10px 0 6px;display:flex;align-items:center;gap:6px}
+.blabel{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-family:"DM Mono",monospace;margin:8px 0 5px;display:flex;align-items:center;gap:6px}
 .blabel::after{content:"";flex:1;height:1px;background:var(--border)}
 .jdlist{list-style:none;display:flex;flex-direction:column;gap:3px}
-.jdlist li{font-size:12px;color:var(--slate);display:flex;gap:7px;padding:3px 0;border-bottom:1px solid #F8FAFC;line-height:1.55}
+.jdlist li{font-size:12px;color:var(--muted);display:flex;gap:7px;padding:3px 0;border-bottom:1px solid #F8FAFC;line-height:1.55}
 .jdlist li:last-child{border-bottom:none}
-.jdlist li::before{content:"·";color:var(--brand);font-size:15px;line-height:1.2;flex-shrink:0}
-.rbar{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--slate);background:#EFF6FF;border-radius:6px;padding:6px 10px;margin-top:10px}
+.jdlist li::before{content:"·";color:var(--brand);font-size:14px;line-height:1.3;flex-shrink:0}
+.rbar{display:flex;gap:6px;font-size:11px;color:var(--muted);background:#EFF6FF;border-radius:6px;padding:6px 10px;margin-top:8px}
 .rbar strong{color:var(--brand)}
 .kpis{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-.kpi{background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:8px 12px;flex:1;min-width:80px;text-align:center}
-.kpiv{font-size:20px;font-weight:800;color:var(--navy)}
-.kpil{font-size:9px;color:var(--muted);font-family:"DM Mono",monospace;text-transform:uppercase;margin-top:1px}
-.stags{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
-.stag{font-size:10px;padding:3px 9px;border-radius:20px;border:1px solid;font-weight:500}
+.kpi{background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:7px 10px;flex:1;min-width:70px;text-align:center}
+.kpiv{font-size:18px;font-weight:800;color:var(--navy)}
+.kpil{font-size:9px;color:var(--muted);font-family:"DM Mono",monospace;text-transform:uppercase}
+.stags{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.stag{font-size:10px;padding:2px 8px;border-radius:20px;border:1px solid;font-weight:500}
 .nchip{display:inline-flex;align-items:center;gap:5px;padding:3px 9px 3px 4px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1.5px solid;margin:2px}
 .nchip.ok{background:#F0FDF4;color:#0B6E4F;border-color:#86EFAC}
 .nchip.vac{background:#FEF2F2;color:#991B1B;border-color:#FCA5A5;font-style:italic}
 .nchip.tbc{background:#FFFBEB;color:#92400E;border-color:#FCD34D}
 .nav{width:22px;height:22px;border-radius:50%;color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .dregion{border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:8px}
-.dreg-hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;user-select:none;transition:.12s}
+.dreg-hdr{display:flex;align-items:center;gap:10px;padding:9px 14px;cursor:pointer;user-select:none;transition:.12s}
 .dreg-hdr:hover{background:var(--bg)}
 .dreg-label{font-weight:700;font-size:11px;color:#fff;padding:3px 10px;border-radius:20px}
 .dreg-count{font-size:11px;color:var(--muted);font-family:"DM Mono",monospace}
 .dreg-chev{margin-left:auto;font-size:10px;color:var(--muted);transition:.2s}
 .dregion.open .dreg-chev{transform:rotate(90deg)}
-.dreg-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:7px;padding:10px 14px 14px}
+.dreg-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:7px;padding:10px 14px 12px}
 .dregion.open .dreg-grid{display:grid}
-.dcard{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:9px 11px;cursor:pointer;transition:.14s}
+.dcard{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:9px 11px;cursor:pointer;transition:.12s}
 .dcard:hover{background:#fff;border-color:var(--brand)}
 .dcard.open{background:#fff;border-color:var(--brand)}
 .dname{font-weight:700;font-size:12px;color:var(--navy);margin-bottom:2px}
-.ddmc{font-size:10px;color:var(--slate);margin-bottom:4px}
-.ddetail{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:11px;color:var(--slate)}
+.ddmc{font-size:10px;color:var(--muted);margin-bottom:3px}
+.ddetail{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:11px;color:var(--muted)}
 .dcard.open .ddetail{display:block}
-.wflow,.gpath{display:flex;align-items:stretch;overflow-x:auto;padding:14px 18px}
-.wstep,.gstage{flex:1;min-width:130px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:14px 12px;cursor:pointer;transition:.18s}
-.wstep:hover,.gstage:hover{border-color:var(--brand);transform:translateY(-2px)}
+.wflow,.gpath{display:flex;align-items:stretch;overflow-x:auto;padding:12px 16px}
+.wstep,.gstage{flex:1;min-width:120px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:12px;cursor:pointer;transition:.15s}
+.wstep:hover,.gstage:hover{border-color:var(--brand);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.07)}
 .wstep.on{border-color:var(--brand);background:#EFF6FF}
-.gstage.on{border-color:var(--purple);background:#FAF5FF}
-.wnum,.gnum{font-size:22px;font-weight:800;color:var(--border);line-height:1;margin-bottom:4px}
+.gstage.on{border-color:#7C3AED;background:#F5F3FF}
+.wnum,.gnum{font-size:20px;font-weight:800;color:var(--border);line-height:1;margin-bottom:3px}
 .wstep.on .wnum{color:var(--brand)}
-.gstage.on .gnum{color:var(--purple)}
-.wtitle,.gtitle{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:3px}
-.wsub,.gtrig{font-size:10px;color:var(--muted);line-height:1.4;font-family:"DM Mono",monospace}
-.wdetail,.gdetail{display:none;margin-top:10px;padding-top:8px;border-top:1px solid var(--border);font-size:11px;color:var(--slate);line-height:1.6}
+.gstage.on .gnum{color:#7C3AED}
+.wtitle,.gtitle{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.wsub,.gtrig{font-size:10px;color:var(--muted);font-family:"DM Mono",monospace}
+.wdetail,.gdetail{display:none;margin-top:8px;padding-top:6px;border-top:1px solid var(--border);font-size:11px;color:var(--muted);line-height:1.6}
 .wstep.on .wdetail,.gstage.on .gdetail{display:block}
-.warrow,.garrow{display:flex;align-items:center;padding:0 6px;color:var(--muted);font-size:18px;flex-shrink:0;align-self:center}
-.scat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.warrow,.garrow{display:flex;align-items:center;padding:0 5px;color:var(--muted);font-size:16px;flex-shrink:0;align-self:center}
+.scat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
 .scat{border-radius:10px;overflow:hidden;border:1.5px solid var(--border)}
-.scat-hdr{padding:11px 13px}
+.scat-hdr{padding:10px 12px}
 .scat-title{font-size:12px;font-weight:700;margin-bottom:2px}
 .scat-mgr{font-size:10px;opacity:.75}
-.scat-types{padding:8px 13px 12px;display:flex;flex-direction:column;gap:4px}
-.stype{font-size:11px;padding:4px 8px;border-radius:5px;display:flex;align-items:center;gap:6px;cursor:pointer}
+.scat-types{padding:7px 12px 10px;display:flex;flex-direction:column;gap:3px}
+.stype{font-size:11px;padding:4px 8px;border-radius:5px;display:flex;align-items:center;gap:5px;cursor:pointer}
 .stype:hover{filter:brightness(.95)}
 .sdot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
-.pring{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
-.princ{background:#fff;border:1.5px solid var(--border);border-top:4px solid;border-radius:10px;padding:14px 16px}
-.pnum{font-size:26px;font-weight:800;color:var(--border);line-height:1;margin-bottom:5px}
-.ptitle{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:5px}
-.pbody{font-size:11px;color:var(--slate);line-height:1.6}
-.toolbar{display:flex;align-items:center;gap:8px;margin-bottom:18px;flex-wrap:wrap}
-.tbtnx{font-size:11px;font-weight:600;padding:5px 13px;border-radius:7px;border:1.5px solid var(--border);background:#fff;color:var(--slate);cursor:pointer;transition:.15s;font-family:"Plus Jakarta Sans",sans-serif}
+.pring{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+.princ{background:#fff;border:1.5px solid var(--border);border-top:4px solid;border-radius:10px;padding:12px 14px}
+.pnum{font-size:22px;font-weight:800;color:var(--border);line-height:1;margin-bottom:4px}
+.ptitle{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.pbody{font-size:11px;color:var(--muted);line-height:1.6}
+.toolbar{display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tbtnx{font-size:11px;font-weight:600;padding:5px 12px;border-radius:7px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;transition:.12s;font-family:"Plus Jakarta Sans",sans-serif}
 .tbtnx:hover{border-color:var(--brand);color:var(--brand);background:#EFF6FF}
 .tbtnx.on{background:var(--brand);color:#fff;border-color:var(--brand)}
 .search-box{position:relative;margin-left:auto}
 .search-box input{background:#fff;border:1.5px solid var(--border);border-radius:8px;color:var(--navy);font-size:12px;padding:5px 10px 5px 28px;width:200px;outline:none;font-family:"Plus Jakarta Sans",sans-serif;transition:.2s}
-.search-box input:focus{border-color:var(--brand);width:250px}
+.search-box input:focus{border-color:var(--brand);width:240px}
 .search-box::before{content:"⌕";position:absolute;left:8px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px;pointer-events:none}
 .hidden{display:none!important}
-
-/* PERSON POPUP */
 .pop-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:800;align-items:center;justify-content:center}
 .pop-overlay.open{display:flex}
 .popup{background:#fff;border-radius:14px;width:370px;max-width:92vw;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2)}
-.pop-hd{padding:18px 20px 14px;border-bottom:1px solid var(--border)}
-.pop-avrow{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-.pop-av{width:50px;height:50px;border-radius:50%;color:#fff;font-size:17px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.pop-name{font-size:17px;font-weight:800;color:var(--navy)}
-.pop-role{font-size:12px;color:var(--slate);margin-top:2px}
-.pop-bd{padding:14px 20px}
-.pfield{display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #F8FAFC;font-size:12px}
+.pop-hd{padding:16px 20px 12px;border-bottom:1px solid var(--border)}
+.pop-avrow{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.pop-av{width:48px;height:48px;border-radius:50%;color:#fff;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pop-name{font-size:16px;font-weight:800;color:var(--navy)}
+.pop-role{font-size:11px;color:var(--muted);margin-top:1px}
+.pop-bd{padding:12px 20px}
+.pfield{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #F8FAFC;font-size:12px}
 .pfield:last-child{border-bottom:none}
-.pfl{color:var(--muted);width:72px;flex-shrink:0;font-family:"DM Mono",monospace;font-size:10px;padding-top:1px}
+.pfl{color:var(--muted);width:70px;flex-shrink:0;font-family:"DM Mono",monospace;font-size:10px;padding-top:1px}
 .pfv{color:var(--navy);flex:1;line-height:1.5}
 .pop-ft{padding:10px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
-.pbtn{font-size:11px;padding:5px 13px;border-radius:7px;border:1.5px solid var(--border);background:#fff;color:var(--slate);cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif}
+.pbtn{font-size:11px;padding:5px 12px;border-radius:7px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif}
 .pbtn:hover{border-color:var(--brand);color:var(--brand)}
 .pbtn.ok{background:var(--brand);color:#fff;border-color:var(--brand)}
-
-/* SLIDE PANEL — fixed to viewport, top-level */
-.sp-bd{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:9998}
-.sp-bd.on{display:block}
-.sp{position:fixed;top:0;right:-460px;width:440px;max-width:92vw;height:100vh;
-    background:#0A1628;border-left:2px solid #1e2d42;
-    box-shadow:-16px 0 60px rgba(0,0,0,.7);
-    z-index:9999;display:flex;flex-direction:column;
-    transition:right .3s cubic-bezier(.4,0,.2,1);
-    font-family:"Plus Jakarta Sans",sans-serif}
-.sp.on{right:0}
-.sp-head{padding:20px 20px 16px;border-bottom:1px solid #1e2d42;background:#0D1B2A}
-.sp-eyebrow{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#C9A84C;font-family:"DM Mono",monospace;margin-bottom:10px}
-.sp-row{display:flex;align-items:flex-start;gap:12px}
-.sp-emoji{font-size:28px;flex-shrink:0;line-height:1}
-.sp-title{font-size:17px;font-weight:800;color:#FFFFFF;line-height:1.25;flex:1}
-.sp-x{width:32px;height:32px;border-radius:50%;background:#1e2d42;border:none;color:#94A3B8;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s}
-.sp-x:hover{background:#C8102E;color:#fff}
-.sp-nav{display:flex;align-items:center;padding:10px 20px;border-bottom:1px solid #1e2d42;background:#071520;gap:8px}
-.sp-nav button{font-size:11px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid #1e2d42;background:#0A1628;color:#64748B;cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;transition:.15s}
-.sp-nav button:hover:not(:disabled){border-color:#C9A84C;color:#C9A84C}
-.sp-nav button:disabled{opacity:.3;cursor:default}
-.sp-cnt{font-size:10px;color:#475569;font-family:"DM Mono",monospace;margin:0 auto}
-.sp-body{padding:20px;flex:1;overflow-y:auto}
-.sp-body::-webkit-scrollbar{width:3px}
-.sp-body::-webkit-scrollbar-thumb{background:#1e2d42;border-radius:2px}
-.sp-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #0f1c2d}
-.sp-item:last-child{border-bottom:none}
-.sp-dot{width:7px;height:7px;border-radius:50%;background:#C9A84C;flex-shrink:0;margin-top:5px}
-.sp-text{font-size:13px;color:#FFFFFF;line-height:1.7;flex:1}
-.sp-text strong{color:#C9A84C;font-weight:700}
-.sp-foot{padding:12px 20px;border-top:1px solid #1e2d42;background:#071520;display:flex;align-items:center;justify-content:space-between}
-.sp-foot span{font-size:9px;color:#334155;font-family:"DM Mono",monospace}
-.sp-foot em{font-size:9px;color:#C9A84C44;font-family:"DM Mono",monospace;font-style:normal}
-
-/* PRESENT MODE */
-.pres-btn{position:fixed;bottom:70px;right:20px;font-size:11px;font-weight:700;padding:8px 16px;border-radius:8px;background:#C9A84C;color:#0D1B2A;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(201,168,76,.4);font-family:"Plus Jakarta Sans",sans-serif;z-index:200;display:flex;align-items:center;gap:6px;transition:.15s}
+.fab{position:fixed;bottom:20px;right:20px;width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;border:none;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.2);z-index:200}
+.fab:hover{background:var(--brand)}
+.pres-btn{position:fixed;bottom:68px;right:20px;font-size:11px;font-weight:700;padding:7px 14px;border-radius:8px;background:var(--gold);color:var(--navy);border:none;cursor:pointer;box-shadow:0 4px 16px rgba(201,168,76,.4);font-family:"Plus Jakarta Sans",sans-serif;z-index:200;display:flex;align-items:center;gap:5px;transition:.15s}
 .pres-btn:hover{background:#E5C062;transform:translateY(-2px)}
 .pres-btn.on{background:#C8102E;color:#fff}
-body.pm .hdr,body.pm .tabs{display:none}
-body.pm .svg-wrap{max-width:100%;padding:0}
-body.pm .svg-box{border-radius:0;border:none}
-body.pm .svg-hint,.body.pm .svg-legend{display:none}
-
-.fab{position:fixed;bottom:20px;right:20px;width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.25);z-index:200}
-.fab:hover{background:var(--brand)}
-@media(max-width:640px){.card-grid,.card-grid.two{grid-template-columns:1fr}.wflow,.gpath{flex-wrap:wrap}.hdr-right{display:none}.wrap{padding:16px 14px 60px}}
-text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif;letter-spacing:0}</style>
-<rect x="0" y="0" width="800" height="72" fill="#0D1B2A"/>
-<rect x="0" y="68" width="800" height="4" fill="#C9A84C"/>
-<text x="400" y="28" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="700">TripFactory ORN — Supply Division</text>
-<text x="400" y="50" text-anchor="middle" fill="#94A3B8" font-size="12" font-weight="400">Structure · Workflow · Operating Model · May 2026</text>
-<rect x="24" y="84" width="752" height="13" fill="#C9A84C" rx="3" opacity="0.2"/>
-<text x="400" y="94" text-anchor="middle" fill="#C9A84C" font-size="9" font-weight="600">LAYER 1 — BLR LEADERSHIP</text>
-<rect x="240" y="104" width="320" height="68" fill="#1E293B" rx="10" stroke="#334155" stroke-width="1"/>
-<rect x="240" y="104" width="320" height="4" fill="#C9A84C" rx="3"/>
-<rect x="240" y="105" width="320" height="3" fill="#C9A84C"/>
-<text x="400" y="126" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="700">Head of Supply</text>
-<text x="400" y="146" text-anchor="middle" fill="#5EEAD4" font-size="11" font-weight="500">Sachin Keni · BLR Bangalore</text>
-<text x="400" y="162" text-anchor="middle" fill="#94A3B8" font-size="9" font-weight="400">Reports to: CPSO / Ajay Kawa</text>
-<line x1="400" y1="180" x2="400" y2="196" stroke="#94A3B8" stroke-width="1"/>
-<line x1="44" y1="196" x2="756" y2="196" stroke="#94A3B8" stroke-width="0.5"/>
-<rect x="24" y="196" width="752" height="13" fill="#1B4F8A" rx="3" opacity="0.15"/>
-<text x="400" y="206" text-anchor="middle" fill="#1B4F8A" font-size="9" font-weight="600">LAYER 2 — SUPPLY MANAGERS BY CATEGORY · BLR BANGALORE</text>
-<rect x="24" y="216" width="144" height="90" fill="#DBEAFE" rx="8" stroke="#1E40AF" stroke-width="1"/>
-<rect x="24" y="216" width="144" height="24" fill="#1E40AF" rx="8"/>
-<rect x="24" y="232" width="144" height="8" fill="#1E40AF"/>
-<text x="96" y="231" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Accommodation</text>
-<text x="96" y="254" text-anchor="middle" fill="#1E3A8A" font-size="9" font-weight="400">Hotels & Resorts</text>
-<text x="96" y="270" text-anchor="middle" fill="#1E3A8A" font-size="9" font-weight="400">Cruises & Yachts</text>
-<text x="96" y="292" text-anchor="middle" fill="#1E40AF" font-size="8" font-weight="500">← Allocate name</text>
-<line x1="96" y1="212" x2="96" y2="216" stroke="#93C5FD" stroke-width="0.8"/>
-<rect x="176" y="216" width="144" height="90" fill="#D1FAE5" rx="8" stroke="#065F46" stroke-width="1"/>
-<rect x="176" y="216" width="144" height="24" fill="#065F46" rx="8"/>
-<rect x="176" y="232" width="144" height="8" fill="#065F46"/>
-<text x="248" y="231" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Transport</text>
-<text x="248" y="254" text-anchor="middle" fill="#064E3B" font-size="9" font-weight="400">Transfers & Drivers</text>
-<text x="248" y="270" text-anchor="middle" fill="#064E3B" font-size="9" font-weight="400">Airport Reps · Service Pts</text>
-<text x="248" y="292" text-anchor="middle" fill="#065F46" font-size="8" font-weight="500">← Allocate name</text>
-<line x1="248" y1="212" x2="248" y2="216" stroke="#6EE7B7" stroke-width="0.8"/>
-<rect x="328" y="216" width="144" height="90" fill="#FED7AA" rx="8" stroke="#7C2D12" stroke-width="1"/>
-<rect x="328" y="216" width="144" height="24" fill="#7C2D12" rx="8"/>
-<rect x="328" y="232" width="144" height="8" fill="#7C2D12"/>
-<text x="400" y="231" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Experiences</text>
-<text x="400" y="254" text-anchor="middle" fill="#7C2D12" font-size="9" font-weight="400">Tours · Attractions</text>
-<text x="400" y="270" text-anchor="middle" fill="#7C2D12" font-size="9" font-weight="400">Guides · Adventure · Events</text>
-<text x="400" y="292" text-anchor="middle" fill="#7C2D12" font-size="8" font-weight="500">← Allocate name</text>
-<line x1="400" y1="212" x2="400" y2="216" stroke="#FDBA74" stroke-width="0.8"/>
-<rect x="480" y="216" width="144" height="90" fill="#EDE9FE" rx="8" stroke="#6B21A8" stroke-width="1"/>
-<rect x="480" y="216" width="144" height="24" fill="#6B21A8" rx="8"/>
-<rect x="480" y="232" width="144" height="8" fill="#6B21A8"/>
-<text x="552" y="231" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Wellness & Dining</text>
-<text x="552" y="254" text-anchor="middle" fill="#4C1D95" font-size="9" font-weight="400">Restaurants · Spas</text>
-<text x="552" y="270" text-anchor="middle" fill="#4C1D95" font-size="9" font-weight="400">Photography · Shopping</text>
-<text x="552" y="292" text-anchor="middle" fill="#6B21A8" font-size="8" font-weight="500">← Allocate name</text>
-<line x1="552" y1="212" x2="552" y2="216" stroke="#C4B5FD" stroke-width="0.8"/>
-<rect x="632" y="216" width="144" height="90" fill="#A7F3D0" rx="8" stroke="#064E3B" stroke-width="1"/>
-<rect x="632" y="216" width="144" height="24" fill="#064E3B" rx="8"/>
-<rect x="632" y="232" width="144" height="8" fill="#064E3B"/>
-<text x="704" y="231" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Docs & Insurance</text>
-<text x="704" y="254" text-anchor="middle" fill="#064E3B" font-size="9" font-weight="400">Visa & Documentation</text>
-<text x="704" y="270" text-anchor="middle" fill="#064E3B" font-size="9" font-weight="400">Insurance · Flight Tickets</text>
-<text x="704" y="292" text-anchor="middle" fill="#064E3B" font-size="8" font-weight="500">← Allocate name</text>
-<line x1="704" y1="212" x2="704" y2="216" stroke="#34D399" stroke-width="0.8"/>
-<line x1="44" y1="318" x2="756" y2="318" stroke="#94A3B8" stroke-width="0.3"/>
-<line x1="96" y1="318" x2="96" y2="330" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="3 2"/>
-<line x1="248" y1="318" x2="248" y2="330" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="3 2"/>
-<line x1="400" y1="318" x2="400" y2="330" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="3 2"/>
-<line x1="552" y1="318" x2="552" y2="330" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="3 2"/>
-<line x1="704" y1="318" x2="704" y2="330" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="3 2"/>
-<rect x="24" y="330" width="752" height="13" fill="#0A7E8C" rx="3" opacity="0.15"/>
-<text x="400" y="340" text-anchor="middle" fill="#0A7E8C" font-size="9" font-weight="600">LAYER 3 — SUPPLY ADMINISTRATION, QUALITY CONTROL & OPERATIONS · BLR</text>
-<rect x="24" y="350" width="370" height="100" fill="#0F2922" rx="10" stroke="#6EE7B7" stroke-width="1"/>
-<rect x="24" y="350" width="370" height="4" fill="#0A7E8C" rx="3"/>
-<rect x="24" y="351" width="370" height="3" fill="#0A7E8C"/>
-<text x="209" y="370" text-anchor="middle" fill="#5EEAD4" font-size="12" font-weight="700">Supply Admin & Quality Control</text>
-<text x="209" y="388" text-anchor="middle" fill="#A7F3D0" font-size="10" font-weight="500">Head: Disha · BLR Bangalore</text>
-<text x="209" y="404" text-anchor="middle" fill="#6EE7B7" font-size="9" font-weight="400">Loading ×10 · QC & Audit ×6 · Content ×4</text>
-<rect x="34" y="415" width="66" height="20" fill="#065F46" rx="5"/>
-<text x="67" y="428" text-anchor="middle" fill="#6EE7B7" font-size="8" font-weight="600">Load 24h</text>
-<rect x="106" y="415" width="62" height="20" fill="#065F46" rx="5"/>
-<text x="137" y="428" text-anchor="middle" fill="#6EE7B7" font-size="8" font-weight="600">Map 24h</text>
-<rect x="174" y="415" width="78" height="20" fill="#065F46" rx="5"/>
-<text x="213" y="428" text-anchor="middle" fill="#6EE7B7" font-size="8" font-weight="600">Content 48h</text>
-<rect x="258" y="415" width="62" height="20" fill="#065F46" rx="5"/>
-<text x="289" y="428" text-anchor="middle" fill="#6EE7B7" font-size="8" font-weight="600">0 errors</text>
-<rect x="406" y="350" width="370" height="100" fill="#1C0E00" rx="10" stroke="#EF9F27" stroke-width="1"/>
-<rect x="406" y="350" width="370" height="4" fill="#C2410C" rx="3"/>
-<rect x="406" y="351" width="370" height="3" fill="#C2410C"/>
-<text x="591" y="370" text-anchor="middle" fill="#FED7AA" font-size="12" font-weight="700">Operations Teams</text>
-<text x="591" y="386" text-anchor="middle" fill="#EF9F27" font-size="10" font-weight="400">BLR Bangalore · daily fulfilment</text>
-<rect x="416" y="400" width="171" height="36" fill="#3C1A00" rx="7"/>
-<text x="501" y="415" text-anchor="middle" fill="#FED7AA" font-size="9" font-weight="600">Visa & Documentation</text>
-<text x="501" y="429" text-anchor="middle" fill="#EF9F27" font-size="8" font-weight="400">processing · embassy · insurance</text>
-<rect x="595" y="400" width="171" height="36" fill="#3C1A00" rx="7"/>
-<text x="680" y="415" text-anchor="middle" fill="#FED7AA" font-size="9" font-weight="600">Transport Operations</text>
-<text x="680" y="429" text-anchor="middle" fill="#EF9F27" font-size="8" font-weight="400">transfers · drivers · reps</text>
-<line x1="24" y1="460" x2="776" y2="460" stroke="#C9A84C" stroke-width="0.5"/>
-<text x="400" y="472" text-anchor="middle" fill="#C9A84C" font-size="8" font-weight="500">CONTRACTING RELATIONSHIP — Supply Managers direct in-destination supply</text>
-<rect x="24" y="482" width="752" height="13" fill="#0B6E4F" rx="3" opacity="0.15"/>
-<text x="400" y="492" text-anchor="middle" fill="#0B6E4F" font-size="9" font-weight="600">LAYER 4 — IN-DESTINATION · PRODUCT MANAGER or DMC PARTNER</text>
-<rect x="24" y="502" width="752" height="190" fill="none" rx="12" stroke="#0B6E4F" stroke-width="0.8" stroke-dasharray="6 3"/>
-<text x="400" y="518" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="500">50 destinations across 6 regions — one PM or DMC per destination each</text>
-<rect x="32" y="532" width="178" height="52" fill="#0F766E" rx="7" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
-<text x="121" y="547" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">Middle East & Islands</text>
-<text x="121" y="563" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="8" font-weight="400">Dubai · Oman · Egypt · Maldives</text>
-<text x="121" y="577" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8" font-weight="400">Morocco · Jordan · 13 dests</text>
-<rect x="218" y="532" width="178" height="52" fill="#065F46" rx="7" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
-<text x="307" y="547" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">SE Asia & Pacific</text>
-<text x="307" y="563" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="8" font-weight="400">Thailand · Japan · Bali · Vietnam</text>
-<text x="307" y="577" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8" font-weight="400">Singapore · HK · 12 dests</text>
-<rect x="404" y="532" width="178" height="52" fill="#7C2D12" rx="7" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
-<text x="493" y="547" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">India</text>
-<text x="493" y="563" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="8" font-weight="400">Kerala · Goa · Rajasthan · J&K</text>
-<text x="493" y="577" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8" font-weight="400">NE India · Andaman · 7 dests</text>
-<rect x="590" y="532" width="178" height="52" fill="#1E40AF" rx="7" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
-<text x="679" y="547" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">Europe</text>
-<text x="679" y="563" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="8" font-weight="400">UK · France · Italy · Spain</text>
-<text x="679" y="577" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8" font-weight="400">Greece · Germany · 10 dests</text>
-<rect x="32" y="592" width="364" height="44" fill="#6B21A8" rx="7" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
-<text x="214" y="607" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">Americas & Africa</text>
-<text x="214" y="621" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="8" font-weight="400">USA · Canada · LatAm · Caribbean</text>
-<text x="214" y="635" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8" font-weight="400">South Africa · Kenya · Tanzania · 6 dests</text>
-<rect x="404" y="592" width="364" height="44" fill="#9D174D" rx="7" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
-<text x="586" y="607" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">Central Asia & Oceania</text>
-<text x="586" y="621" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="8" font-weight="400">Uzbekistan · Kazakhstan · Russia · Georgia</text>
-<text x="586" y="635" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8" font-weight="400">Australia · NZ · Fiji · Bora Bora · 8 dests</text>
-<rect x="24" y="706" width="752" height="13" fill="#6B2FA0" rx="3" opacity="0.15"/>
-<text x="400" y="716" text-anchor="middle" fill="#6B2FA0" font-size="9" font-weight="600">DESTINATION GROWTH PATH — volume-triggered, built in from day one</text>
-<rect x="24" y="726" width="752" height="72" fill="none" rx="10" stroke="#6B2FA0" stroke-width="0.8"/>
-<rect x="32" y="734" width="176" height="56" fill="#EEEDFE" rx="7"/>
-<text x="120" y="750" text-anchor="middle" fill="#3C3489" font-size="8" font-weight="600">Stage 1</text>
-<text x="120" y="766" text-anchor="middle" fill="#3C3489" font-size="10" font-weight="700">Individual PM / DMC</text>
-<text x="120" y="782" text-anchor="middle" fill="#3C3489" font-size="8" font-weight="400">From day one</text>
-<text x="213" y="766" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="400">→</text>
-<rect x="218" y="734" width="176" height="56" fill="#CECBF6" rx="7"/>
-<text x="306" y="750" text-anchor="middle" fill="#26215C" font-size="8" font-weight="600">Stage 2</text>
-<text x="306" y="766" text-anchor="middle" fill="#26215C" font-size="10" font-weight="700">Small Team (2–5)</text>
-<text x="306" y="782" text-anchor="middle" fill="#26215C" font-size="8" font-weight="400">~500 bkgs/month</text>
-<text x="399" y="766" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="400">→</text>
-<rect x="404" y="734" width="176" height="56" fill="#AFA9EC" rx="7"/>
-<text x="492" y="750" text-anchor="middle" fill="#1E1B4B" font-size="8" font-weight="600">Stage 3</text>
-<text x="492" y="766" text-anchor="middle" fill="#1E1B4B" font-size="10" font-weight="700">In-Dest. Office</text>
-<text x="492" y="782" text-anchor="middle" fill="#1E1B4B" font-size="8" font-weight="400">~2,000 bkgs/month</text>
-<text x="585" y="766" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="400">→</text>
-<rect x="590" y="734" width="176" height="56" fill="#534AB7" rx="7"/>
-<text x="678" y="750" text-anchor="middle" fill="#FFFFFF" font-size="8" font-weight="600">Stage 4</text>
-<text x="678" y="766" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">DMC Acquisition</text>
-<text x="678" y="782" text-anchor="middle" fill="#FFFFFF" font-size="8" font-weight="400">Strategic opportunity</text>
-<rect x="24" y="812" width="752" height="13" fill="#C9A84C" rx="3" opacity="0.2"/>
-<text x="400" y="822" text-anchor="middle" fill="#C9A84C" font-size="9" font-weight="600">17 SUPPLY COMPONENTS — contracted in-destination · loaded and QC'd in BLR</text>
-<rect x="24" y="832" width="144" height="136" fill="#DBEAFE" rx="8" stroke="#1E40AF" stroke-width="1"/>
-<rect x="24" y="832" width="144" height="24" fill="#1E40AF" rx="8"/>
-<rect x="24" y="848" width="144" height="8" fill="#1E40AF"/>
-<text x="96" y="847" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Accommodation</text>
-<rect x="29" y="866" width="134" height="17" fill="#1E40AF" rx="4" opacity="0.3"/>
-<text x="96" y="877" text-anchor="middle" fill="#1E3A8A" font-size="8" font-weight="400">Hotel & Accommodation</text>
-<rect x="29" y="886" width="134" height="17" fill="#1E40AF" rx="4" opacity="0.3"/>
-<text x="96" y="897" text-anchor="middle" fill="#1E3A8A" font-size="8" font-weight="400">Cruise & Yacht</text>
-<rect x="176" y="832" width="144" height="136" fill="#D1FAE5" rx="8" stroke="#065F46" stroke-width="1"/>
-<rect x="176" y="832" width="144" height="24" fill="#065F46" rx="8"/>
-<rect x="176" y="848" width="144" height="8" fill="#065F46"/>
-<text x="248" y="847" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Transport</text>
-<rect x="181" y="866" width="134" height="17" fill="#065F46" rx="4" opacity="0.3"/>
-<text x="248" y="877" text-anchor="middle" fill="#064E3B" font-size="8" font-weight="400">Transport & Transfers</text>
-<rect x="181" y="886" width="134" height="17" fill="#065F46" rx="4" opacity="0.3"/>
-<text x="248" y="897" text-anchor="middle" fill="#064E3B" font-size="8" font-weight="400">Airport Representative</text>
-<rect x="181" y="906" width="134" height="17" fill="#065F46" rx="4" opacity="0.3"/>
-<text x="248" y="917" text-anchor="middle" fill="#064E3B" font-size="8" font-weight="400">Service Points</text>
-<rect x="328" y="832" width="144" height="136" fill="#FED7AA" rx="8" stroke="#7C2D12" stroke-width="1"/>
-<rect x="328" y="832" width="144" height="24" fill="#7C2D12" rx="8"/>
-<rect x="328" y="848" width="144" height="8" fill="#7C2D12"/>
-<text x="400" y="847" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Experiences</text>
-<rect x="333" y="866" width="134" height="17" fill="#7C2D12" rx="4" opacity="0.3"/>
-<text x="400" y="877" text-anchor="middle" fill="#7C2D12" font-size="8" font-weight="400">Sightseeing Tours</text>
-<rect x="333" y="886" width="134" height="17" fill="#7C2D12" rx="4" opacity="0.3"/>
-<text x="400" y="897" text-anchor="middle" fill="#7C2D12" font-size="8" font-weight="400">Attractions & Tickets</text>
-<rect x="333" y="906" width="134" height="17" fill="#7C2D12" rx="4" opacity="0.3"/>
-<text x="400" y="917" text-anchor="middle" fill="#7C2D12" font-size="8" font-weight="400">Guide & Naturalist</text>
-<rect x="333" y="926" width="134" height="17" fill="#7C2D12" rx="4" opacity="0.3"/>
-<text x="400" y="937" text-anchor="middle" fill="#7C2D12" font-size="8" font-weight="400">Adventure & Sports</text>
-<rect x="333" y="946" width="134" height="17" fill="#7C2D12" rx="4" opacity="0.3"/>
-<text x="400" y="957" text-anchor="middle" fill="#7C2D12" font-size="8" font-weight="400">Events & Entertainment</text>
-<rect x="480" y="832" width="144" height="136" fill="#EDE9FE" rx="8" stroke="#6B21A8" stroke-width="1"/>
-<rect x="480" y="832" width="144" height="24" fill="#6B21A8" rx="8"/>
-<rect x="480" y="848" width="144" height="8" fill="#6B21A8"/>
-<text x="552" y="847" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Wellness & Dining</text>
-<rect x="485" y="866" width="134" height="17" fill="#6B21A8" rx="4" opacity="0.3"/>
-<text x="552" y="877" text-anchor="middle" fill="#4C1D95" font-size="8" font-weight="400">Restaurant & Dining</text>
-<rect x="485" y="886" width="134" height="17" fill="#6B21A8" rx="4" opacity="0.3"/>
-<text x="552" y="897" text-anchor="middle" fill="#4C1D95" font-size="8" font-weight="400">Wellness & Spa</text>
-<rect x="485" y="906" width="134" height="17" fill="#6B21A8" rx="4" opacity="0.3"/>
-<text x="552" y="917" text-anchor="middle" fill="#4C1D95" font-size="8" font-weight="400">Photography & Content</text>
-<rect x="485" y="926" width="134" height="17" fill="#6B21A8" rx="4" opacity="0.3"/>
-<text x="552" y="937" text-anchor="middle" fill="#4C1D95" font-size="8" font-weight="400">Shopping & Craft</text>
-<rect x="632" y="832" width="144" height="136" fill="#A7F3D0" rx="8" stroke="#064E3B" stroke-width="1"/>
-<rect x="632" y="832" width="144" height="24" fill="#064E3B" rx="8"/>
-<rect x="632" y="848" width="144" height="8" fill="#064E3B"/>
-<text x="704" y="847" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Docs & Insurance</text>
-<rect x="637" y="866" width="134" height="17" fill="#064E3B" rx="4" opacity="0.3"/>
-<text x="704" y="877" text-anchor="middle" fill="#064E3B" font-size="8" font-weight="400">Visa & Documentation</text>
-<rect x="637" y="886" width="134" height="17" fill="#064E3B" rx="4" opacity="0.3"/>
-<text x="704" y="897" text-anchor="middle" fill="#064E3B" font-size="8" font-weight="400">Travel Insurance</text>
-<rect x="637" y="906" width="134" height="17" fill="#064E3B" rx="4" opacity="0.3"/>
-<text x="704" y="917" text-anchor="middle" fill="#064E3B" font-size="8" font-weight="400">Flight Tickets</text>
-<rect x="24" y="982" width="752" height="13" fill="#1B4F8A" rx="3" opacity="0.15"/>
-<text x="400" y="992" text-anchor="middle" fill="#1B4F8A" font-size="9" font-weight="600">SUPPLY WORKFLOW — from contract to live product on platform</text>
-<rect x="24" y="1002" width="142" height="80" fill="#1B4F8A" rx="8"/>
-<text x="95" y="1020" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">1. Contract</text>
-<text x="95" y="1040" text-anchor="middle" fill="#B5D4F4" font-size="9" font-weight="400">PM / DMC negotiates</text>
-<text x="95" y="1056" text-anchor="middle" fill="#B5D4F4" font-size="9" font-weight="400">& signs in-destination</text>
-<text x="171" y="1046" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="400">→</text>
-<rect x="176" y="1002" width="142" height="80" fill="#0A7E8C" rx="8"/>
-<text x="247" y="1020" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">2. Load (24h)</text>
-<text x="247" y="1040" text-anchor="middle" fill="#6EE7B7" font-size="9" font-weight="400">BLR loads all supply</text>
-<text x="247" y="1056" text-anchor="middle" fill="#6EE7B7" font-size="9" font-weight="400">to platform — hard SLA</text>
-<text x="323" y="1046" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="400">→</text>
-<rect x="328" y="1002" width="142" height="80" fill="#C2410C" rx="8"/>
-<text x="399" y="1020" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">3. QC Check</text>
-<text x="399" y="1040" text-anchor="middle" fill="#FED7AA" font-size="9" font-weight="400">Disha team audits</text>
-<text x="399" y="1056" text-anchor="middle" fill="#FED7AA" font-size="9" font-weight="400">rates · content · parity</text>
-<text x="475" y="1046" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="400">→</text>
-<rect x="480" y="1002" width="142" height="80" fill="#0B6E4F" rx="8"/>
-<text x="551" y="1020" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">4. Tag & Map</text>
-<text x="551" y="1040" text-anchor="middle" fill="#A7F3D0" font-size="9" font-weight="400">Tagged by type, category</text>
-<text x="551" y="1056" text-anchor="middle" fill="#A7F3D0" font-size="9" font-weight="400">and destination</text>
-<text x="627" y="1046" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="400">→</text>
-<rect x="632" y="1002" width="142" height="80" fill="#6B2FA0" rx="8"/>
-<text x="703" y="1020" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">5. Live</text>
-<text x="703" y="1040" text-anchor="middle" fill="#D8B4FE" font-size="9" font-weight="400">Product auto-created</text>
-<text x="703" y="1056" text-anchor="middle" fill="#D8B4FE" font-size="9" font-weight="400">from tagged supply</text>
-<rect x="80" y="1092" width="640" height="52" fill="#0D1B2A" rx="10" stroke="#C9A84C" stroke-width="1"/>
-<text x="400" y="1112" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="700">⚡  Product Created Automatically</text>
-<text x="400" y="1130" text-anchor="middle" fill="#94A3B8" font-size="9" font-weight="400">Supply contracted · loaded · QC'd · tagged → platform builds product automatically</text>
-<rect x="24" y="1158" width="752" height="13" fill="#C9A84C" rx="3" opacity="0.2"/>
-<text x="400" y="1168" text-anchor="middle" fill="#C9A84C" font-size="9" font-weight="600">5 KEY OPERATING PRINCIPLES</text>
-<rect x="24" y="1178" width="144" height="80" fill="#0F1F35" rx="8" stroke="#1B4F8A" stroke-width="1.5"/>
-<rect x="24" y="1178" width="144" height="4" fill="#1B4F8A" rx="3"/>
-<rect x="24" y="1179" width="144" height="3" fill="#1B4F8A"/>
-<text x="96" y="1198" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Supply Before</text>
-<text x="96" y="1212" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Product</text>
-<text x="96" y="1230" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">No product without supply.</text>
-<text x="96" y="1243" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">System auto-builds when tagged.</text>
-<rect x="176" y="1178" width="144" height="80" fill="#0F1F35" rx="8" stroke="#0A7E8C" stroke-width="1.5"/>
-<rect x="176" y="1178" width="144" height="4" fill="#0A7E8C" rx="3"/>
-<rect x="176" y="1179" width="144" height="3" fill="#0A7E8C"/>
-<text x="248" y="1198" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Category</text>
-<text x="248" y="1212" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Expertise</text>
-<text x="248" y="1230" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">Managers own a type globally,</text>
-<text x="248" y="1243" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">not a region.</text>
-<rect x="328" y="1178" width="144" height="80" fill="#0F1F35" rx="8" stroke="#C2410C" stroke-width="1.5"/>
-<rect x="328" y="1178" width="144" height="4" fill="#C2410C" rx="3"/>
-<rect x="328" y="1179" width="144" height="3" fill="#C2410C"/>
-<text x="400" y="1198" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Destination</text>
-<text x="400" y="1212" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Execution</text>
-<text x="400" y="1230" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">PM or DMC contracts all</text>
-<text x="400" y="1243" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">types locally on the ground.</text>
-<rect x="480" y="1178" width="144" height="80" fill="#0F1F35" rx="8" stroke="#6B2FA0" stroke-width="1.5"/>
-<rect x="480" y="1178" width="144" height="4" fill="#6B2FA0" rx="3"/>
-<rect x="480" y="1179" width="144" height="3" fill="#6B2FA0"/>
-<text x="552" y="1198" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Contract</text>
-<text x="552" y="1212" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Never = Load</text>
-<text x="552" y="1230" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">Two people. Two steps.</text>
-<text x="552" y="1243" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">The quality gate.</text>
-<rect x="632" y="1178" width="144" height="80" fill="#0F1F35" rx="8" stroke="#0B6E4F" stroke-width="1.5"/>
-<rect x="632" y="1178" width="144" height="4" fill="#0B6E4F" rx="3"/>
-<rect x="632" y="1179" width="144" height="3" fill="#0B6E4F"/>
-<text x="704" y="1198" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Growth Path</text>
-<text x="704" y="1212" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Built In</text>
-<text x="704" y="1230" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">Contractor → Team → Office</text>
-<text x="704" y="1243" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">→ DMC Acquisition.</text>
-<rect x="0" y="1270" width="800" height="3" fill="#C9A84C" opacity="0.6"/>
-<rect x="0" y="1273" width="800" height="26" fill="#0D1B2A"/>
-<text x="400" y="1288" text-anchor="middle" fill="#475569" font-size="8" font-weight="400">TripFactory ORN · Supply Division · Internal & Confidential · May 2026 · Head of Supply: Sachin Keni · Admin & QC: Disha</text>
-<rect class="izone" data-id="head-supply" data-icon="👤" data-layer="LEADERSHIP · LAYER 1" data-title="Head of Supply — Sachin Keni" data-body="Owns all supply globally across all 5 category groups and 50+ destinations||Sets supply strategy, commercial targets and DMC partnership model||Approves all major supply contracts and DMC agreements before sign-off||Manages all 5 Supply Managers and holds them to daily contracting targets||Monthly P&L review with Ajay Kawa — supply cost vs booking revenue||Reports to: CPSO / Ajay Kawa" x="240" y="104" width="320" height="68" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="cat-acc" data-icon="🏨" data-layer="SUPPLY MANAGER · LAYER 2" data-title="Supply Manager — Accommodation" data-body="Owns all hotel, resort, cruise and yacht contracting globally||Sets accommodation strategy — rate targets, quality tiers, minimum standards||Manages destination PMs on hotel supply and rate benchmarking||Supply types: Hotel & Accommodation · Cruise & Yacht||Priority 1 hire — highest volume category" x="24" y="216" width="144" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="cat-trs" data-icon="🚌" data-layer="SUPPLY MANAGER · LAYER 2" data-title="Supply Manager — Transport" data-body="Owns all transfers, drivers, airport reps and service points globally||Manages Transport Operations Team in BLR — daily fulfilment accountability||Transfer confirmation SLA: all confirmed within 2 hours of booking||Supply types: Transport & Transfers · Airport Rep · Service Points||Priority 1 hire — operational impact from day one" x="176" y="216" width="144" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="cat-exp" data-icon="🎭" data-layer="SUPPLY MANAGER · LAYER 2" data-title="Supply Manager — Experiences" data-body="Owns tours, attractions, tickets, guides, adventure and events globally||Builds experience library — top 20 experiences per priority destination||Manages adventure operators for safety standards compliance||Supply types: Sightseeing Tours · Attractions · Guides · Adventure · Events||Priority 1 hire — 5 supply types, most diverse category" x="328" y="216" width="144" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="cat-wel" data-icon="🍽️" data-layer="SUPPLY MANAGER · LAYER 2" data-title="Supply Manager — Wellness, Dining & Lifestyle" data-body="Owns restaurants, spas, photography, shopping and craft globally||Growing priority for luxury and honeymoon market segments||Builds lifestyle add-on supply — curated dining and wellness packages||Supply types: Restaurant & Dining · Wellness & Spa · Photography · Shopping||Priority 2 hire" x="480" y="216" width="144" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="cat-doc" data-icon="📋" data-layer="SUPPLY MANAGER · LAYER 2" data-title="Supply Manager — Documentation & Insurance" data-body="Owns visa, documentation, insurance and flight tickets globally||Manages Visa & Documentation Operations Team — compliance critical||Confirms insurance provider agreement and commission structure||Supply types: Visa & Documentation · Travel Insurance · Flight Tickets||Priority 1 hire — regulatory risk escalated immediately to legal" x="632" y="216" width="144" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="admin-qc" data-icon="✅" data-layer="ADMIN & QC · LAYER 3" data-title="Head of Supply Admin & Quality — Disha" data-body="Manages all supply loading, QC auditing and rate parity monitoring in BLR||Hard SLAs: Loading 24hrs · Mapping 24hrs · Content 48hrs — not targets||Team: Loading x10 · QC & Audit x6 · Content x4 · Data Analyst x1||Golden rule: the person who contracts supply NEVER loads it||Chairs 9am daily BLR standup and owns the error log||Flags any API rate undercutting direct supply within 2 hours" x="24" y="350" width="370" height="100" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="ops-teams" data-icon="⚙️" data-layer="OPERATIONS · LAYER 3" data-title="Operations Teams — BLR Bangalore" data-body="VISA & DOCUMENTATION TEAM: End-to-end visa processing for all bookings||Covers UAE, Thailand, UK, Schengen, Japan, Singapore, Australia, USA||Document collection, embassy submission, tracking, delivery and insurance issuance||TRANSPORT OPERATIONS TEAM: All transfer confirmations and daily transport fulfilment||Coordinates with destination DMCs on vehicle availability — 2hr confirmation SLA||Manages all airport representative bookings and driver briefings" x="406" y="350" width="370" height="100" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="dest-me" data-icon="🌍" data-layer="IN-DESTINATION · LAYER 4" data-title="Middle East & Islands — 13 Destinations" data-body="Dubai: Adventure Heritage · Rayna · GTDS · Barkat Al Sama||Oman: Tawfeeq Holidays · Easy Travels||Egypt: Excel Travel · Travetrolly | Morocco: Bey Tours||Jordan: Cozmo Travel | Qatar: Tawfeeq | Bahrain: Best of Bahrain | Saudi: Alzajil Tours||Maldives: AEW · Lets Go · My Value Travel||Seychelles/Mauritius: AEW · Mason Travel | Zanzibar: TBC" x="32" y="532" width="178" height="52" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="dest-sea" data-icon="🌏" data-layer="IN-DESTINATION · LAYER 4" data-title="SE Asia & Pacific — 12 Destinations" data-body="Singapore: Travel Bulz · Luxury Singapore Asia||Thailand: JEK · Enchantasia | Vietnam: JEK · AEW||Bali/Indonesia: Sachin Kurte · U&I | Malaysia: Jeeva · AEW||Hong Kong/Macau: AEW · URTravel | Philippines: Nexus||Cambodia/Laos/Myanmar: ICS | Japan: KIC · Japan E Tours||China: Nimbus Travels | Sri Lanka: Nkar Travels · Apple Holidays" x="218" y="532" width="178" height="52" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="dest-india" data-icon="🇮🇳" data-layer="IN-DESTINATION · LAYER 4" data-title="India — 7 Destinations" data-body="Kerala & Andaman: Leisure Tour India · Andaman Bliss||Goa: Sofine Tours & Events||J&K / Ladakh / Himachal: Columbia · Samsara · Chaudhary||Rajasthan / Gujarat: Ayodhyataxi · Gujarat Trails||Maharashtra / Karnataka / TN: Shirdi Sai Yatra · Navik Global||NE India / Sikkim / WB: Own operations — Siliguri HQ||UP / MP / Uttarakhand / Odisha: Ram Raj · MP Holidays · Balwant" x="404" y="532" width="178" height="52" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="dest-europe" data-icon="🇪🇺" data-layer="IN-DESTINATION · LAYER 4" data-title="Europe — 10 Destinations" data-body="UK · France · Italy · Spain · Germany/Austria/Switzerland||Greece · Portugal · Nordics/Iceland · Eastern Europe · Turkey||All destinations currently Not Yet Active — DMC outreach required||Priority order: UK then France then Italy then Spain then Germany||Supply Manager — Europe hire is the critical blocker for this region" x="590" y="532" width="178" height="52" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="dest-ams" data-icon="🌎" data-layer="IN-DESTINATION · LAYER 4" data-title="Americas & Africa — 6 Destinations" data-body="USA/Canada: Elife Limo + hotel and theme park partners — Active||Mexico/Caribbean: TBC | Latin America: TBC | South Africa: TBC||Kenya/Tanzania: TBC | West/East Africa: TBC||Priority DMC outreach needed: South Africa, Kenya, Mexico, Caribbean||USA/Canada is the only active destination in this region currently" x="32" y="592" width="364" height="44" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="dest-ca" data-icon="🗺️" data-layer="IN-DESTINATION · LAYER 4" data-title="Central Asia & Oceania — 8 Destinations" data-body="Uzbekistan/Silk Road: ONS · Rocket DMC — Active||Kazakhstan: Skyway LTD | Russia: Fun & Sun Tourism · ONS — Active||Caucasus (Az/Am/Ge): ONS · Liberty Incentive · Georgia DMC — Active||Australia/NZ/Fiji/Bora Bora: Own operations — direct contracting, no DMC||All 8 destinations active — one of the strongest performing regions" x="404" y="592" width="364" height="44" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="growth-1" data-icon="🌱" data-layer="GROWTH PATH" data-title="Stage 1 — Individual PM / DMC Partner" data-body="A single PM or DMC partner contracts all supply in the destination||Could be an individual on retainer or an existing DMC organisation||Reports to BLR Supply Managers by category — not a regional director||Low cost, fast to activate — every destination starts at this stage||Trigger: From day one when the destination is commercially activated" x="32" y="734" width="176" height="56" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="growth-2" data-icon="🌿" data-layer="GROWTH PATH" data-title="Stage 2 — Small Team (2-5 People)" data-body="As volume grows, the PM is supported by 2-5 additional staff||Staff cover specific supply types — one person per category group||The DMC may be asked to expand their own team to match demand||BLR provides additional loading and QC resource to match pipeline||Trigger: approximately 500 bookings per month sustained for 2+ months" x="218" y="734" width="176" height="56" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="growth-3" data-icon="🏢" data-layer="GROWTH PATH" data-title="Stage 3 — In-Destination Office" data-body="TripFactory ORN establishes a small local office in the destination||5-10 people covering contracting, operations and customer experience||Full commercial independence in the destination market||Office reports directly to Sachin Keni (Head of Supply)||Trigger: approximately 2000 bookings per month sustained for 3+ months" x="404" y="734" width="176" height="56" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="growth-4" data-icon="🏆" data-layer="GROWTH PATH" data-title="Stage 4 — DMC Acquisition" data-body="TripFactory ORN acquires the DMC — full supply chain control||Eliminates the commercial middleman and all margin leakage||Creates proprietary competitive advantage in the destination||Acquired DMC staff become ORN employees in-destination||Trigger: Strategic opportunity + volume justification + board approval" x="590" y="734" width="176" height="56" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="stype-acc" data-icon="🏨" data-layer="17 SUPPLY COMPONENTS" data-title="Supply Types — Accommodation" data-body="HOTEL & ACCOMMODATION: Hotels, resorts, guesthouses, homestays, serviced apartments||Highest volume supply type — drives the majority of all booking revenue||Rate benchmarked against Booking.com, Expedia and competitor B2B platforms monthly||CRUISE & YACHT: Cruise ships, river cruises, private yachts, catamaran charters||Contract model: direct net rate with mandatory rate parity clause||Manager: Supply Manager — Accommodation (Priority 1 hire)" x="24" y="832" width="144" height="136" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="stype-trs" data-icon="🚌" data-layer="17 SUPPLY COMPONENTS" data-title="Supply Types — Transport" data-body="TRANSPORT & TRANSFERS: Private transfers, shared shuttles, coach hire, private cars||AIRPORT REPRESENTATIVE: Meet-and-greet, placard, luggage assist, escort to vehicle||SERVICE POINTS: Local info desks, hotel concierge agreements, tour op service desks||All transfers confirmed within 2 hours of booking — hard operational SLA||Daily fulfilment managed by Transport Operations Team in BLR||Manager: Supply Manager — Transport (Priority 1 hire)" x="176" y="832" width="144" height="136" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="stype-exp" data-icon="🎭" data-layer="17 SUPPLY COMPONENTS" data-title="Supply Types — Experiences" data-body="SIGHTSEEING TOURS: Half-day, full-day and multi-day guided tours (group and private)||ATTRACTIONS & TICKETS: Theme parks, museums, heritage sites, zoos — all ticketed entry||GUIDE & NATURALIST: Licensed local guides, wildlife naturalists, cultural specialists||ADVENTURE & SPORTS: Trekking, diving, surfing, paragliding, zip-lining, safaris||EVENTS & ENTERTAINMENT: Shows, festivals, sporting events, evening entertainment||Manager: Supply Manager — Experiences (Priority 1 hire)" x="328" y="832" width="144" height="136" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="stype-wel" data-icon="🍽️" data-layer="17 SUPPLY COMPONENTS" data-title="Supply Types — Wellness & Dining" data-body="RESTAURANT & DINING: Partnered restaurants, dinner shows, cooking classes, food tours||WELLNESS & SPA: Day spas, retreats, yoga, ayurvedic centres, meditation programmes||PHOTOGRAPHY & CONTENT: Professional photography, drone content, videography packages||SHOPPING & CRAFT: Shopping experiences, craft workshops, artisan studio tours||Particularly important for luxury, honeymoon and premium market segments||Manager: Supply Manager — Wellness, Dining & Lifestyle (Priority 2 hire)" x="480" y="832" width="144" height="136" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="stype-doc" data-icon="📋" data-layer="17 SUPPLY COMPONENTS" data-title="Supply Types — Documentation & Insurance" data-body="VISA & DOCUMENTATION: Visa processing across all key markets||Covers UAE, Thailand, UK, Schengen, Japan, Singapore, Australia, USA and more||Compliance critical — regulatory risk escalated to legal immediately||TRAVEL INSURANCE: Provider partnership — offered on every booking, no exceptions||FLIGHT TICKETS: Airline consolidator agreements and GDS access for packages||Manager: Supply Manager — Documentation and Insurance | Ops: Visa Team BLR" x="632" y="832" width="144" height="136" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="wf-1" data-icon="✍️" data-layer="SUPPLY WORKFLOW" data-title="Step 1 — Contract (In-Destination)" data-body="The PM or DMC negotiates and signs supply agreements locally||Uses the standard ORN rate request template — no informal outreach allowed||Net rate benchmarked against at least 2 competitor sources before signing||Both parties sign the ORN standard contract with mandatory rate parity clause||Signed contract uploaded to the contract tracker immediately after signing" x="24" y="1002" width="142" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="wf-2" data-icon="⬆️" data-layer="SUPPLY WORKFLOW" data-title="Step 2 — Load (BLR, 24hr Hard SLA)" data-body="Disha's loading team loads all supply into platform within 24 hours of receipt||This is a HARD SLA — not a target. Missing it triggers an immediate escalation||The contracting person NEVER loads their own supply — mandatory separation||This two-step separation is the first quality gate in the entire system||All loading tracked on the daily tracker reviewed at 9am BLR standup" x="176" y="1002" width="142" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="wf-3" data-icon="🔍" data-layer="SUPPLY WORKFLOW" data-title="Step 3 — QC Check (Two-Eyes)" data-body="Disha's QC team audits every single loaded supply item before it goes live||Checks: rate accuracy, content completeness, image standards, category tagging||Rate parity check against live API rates — flags any undercut immediately||Any item failing QC returned to loader with a specific error note||Nothing goes live without QC sign-off — zero exceptions, no shortcuts" x="328" y="1002" width="142" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="wf-4" data-icon="🏷️" data-layer="SUPPLY WORKFLOW" data-title="Step 4 — Tag and Map" data-body="Each supply item tagged by type (Hotel, Transfer, Visa, Tour, etc.)||Tagged by category group — G1 Accommodation through G5 Documentation||Tagged by destination — this tagging enables automatic product assembly||Tagged by season, inclusions and applicable market segments||Mapping QA pass rate must be greater than 98% before going live" x="480" y="1002" width="142" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="wf-5" data-icon="⚡" data-layer="SUPPLY WORKFLOW" data-title="Step 5 — Product Live (Auto-Created)" data-body="Once supply is loaded, QC-passed and correctly tagged — product is created automatically||No manual product build required — system assembles packages from tags instantly||Products appear immediately in destination pages for B2B agents to quote and book||Product curation team can then refine and promote auto-created products||More supply contracted means more products live and more revenue, instantly" x="632" y="1002" width="142" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="p1" data-icon="💡" data-layer="KEY PRINCIPLES" data-title="Principle 1 — Supply Before Product" data-body="No product can exist without contracted and loaded supply||System builds products automatically once supply is loaded and correctly tagged||Contracting supply is the primary commercial activity of the entire division||Every hire, target and KPI in the Supply Division flows from this one principle" x="24" y="1178" width="144" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="p2" data-icon="💡" data-layer="KEY PRINCIPLES" data-title="Principle 2 — Category Expertise" data-body="Supply Managers own a supply TYPE globally — not a region||Accommodation Manager applies hotel expertise in Dubai, Bali, London and Cape Town equally||Creates genuine commercial depth — not generalist regional knowledge||New destinations never require new managers — the division scales cleanly" x="176" y="1178" width="144" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="p3" data-icon="💡" data-layer="KEY PRINCIPLES" data-title="Principle 3 — Destination Execution" data-body="In each destination, the PM or DMC contracts ALL supply types locally||They are the commercial relationship on the ground — not a relay point||They report to BLR Supply Managers by category type, not a regional director||They grow as the destination grows — from one person through to acquisition" x="328" y="1178" width="144" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="p4" data-icon="💡" data-layer="KEY PRINCIPLES" data-title="Principle 4 — Contract Never Equals Load" data-body="The person who contracts supply NEVER loads it — this is non-negotiable||Disha's team in BLR loads all supply from all contracted agreements||Two-step separation catches rate errors and compliance gaps before they go live||Every rate error that reaches the platform is a direct financial loss — this prevents it" x="480" y="1178" width="144" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
-<rect class="izone" data-id="p5" data-icon="💡" data-layer="KEY PRINCIPLES" data-title="Principle 5 — Growth Path Built In" data-body="Every destination starts as Individual PM/DMC and grows through defined stages||Stage 1: Individual, Stage 2: Small Team, Stage 3: Office, Stage 4: Acquisition||Each stage triggered by booking volume thresholds — not headcount decisions||Cost structure scales with revenue — we never over-invest ahead of demand" x="632" y="1178" width="144" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+body.pm .hdr,body.pm .tabs,.pm .svg-top,.pm .svg-hint,.pm .svg-legend{display:none}
+body.pm .inf-layout{min-height:100vh}
+body.pm .inf-svg-col{padding:0}
+body.pm .svg-box{border-radius:0;border:none;box-shadow:none}
+body.pm .svg-body{padding:4px}
+@media(max-width:700px){.inf-sidebar.open{width:100%;position:fixed;bottom:0;left:0;right:0;top:auto;height:60vh;z-index:300;border-radius:16px 16px 0 0}.inf-layout{flex-direction:column}.card-grid,.card-grid.two{grid-template-columns:1fr}.hdr-pills{display:none}.wrap{padding:14px 12px 50px}}
+text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
+<rect x="0" y="0" width="860" height="80" fill="#0D1B2A"/>
+<rect x="0" y="76" width="860" height="4" fill="#C9A84C"/>
+<text x="430" y="28" text-anchor="middle" fill="#FFFFFF" font-size="20" font-weight="700">TripFactory ORN — Supply Division</text>
+<text x="430" y="56" text-anchor="middle" fill="#94A3B8" font-size="13" font-weight="400">Structure · Workflow · Operating Model · May 2026</text>
+<rect x="28" y="92" width="804" height="16" fill="#1B4F8A" rx="4" opacity="0.12"/>
+<text x="430" y="103" text-anchor="middle" fill="#1B4F8A" font-size="10" font-weight="700">LAYER 1 — BLR LEADERSHIP</text>
+<rect x="250" y="116" width="360" height="80" fill="#F8FAFC" rx="10" stroke="#1B4F8A" stroke-width="2"/>
+<rect x="250" y="116" width="360" height="4" fill="#1B4F8A" rx="3"/>
+<rect x="250" y="117" width="360" height="3" fill="#1B4F8A"/>
+<text x="430" y="142" text-anchor="middle" fill="#0D1B2A" font-size="17" font-weight="800">Head of Supply</text>
+<text x="430" y="164" text-anchor="middle" fill="#1B4F8A" font-size="12" font-weight="500">Sachin Keni  ·  BLR Bangalore</text>
+<text x="430" y="182" text-anchor="middle" fill="#64748B" font-size="10" font-weight="400">Reports to: CPSO / Ajay Kawa</text>
+<line x1="430" y1="206" x2="430" y2="220" stroke="#E2E8F0" stroke-width="1"/>
+<line x1="48" y1="220" x2="812" y2="220" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="28" y="220" width="804" height="16" fill="#1B4F8A" rx="4" opacity="0.12"/>
+<text x="430" y="231" text-anchor="middle" fill="#1B4F8A" font-size="10" font-weight="700">LAYER 2 — SUPPLY MANAGERS BY CATEGORY · BLR BANGALORE</text>
+<rect x="28" y="244" width="154" height="100" fill="#EFF6FF" rx="10" stroke="#BFDBFE" stroke-width="1.5"/>
+<rect x="28" y="244" width="154" height="28" fill="#1D4ED8" rx="10"/>
+<rect x="28" y="264" width="154" height="8" fill="#1D4ED8"/>
+<text x="105" y="260" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">Accommodation</text>
+<text x="105" y="289" text-anchor="middle" fill="#1E3A8A" font-size="10" font-weight="400">Hotels & Resorts</text>
+<text x="105" y="306" text-anchor="middle" fill="#1E3A8A" font-size="10" font-weight="400">Cruises & Yachts</text>
+<text x="105" y="326" text-anchor="middle" fill="#1D4ED8" font-size="9" font-weight="500">← Allocate name</text>
+<line x1="105" y1="230" x2="105" y2="244" stroke="#93C5FD" stroke-width="1"/>
+<rect x="190" y="244" width="154" height="100" fill="#ECFDF5" rx="10" stroke="#A7F3D0" stroke-width="1.5"/>
+<rect x="190" y="244" width="154" height="28" fill="#047857" rx="10"/>
+<rect x="190" y="264" width="154" height="8" fill="#047857"/>
+<text x="267" y="260" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">Transport</text>
+<text x="267" y="289" text-anchor="middle" fill="#064E3B" font-size="10" font-weight="400">Transfers & Drivers</text>
+<text x="267" y="306" text-anchor="middle" fill="#064E3B" font-size="10" font-weight="400">Airport Reps · Service Pts</text>
+<text x="267" y="326" text-anchor="middle" fill="#047857" font-size="9" font-weight="500">← Allocate name</text>
+<line x1="267" y1="230" x2="267" y2="244" stroke="#6EE7B7" stroke-width="1"/>
+<rect x="352" y="244" width="154" height="100" fill="#FFFBEB" rx="10" stroke="#FDE68A" stroke-width="1.5"/>
+<rect x="352" y="244" width="154" height="28" fill="#B45309" rx="10"/>
+<rect x="352" y="264" width="154" height="8" fill="#B45309"/>
+<text x="429" y="260" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">Experiences</text>
+<text x="429" y="289" text-anchor="middle" fill="#78350F" font-size="10" font-weight="400">Tours · Attractions</text>
+<text x="429" y="306" text-anchor="middle" fill="#78350F" font-size="10" font-weight="400">Guides · Adventure · Events</text>
+<text x="429" y="326" text-anchor="middle" fill="#B45309" font-size="9" font-weight="500">← Allocate name</text>
+<line x1="429" y1="230" x2="429" y2="244" stroke="#FCD34D" stroke-width="1"/>
+<rect x="514" y="244" width="154" height="100" fill="#F5F3FF" rx="10" stroke="#DDD6FE" stroke-width="1.5"/>
+<rect x="514" y="244" width="154" height="28" fill="#7C3AED" rx="10"/>
+<rect x="514" y="264" width="154" height="8" fill="#7C3AED"/>
+<text x="591" y="260" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">Wellness & Dining</text>
+<text x="591" y="289" text-anchor="middle" fill="#4C1D95" font-size="10" font-weight="400">Restaurants · Spas</text>
+<text x="591" y="306" text-anchor="middle" fill="#4C1D95" font-size="10" font-weight="400">Photography · Shopping</text>
+<text x="591" y="326" text-anchor="middle" fill="#7C3AED" font-size="9" font-weight="500">← Allocate name</text>
+<line x1="591" y1="230" x2="591" y2="244" stroke="#C4B5FD" stroke-width="1"/>
+<rect x="676" y="244" width="154" height="100" fill="#F0FDF4" rx="10" stroke="#A7F3D0" stroke-width="1.5"/>
+<rect x="676" y="244" width="154" height="28" fill="#065F46" rx="10"/>
+<rect x="676" y="264" width="154" height="8" fill="#065F46"/>
+<text x="753" y="260" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">Docs & Insurance</text>
+<text x="753" y="289" text-anchor="middle" fill="#064E3B" font-size="10" font-weight="400">Visa & Documentation</text>
+<text x="753" y="306" text-anchor="middle" fill="#064E3B" font-size="10" font-weight="400">Insurance · Flights</text>
+<text x="753" y="326" text-anchor="middle" fill="#065F46" font-size="9" font-weight="500">← Allocate name</text>
+<line x1="753" y1="230" x2="753" y2="244" stroke="#6EE7B7" stroke-width="1"/>
+<line x1="48" y1="356" x2="812" y2="356" stroke="#E2E8F0" stroke-width="0.5"/>
+<line x1="105" y1="356" x2="105" y2="370" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="4 3"/>
+<line x1="267" y1="356" x2="267" y2="370" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="4 3"/>
+<line x1="429" y1="356" x2="429" y2="370" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="4 3"/>
+<line x1="591" y1="356" x2="591" y2="370" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="4 3"/>
+<line x1="753" y1="356" x2="753" y2="370" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="4 3"/>
+<rect x="28" y="370" width="804" height="16" fill="#0F766E" rx="4" opacity="0.12"/>
+<text x="430" y="381" text-anchor="middle" fill="#0F766E" font-size="10" font-weight="700">LAYER 3 — SUPPLY ADMINISTRATION, QUALITY CONTROL & OPERATIONS · BLR</text>
+<rect x="28" y="394" width="396" height="112" fill="#F0FDFA" rx="10" stroke="#5EEAD4" stroke-width="1.5"/>
+<rect x="28" y="394" width="396" height="4" fill="#0F766E" rx="3"/>
+<rect x="28" y="395" width="396" height="3" fill="#0F766E"/>
+<text x="226" y="416" text-anchor="middle" fill="#0F172A" font-size="13" font-weight="700">Supply Admin & Quality Control</text>
+<text x="226" y="436" text-anchor="middle" fill="#0F766E" font-size="11" font-weight="500">Head: Disha  ·  BLR Bangalore</text>
+<text x="226" y="454" text-anchor="middle" fill="#64748B" font-size="10" font-weight="400">Loading ×10  ·  QC & Audit ×6  ·  Content ×4</text>
+<rect x="38" y="468" width="66" height="22" fill="#0F766E" rx="5"/>
+<text x="71" y="481" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="600">Load 24h</text>
+<rect x="110" y="468" width="62" height="22" fill="#0F766E" rx="5"/>
+<text x="141" y="481" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="600">Map 24h</text>
+<rect x="178" y="468" width="78" height="22" fill="#0F766E" rx="5"/>
+<text x="217" y="481" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="600">Content 48h</text>
+<rect x="262" y="468" width="62" height="22" fill="#0F766E" rx="5"/>
+<text x="293" y="481" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="600">0 errors</text>
+<rect x="436" y="394" width="396" height="112" fill="#FFFBEB" rx="10" stroke="#FCD34D" stroke-width="1.5"/>
+<rect x="436" y="394" width="396" height="4" fill="#B45309" rx="3"/>
+<rect x="436" y="395" width="396" height="3" fill="#B45309"/>
+<text x="634" y="416" text-anchor="middle" fill="#0F172A" font-size="13" font-weight="700">Operations Teams</text>
+<text x="634" y="434" text-anchor="middle" fill="#B45309" font-size="11" font-weight="400">BLR Bangalore  ·  daily fulfilment</text>
+<rect x="446" y="450" width="184" height="42" fill="#FEF3C7" rx="7" stroke="#FCD34D" stroke-width="1"/>
+<text x="538" y="466" text-anchor="middle" fill="#78350F" font-size="10" font-weight="600">Visa & Documentation</text>
+<text x="538" y="481" text-anchor="middle" fill="#64748B" font-size="9" font-weight="400">processing · embassy · insurance</text>
+<rect x="638" y="450" width="184" height="42" fill="#FEF3C7" rx="7" stroke="#FCD34D" stroke-width="1"/>
+<text x="730" y="466" text-anchor="middle" fill="#78350F" font-size="10" font-weight="600">Transport Operations</text>
+<text x="730" y="481" text-anchor="middle" fill="#64748B" font-size="9" font-weight="400">transfers · drivers · airport reps</text>
+<line x1="28" y1="518" x2="832" y2="518" stroke="#FCD34D" stroke-width="1"/>
+<text x="430" y="532" text-anchor="middle" fill="#C9A84C" font-size="9" font-weight="500">CONTRACTING RELATIONSHIP — Supply Managers direct in-destination supply</text>
+<rect x="28" y="544" width="804" height="16" fill="#059669" rx="4" opacity="0.12"/>
+<text x="430" y="555" text-anchor="middle" fill="#059669" font-size="10" font-weight="700">LAYER 4 — IN-DESTINATION · PRODUCT MANAGER or DMC PARTNER</text>
+<rect x="28" y="568" width="804" height="196" fill="#F0FDF4" rx="12" stroke="#6EE7B7" stroke-width="1.5"/>
+<text x="430" y="586" text-anchor="middle" fill="#0D1B2A" font-size="12" font-weight="500">50 destinations across 6 regions — one PM or DMC per destination each</text>
+<rect x="36" y="600" width="189" height="60" fill="#0F766E" rx="8"/>
+<text x="130" y="618" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">Middle East & Islands</text>
+<text x="130" y="636" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9" font-weight="400">Dubai · Oman · Egypt · Maldives</text>
+<text x="130" y="651" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9" font-weight="400">Morocco · Jordan · 13 dests</text>
+<rect x="235" y="600" width="189" height="60" fill="#065F46" rx="8"/>
+<text x="329" y="618" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">SE Asia & Pacific</text>
+<text x="329" y="636" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9" font-weight="400">Thailand · Japan · Bali · Vietnam</text>
+<text x="329" y="651" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9" font-weight="400">Singapore · HK · 12 dests</text>
+<rect x="434" y="600" width="189" height="60" fill="#7C2D12" rx="8"/>
+<text x="528" y="618" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">India</text>
+<text x="528" y="636" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9" font-weight="400">Kerala · Goa · Rajasthan · J&K</text>
+<text x="528" y="651" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9" font-weight="400">NE India · Andaman · 7 dests</text>
+<rect x="633" y="600" width="189" height="60" fill="#1D4ED8" rx="8"/>
+<text x="727" y="618" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">Europe</text>
+<text x="727" y="636" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9" font-weight="400">UK · France · Italy · Spain</text>
+<text x="727" y="651" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9" font-weight="400">Greece · Germany · 10 dests</text>
+<rect x="36" y="670" width="389" height="52" fill="#7C3AED" rx="8"/>
+<text x="230" y="686" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">Americas & Africa</text>
+<text x="230" y="702" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9" font-weight="400">USA · Canada · LatAm · Caribbean</text>
+<text x="230" y="717" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9" font-weight="400">South Africa · Kenya · 6 dests</text>
+<rect x="435" y="670" width="389" height="52" fill="#9D174D" rx="8"/>
+<text x="629" y="686" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">Central Asia & Oceania</text>
+<text x="629" y="702" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9" font-weight="400">Uzbekistan · Russia · Georgia · Kazakhstan</text>
+<text x="629" y="717" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9" font-weight="400">Australia · NZ · Fiji · 8 dests</text>
+<rect x="28" y="778" width="804" height="16" fill="#7C3AED" rx="4" opacity="0.12"/>
+<text x="430" y="789" text-anchor="middle" fill="#7C3AED" font-size="10" font-weight="700">DESTINATION GROWTH PATH — volume-triggered, built in from day one</text>
+<rect x="28" y="802" width="193" height="80" fill="#EDE9FE" rx="10" stroke="#7C3AED" stroke-width="1"/>
+<text x="124" y="822" text-anchor="middle" fill="#7C3AED" font-size="9" font-weight="600">Stage 1</text>
+<text x="124" y="842" text-anchor="middle" fill="#4C1D95" font-size="12" font-weight="700">Individual PM / DMC</text>
+<text x="124" y="860" text-anchor="middle" fill="#4C1D95" font-size="9" font-weight="400">From day one</text>
+<text x="226" y="846" text-anchor="middle" fill="#7C3AED" font-size="16" font-weight="400">→</text>
+<rect x="231" y="802" width="193" height="80" fill="#DDD6FE" rx="10" stroke="#7C3AED" stroke-width="1"/>
+<text x="327" y="822" text-anchor="middle" fill="#7C3AED" font-size="9" font-weight="600">Stage 2</text>
+<text x="327" y="842" text-anchor="middle" fill="#3730A3" font-size="12" font-weight="700">Small Team  2–5</text>
+<text x="327" y="860" text-anchor="middle" fill="#3730A3" font-size="9" font-weight="400">~500 bkgs/month</text>
+<text x="429" y="846" text-anchor="middle" fill="#7C3AED" font-size="16" font-weight="400">→</text>
+<rect x="434" y="802" width="193" height="80" fill="#C4B5FD" rx="10" stroke="#7C3AED" stroke-width="1"/>
+<text x="530" y="822" text-anchor="middle" fill="#7C3AED" font-size="9" font-weight="600">Stage 3</text>
+<text x="530" y="842" text-anchor="middle" fill="#1E1B4B" font-size="12" font-weight="700">In-Dest. Office</text>
+<text x="530" y="860" text-anchor="middle" fill="#1E1B4B" font-size="9" font-weight="400">~2,000 bkgs/month</text>
+<text x="632" y="846" text-anchor="middle" fill="#7C3AED" font-size="16" font-weight="400">→</text>
+<rect x="637" y="802" width="193" height="80" fill="#7C3AED" rx="10" stroke="#7C3AED" stroke-width="1"/>
+<text x="733" y="822" text-anchor="middle" fill="#7C3AED" font-size="9" font-weight="600">Stage 4</text>
+<text x="733" y="842" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="700">DMC Acquisition</text>
+<text x="733" y="860" text-anchor="middle" fill="#C4B5FD" font-size="9" font-weight="400">Strategic</text>
+<rect x="28" y="898" width="804" height="16" fill="#B45309" rx="4" opacity="0.15"/>
+<text x="430" y="909" text-anchor="middle" fill="#B45309" font-size="10" font-weight="700">17 SUPPLY COMPONENTS — contracted in-destination · loaded and QC'd in BLR</text>
+<rect x="28" y="922" width="154" height="156" fill="#EFF6FF" rx="10" stroke="#BFDBFE" stroke-width="1.5"/>
+<rect x="28" y="922" width="154" height="28" fill="#1D4ED8" rx="10"/>
+<rect x="28" y="942" width="154" height="8" fill="#1D4ED8"/>
+<text x="105" y="938" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Accommodation</text>
+<rect x="33" y="960" width="144" height="19" fill="#1D4ED8" rx="4" opacity="0.18"/>
+<text x="105" y="971" text-anchor="middle" fill="#1E3A8A" font-size="9" font-weight="400">Hotel & Accommodation</text>
+<rect x="33" y="982" width="144" height="19" fill="#1D4ED8" rx="4" opacity="0.18"/>
+<text x="105" y="993" text-anchor="middle" fill="#1E3A8A" font-size="9" font-weight="400">Cruise & Yacht</text>
+<rect x="190" y="922" width="154" height="156" fill="#ECFDF5" rx="10" stroke="#A7F3D0" stroke-width="1.5"/>
+<rect x="190" y="922" width="154" height="28" fill="#047857" rx="10"/>
+<rect x="190" y="942" width="154" height="8" fill="#047857"/>
+<text x="267" y="938" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Transport</text>
+<rect x="195" y="960" width="144" height="19" fill="#047857" rx="4" opacity="0.18"/>
+<text x="267" y="971" text-anchor="middle" fill="#064E3B" font-size="9" font-weight="400">Transport & Transfers</text>
+<rect x="195" y="982" width="144" height="19" fill="#047857" rx="4" opacity="0.18"/>
+<text x="267" y="993" text-anchor="middle" fill="#064E3B" font-size="9" font-weight="400">Airport Representative</text>
+<rect x="195" y="1004" width="144" height="19" fill="#047857" rx="4" opacity="0.18"/>
+<text x="267" y="1015" text-anchor="middle" fill="#064E3B" font-size="9" font-weight="400">Service Points</text>
+<rect x="352" y="922" width="154" height="156" fill="#FFFBEB" rx="10" stroke="#FDE68A" stroke-width="1.5"/>
+<rect x="352" y="922" width="154" height="28" fill="#B45309" rx="10"/>
+<rect x="352" y="942" width="154" height="8" fill="#B45309"/>
+<text x="429" y="938" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Experiences</text>
+<rect x="357" y="960" width="144" height="19" fill="#B45309" rx="4" opacity="0.18"/>
+<text x="429" y="971" text-anchor="middle" fill="#78350F" font-size="9" font-weight="400">Sightseeing Tours</text>
+<rect x="357" y="982" width="144" height="19" fill="#B45309" rx="4" opacity="0.18"/>
+<text x="429" y="993" text-anchor="middle" fill="#78350F" font-size="9" font-weight="400">Attractions & Tickets</text>
+<rect x="357" y="1004" width="144" height="19" fill="#B45309" rx="4" opacity="0.18"/>
+<text x="429" y="1015" text-anchor="middle" fill="#78350F" font-size="9" font-weight="400">Guide & Naturalist</text>
+<rect x="357" y="1026" width="144" height="19" fill="#B45309" rx="4" opacity="0.18"/>
+<text x="429" y="1037" text-anchor="middle" fill="#78350F" font-size="9" font-weight="400">Adventure & Sports</text>
+<rect x="357" y="1048" width="144" height="19" fill="#B45309" rx="4" opacity="0.18"/>
+<text x="429" y="1059" text-anchor="middle" fill="#78350F" font-size="9" font-weight="400">Events & Entertainment</text>
+<rect x="514" y="922" width="154" height="156" fill="#F5F3FF" rx="10" stroke="#DDD6FE" stroke-width="1.5"/>
+<rect x="514" y="922" width="154" height="28" fill="#7C3AED" rx="10"/>
+<rect x="514" y="942" width="154" height="8" fill="#7C3AED"/>
+<text x="591" y="938" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Wellness & Dining</text>
+<rect x="519" y="960" width="144" height="19" fill="#7C3AED" rx="4" opacity="0.18"/>
+<text x="591" y="971" text-anchor="middle" fill="#4C1D95" font-size="9" font-weight="400">Restaurant & Dining</text>
+<rect x="519" y="982" width="144" height="19" fill="#7C3AED" rx="4" opacity="0.18"/>
+<text x="591" y="993" text-anchor="middle" fill="#4C1D95" font-size="9" font-weight="400">Wellness & Spa</text>
+<rect x="519" y="1004" width="144" height="19" fill="#7C3AED" rx="4" opacity="0.18"/>
+<text x="591" y="1015" text-anchor="middle" fill="#4C1D95" font-size="9" font-weight="400">Photography & Content</text>
+<rect x="519" y="1026" width="144" height="19" fill="#7C3AED" rx="4" opacity="0.18"/>
+<text x="591" y="1037" text-anchor="middle" fill="#4C1D95" font-size="9" font-weight="400">Shopping & Craft</text>
+<rect x="676" y="922" width="154" height="156" fill="#F0FDF4" rx="10" stroke="#A7F3D0" stroke-width="1.5"/>
+<rect x="676" y="922" width="154" height="28" fill="#065F46" rx="10"/>
+<rect x="676" y="942" width="154" height="8" fill="#065F46"/>
+<text x="753" y="938" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Docs & Insurance</text>
+<rect x="681" y="960" width="144" height="19" fill="#065F46" rx="4" opacity="0.18"/>
+<text x="753" y="971" text-anchor="middle" fill="#064E3B" font-size="9" font-weight="400">Visa & Documentation</text>
+<rect x="681" y="982" width="144" height="19" fill="#065F46" rx="4" opacity="0.18"/>
+<text x="753" y="993" text-anchor="middle" fill="#064E3B" font-size="9" font-weight="400">Travel Insurance</text>
+<rect x="681" y="1004" width="144" height="19" fill="#065F46" rx="4" opacity="0.18"/>
+<text x="753" y="1015" text-anchor="middle" fill="#064E3B" font-size="9" font-weight="400">Flight Tickets</text>
+<rect x="28" y="1094" width="804" height="16" fill="#1B4F8A" rx="4" opacity="0.12"/>
+<text x="430" y="1105" text-anchor="middle" fill="#1B4F8A" font-size="10" font-weight="700">SUPPLY WORKFLOW — from contract to live product on platform</text>
+<rect x="28" y="1118" width="152" height="90" fill="#DBEAFE" rx="10" stroke="#1B4F8A" stroke-width="1.5"/>
+<rect x="28" y="1118" width="152" height="4" fill="#1B4F8A" rx="3"/>
+<rect x="28" y="1119" width="152" height="3" fill="#1B4F8A"/>
+<text x="104" y="1140" text-anchor="middle" fill="#0D1B2A" font-size="12" font-weight="700">1. Contract</text>
+<text x="104" y="1162" text-anchor="middle" fill="#64748B" font-size="10" font-weight="400">PM/DMC negotiates</text>
+<text x="104" y="1178" text-anchor="middle" fill="#64748B" font-size="10" font-weight="400">& signs in-destination</text>
+<text x="185" y="1167" text-anchor="middle" fill="#64748B" font-size="16" font-weight="400">→</text>
+<rect x="190" y="1118" width="152" height="90" fill="#D1FAE5" rx="10" stroke="#047857" stroke-width="1.5"/>
+<rect x="190" y="1118" width="152" height="4" fill="#047857" rx="3"/>
+<rect x="190" y="1119" width="152" height="3" fill="#047857"/>
+<text x="266" y="1140" text-anchor="middle" fill="#0D1B2A" font-size="12" font-weight="700">2. Load (24h)</text>
+<text x="266" y="1162" text-anchor="middle" fill="#64748B" font-size="10" font-weight="400">BLR loads platform</text>
+<text x="266" y="1178" text-anchor="middle" fill="#64748B" font-size="10" font-weight="400">hard SLA — not a target</text>
+<text x="347" y="1167" text-anchor="middle" fill="#64748B" font-size="16" font-weight="400">→</text>
+<rect x="352" y="1118" width="152" height="90" fill="#FEF3C7" rx="10" stroke="#B45309" stroke-width="1.5"/>
+<rect x="352" y="1118" width="152" height="4" fill="#B45309" rx="3"/>
+<rect x="352" y="1119" width="152" height="3" fill="#B45309"/>
+<text x="428" y="1140" text-anchor="middle" fill="#0D1B2A" font-size="12" font-weight="700">3. QC Check</text>
+<text x="428" y="1162" text-anchor="middle" fill="#64748B" font-size="10" font-weight="400">Disha two-eyes audit</text>
+<text x="428" y="1178" text-anchor="middle" fill="#64748B" font-size="10" font-weight="400">rates · content · parity</text>
+<text x="509" y="1167" text-anchor="middle" fill="#64748B" font-size="16" font-weight="400">→</text>
+<rect x="514" y="1118" width="152" height="90" fill="#ECFDF5" rx="10" stroke="#065F46" stroke-width="1.5"/>
+<rect x="514" y="1118" width="152" height="4" fill="#065F46" rx="3"/>
+<rect x="514" y="1119" width="152" height="3" fill="#065F46"/>
+<text x="590" y="1140" text-anchor="middle" fill="#0D1B2A" font-size="12" font-weight="700">4. Tag & Map</text>
+<text x="590" y="1162" text-anchor="middle" fill="#64748B" font-size="10" font-weight="400">Tagged by type,</text>
+<text x="590" y="1178" text-anchor="middle" fill="#64748B" font-size="10" font-weight="400">category & destination</text>
+<text x="671" y="1167" text-anchor="middle" fill="#64748B" font-size="16" font-weight="400">→</text>
+<rect x="676" y="1118" width="152" height="90" fill="#F5F3FF" rx="10" stroke="#7C3AED" stroke-width="1.5"/>
+<rect x="676" y="1118" width="152" height="4" fill="#7C3AED" rx="3"/>
+<rect x="676" y="1119" width="152" height="3" fill="#7C3AED"/>
+<text x="752" y="1140" text-anchor="middle" fill="#0D1B2A" font-size="12" font-weight="700">5. Live</text>
+<text x="752" y="1162" text-anchor="middle" fill="#64748B" font-size="10" font-weight="400">Product auto-created</text>
+<text x="752" y="1178" text-anchor="middle" fill="#64748B" font-size="10" font-weight="400">from tagged supply</text>
+<rect x="60" y="1220" width="740" height="58" fill="#0D1B2A" rx="12"/>
+<rect x="60" y="1220" width="740" height="4" fill="#C9A84C" rx="3"/>
+<rect x="60" y="1221" width="740" height="3" fill="#C9A84C"/>
+<text x="430" y="1242" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="700">⚡  Product Created Automatically</text>
+<text x="430" y="1262" text-anchor="middle" fill="#64748B" font-size="10" font-weight="400">Supply contracted · loaded · QC'd · tagged → platform builds the product</text>
+<rect x="28" y="1292" width="804" height="16" fill="#B45309" rx="4" opacity="0.15"/>
+<text x="430" y="1303" text-anchor="middle" fill="#B45309" font-size="10" font-weight="700">5 KEY OPERATING PRINCIPLES</text>
+<rect x="28" y="1316" width="154" height="90" fill="#EFF6FF" rx="10" stroke="#BFDBFE" stroke-width="1.5"/>
+<rect x="28" y="1316" width="154" height="4" fill="#1B4F8A" rx="3"/>
+<rect x="28" y="1317" width="154" height="3" fill="#1B4F8A"/>
+<text x="105" y="1334" text-anchor="middle" fill="#0D1B2A" font-size="10" font-weight="700">Supply Before</text>
+<text x="105" y="1348" text-anchor="middle" fill="#0D1B2A" font-size="10" font-weight="700">Product</text>
+<text x="105" y="1368" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">No supply = no product.</text>
+<text x="105" y="1381" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">System auto-builds when</text>
+<text x="105" y="1394" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">supply is tagged.</text>
+<rect x="190" y="1316" width="154" height="90" fill="#ECFDF5" rx="10" stroke="#A7F3D0" stroke-width="1.5"/>
+<rect x="190" y="1316" width="154" height="4" fill="#047857" rx="3"/>
+<rect x="190" y="1317" width="154" height="3" fill="#047857"/>
+<text x="267" y="1334" text-anchor="middle" fill="#0D1B2A" font-size="10" font-weight="700">Category</text>
+<text x="267" y="1348" text-anchor="middle" fill="#0D1B2A" font-size="10" font-weight="700">Expertise</text>
+<text x="267" y="1368" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">Managers own a type globally,</text>
+<text x="267" y="1381" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">not a region. Deep</text>
+<text x="267" y="1394" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">commercial expertise.</text>
+<rect x="352" y="1316" width="154" height="90" fill="#FFFBEB" rx="10" stroke="#FDE68A" stroke-width="1.5"/>
+<rect x="352" y="1316" width="154" height="4" fill="#B45309" rx="3"/>
+<rect x="352" y="1317" width="154" height="3" fill="#B45309"/>
+<text x="429" y="1334" text-anchor="middle" fill="#0D1B2A" font-size="10" font-weight="700">Destination</text>
+<text x="429" y="1348" text-anchor="middle" fill="#0D1B2A" font-size="10" font-weight="700">Execution</text>
+<text x="429" y="1368" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">PM or DMC contracts</text>
+<text x="429" y="1381" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">all types locally on</text>
+<text x="429" y="1394" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">the ground.</text>
+<rect x="514" y="1316" width="154" height="90" fill="#F5F3FF" rx="10" stroke="#DDD6FE" stroke-width="1.5"/>
+<rect x="514" y="1316" width="154" height="4" fill="#7C3AED" rx="3"/>
+<rect x="514" y="1317" width="154" height="3" fill="#7C3AED"/>
+<text x="591" y="1334" text-anchor="middle" fill="#0D1B2A" font-size="10" font-weight="700">Contract</text>
+<text x="591" y="1348" text-anchor="middle" fill="#0D1B2A" font-size="10" font-weight="700">Never = Load</text>
+<text x="591" y="1368" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">Two people. Two steps.</text>
+<text x="591" y="1381" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">Separation is the</text>
+<text x="591" y="1394" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">quality gate.</text>
+<rect x="676" y="1316" width="154" height="90" fill="#F0FDF4" rx="10" stroke="#A7F3D0" stroke-width="1.5"/>
+<rect x="676" y="1316" width="154" height="4" fill="#065F46" rx="3"/>
+<rect x="676" y="1317" width="154" height="3" fill="#065F46"/>
+<text x="753" y="1334" text-anchor="middle" fill="#0D1B2A" font-size="10" font-weight="700">Growth Path</text>
+<text x="753" y="1348" text-anchor="middle" fill="#0D1B2A" font-size="10" font-weight="700">Built In</text>
+<text x="753" y="1368" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">Contractor → Team</text>
+<text x="753" y="1381" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">→ Office → DMC</text>
+<text x="753" y="1394" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">Acquisition.</text>
+<line x1="0" y1="1420" x2="860" y2="1420" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="0" y="1420" width="860" height="28" fill="#F8FAFC"/>
+<text x="430" y="1436" text-anchor="middle" fill="#64748B" font-size="8" font-weight="400">TripFactory ORN · Supply Division · Internal & Confidential · May 2026 · Head of Supply: Sachin Keni · Admin & QC: Disha</text>
+<rect class="izone" data-id="head-supply" data-icon="👤" data-layer="LEADERSHIP · LAYER 1" data-title="Head of Supply — Sachin Keni" data-body="Owns all supply globally across all 5 category groups and 50+ destinations||Sets supply strategy, commercial targets and DMC partnership model||Approves all major supply contracts before sign-off||Manages all 5 Supply Managers and holds them to daily targets||Monthly P&L review with Ajay Kawa||Reports to: CPSO / Ajay Kawa" x="249" y="112" width="362" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="cat-acc" data-icon="🏨" data-layer="SUPPLY MANAGER · LAYER 2" data-title="Supply Manager — Accommodation" data-body="Owns all hotel, resort, cruise and yacht contracting globally||Sets accommodation strategy: rate targets, quality tiers, minimum standards||Manages destination PMs on hotel supply and rate benchmarking||Supply types: Hotel & Accommodation · Cruise & Yacht||Priority 1 hire — highest volume category" x="28" y="234" width="149" height="100" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="cat-trs" data-icon="🚌" data-layer="SUPPLY MANAGER · LAYER 2" data-title="Supply Manager — Transport" data-body="Owns all transfers, drivers, airport reps and service points globally||Manages Transport Operations Team in BLR — daily fulfilment||Transfer confirmation SLA: all confirmed within 2 hours of booking||Supply types: Transport & Transfers · Airport Rep · Service Points||Priority 1 hire — operational impact from day one" x="185" y="234" width="149" height="100" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="cat-exp" data-icon="🎭" data-layer="SUPPLY MANAGER · LAYER 2" data-title="Supply Manager — Experiences" data-body="Owns tours, attractions, tickets, guides, adventure and events globally||Builds experience library: top 20 experiences per priority destination||Manages adventure operators for safety standards compliance||Supply types: Sightseeing Tours · Attractions · Guides · Adventure · Events||Priority 1 hire — 5 supply types, most diverse category" x="342" y="234" width="149" height="100" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="cat-wel" data-icon="🍽️" data-layer="SUPPLY MANAGER · LAYER 2" data-title="Supply Manager — Wellness, Dining & Lifestyle" data-body="Owns restaurants, spas, photography, shopping and craft globally||Growing priority for luxury and honeymoon market segments||Builds lifestyle add-on supply: curated dining and wellness packages||Supply types: Restaurant & Dining · Wellness & Spa · Photography · Shopping||Priority 2 hire" x="499" y="234" width="149" height="100" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="cat-doc" data-icon="📋" data-layer="SUPPLY MANAGER · LAYER 2" data-title="Supply Manager — Documentation & Insurance" data-body="Owns visa, documentation, insurance and flight tickets globally||Manages Visa & Documentation Operations Team — compliance critical||Confirms insurance provider agreement and commission structure||Supply types: Visa & Documentation · Travel Insurance · Flight Tickets||Priority 1 hire — regulatory risk escalated immediately to legal" x="656" y="234" width="149" height="100" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="admin-qc" data-icon="✅" data-layer="ADMIN & QC · LAYER 3" data-title="Head of Supply Admin & Quality — Disha" data-body="Manages all supply loading, QC auditing and rate parity monitoring in BLR||Hard SLAs: Loading 24hrs · Mapping 24hrs · Content 48hrs — not targets||Team: Loading x10 · QC & Audit x6 · Content x4 · Data Analyst x1||Golden rule: the person who contracts supply NEVER loads it||Chairs 9am daily BLR standup and owns the error log||Flags any API rate undercutting direct supply within 2 hours" x="28" y="386" width="414" height="112" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="ops-teams" data-icon="⚙️" data-layer="OPERATIONS · LAYER 3" data-title="Operations Teams — BLR Bangalore" data-body="VISA & DOCUMENTATION TEAM: End-to-end visa processing for all bookings||Covers UAE, Thailand, UK, Schengen, Japan, Singapore, Australia, USA||Document collection, embassy submission, tracking, delivery and insurance issuance||TRANSPORT OPERATIONS TEAM: All transfer confirmations and daily fulfilment||Coordinates with destination DMCs — 2hr confirmation SLA||Manages all airport representative bookings and driver briefings" x="454" y="386" width="378" height="112" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="dest-me" data-icon="🌍" data-layer="IN-DESTINATION · LAYER 4" data-title="Middle East & Islands — 13 Destinations" data-body="Dubai: Adventure Heritage · Rayna · GTDS · Barkat Al Sama||Oman: Tawfeeq Holidays · Easy Travels||Egypt: Excel Travel · Travetrolly | Morocco: Bey Tours||Jordan: Cozmo Travel | Qatar: Tawfeeq | Bahrain: Best of Bahrain | Saudi: Alzajil Tours||Maldives: AEW · Lets Go · My Value Travel||Seychelles/Mauritius: AEW · Mason Travel | Zanzibar: TBC" x="36" y="578" width="197" height="60" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="dest-sea" data-icon="🌏" data-layer="IN-DESTINATION · LAYER 4" data-title="SE Asia & Pacific — 12 Destinations" data-body="Singapore: Travel Bulz · Luxury Singapore Asia||Thailand: JEK · Enchantasia | Vietnam: JEK · AEW||Bali/Indonesia: Sachin Kurte · U&I | Malaysia: Jeeva · AEW||Hong Kong/Macau: AEW · URTravel | Philippines: Nexus||Cambodia/Laos/Myanmar: ICS | Japan: KIC · Japan E Tours||China: Nimbus Travels | Sri Lanka: Nkar Travels · Apple Holidays" x="243" y="578" width="197" height="60" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="dest-india" data-icon="🇮🇳" data-layer="IN-DESTINATION · LAYER 4" data-title="India — 7 Destinations" data-body="Kerala & Andaman: Leisure Tour India · Andaman Bliss||Goa: Sofine Tours & Events||J&K / Ladakh / Himachal: Columbia · Samsara · Chaudhary||Rajasthan / Gujarat: Ayodhyataxi · Gujarat Trails||Maharashtra / Karnataka / TN: Shirdi Sai Yatra · Navik Global||NE India / Sikkim / WB: Own operations — Siliguri HQ" x="450" y="578" width="197" height="60" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="dest-europe" data-icon="🇪🇺" data-layer="IN-DESTINATION · LAYER 4" data-title="Europe — 10 Destinations" data-body="UK · France · Italy · Spain · Germany/Austria/Switzerland||Greece · Portugal · Nordics/Iceland · Eastern Europe · Turkey||All destinations currently Not Yet Active — DMC outreach required||Priority order: UK then France then Italy then Spain then Germany||Hire Supply Manager — Europe to unblock this region" x="657" y="578" width="175" height="60" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="dest-ams" data-icon="🌎" data-layer="IN-DESTINATION · LAYER 4" data-title="Americas & Africa — 6 Destinations" data-body="USA/Canada: Elife Limo + hotel and theme park partners — Active||Mexico/Caribbean: TBC | Latin America: TBC | South Africa: TBC||Kenya/Tanzania: TBC | West/East Africa: TBC||Priority DMC outreach: South Africa, Kenya, Mexico, Caribbean||USA/Canada is the only active destination in this region currently" x="36" y="648" width="390" height="52" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="dest-ca" data-icon="🗺️" data-layer="IN-DESTINATION · LAYER 4" data-title="Central Asia & Oceania — 8 Destinations" data-body="Uzbekistan/Silk Road: ONS · Rocket DMC — Active||Kazakhstan: Skyway LTD | Russia: Fun & Sun Tourism · ONS — Active||Caucasus (Az/Am/Ge): ONS · Liberty Incentive · Georgia DMC — Active||Australia/NZ/Fiji/Bora Bora: Own operations — direct contracting, no DMC||All 8 destinations active — one of the strongest performing regions" x="436" y="648" width="396" height="52" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="growth-1" data-icon="🌱" data-layer="GROWTH PATH" data-title="Stage 1 — Individual PM / DMC Partner" data-body="A single PM or DMC partner contracts all supply in the destination||Could be an individual on retainer or an existing DMC organisation||Reports to BLR Supply Managers by category — not a regional director||Low cost, fast to activate — every destination starts here||Trigger: From day one when the destination is commercially activated" x="28" y="764" width="197" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="growth-2" data-icon="🌿" data-layer="GROWTH PATH" data-title="Stage 2 — Small Team (2-5 People)" data-body="As volume grows, the PM is supported by 2-5 additional staff||Staff cover specific supply types — one person per category group||The DMC may be asked to expand their own team to match demand||BLR provides additional loading and QC resource to match pipeline||Trigger: approximately 500 bookings per month for 2+ months" x="235" y="764" width="197" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="growth-3" data-icon="🏢" data-layer="GROWTH PATH" data-title="Stage 3 — In-Destination Office" data-body="TripFactory ORN establishes a small local office in the destination||5-10 people covering contracting, operations and customer experience||Full commercial independence in the destination market||Office reports directly to Sachin Keni (Head of Supply)||Trigger: approximately 2000 bookings per month for 3+ months" x="442" y="764" width="197" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="growth-4" data-icon="🏆" data-layer="GROWTH PATH" data-title="Stage 4 — DMC Acquisition" data-body="TripFactory ORN acquires the DMC — full supply chain control||Eliminates the commercial middleman and all margin leakage||Creates proprietary competitive advantage in the destination||Acquired DMC staff become ORN employees in-destination||Trigger: Strategic opportunity + volume justification + board approval" x="649" y="764" width="183" height="80" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="stype-acc" data-icon="🏨" data-layer="17 SUPPLY COMPONENTS" data-title="Supply Types — Accommodation" data-body="HOTEL & ACCOMMODATION: Hotels, resorts, guesthouses, homestays, serviced apartments||Highest volume supply type — drives the majority of all booking revenue||Rate benchmarked against Booking.com, Expedia and competitor B2B platforms monthly||CRUISE & YACHT: Cruise ships, river cruises, private yachts, catamaran charters||Contract model: direct net rate with mandatory rate parity clause||Manager: Supply Manager — Accommodation (Priority 1 hire)" x="28" y="878" width="153" height="148" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="stype-trs" data-icon="🚌" data-layer="17 SUPPLY COMPONENTS" data-title="Supply Types — Transport" data-body="TRANSPORT & TRANSFERS: Private transfers, shared shuttles, coach hire, private cars||AIRPORT REPRESENTATIVE: Meet-and-greet, placard, luggage assist, escort to vehicle||SERVICE POINTS: Local info desks, hotel concierge agreements, tour op service desks||All transfers confirmed within 2 hours of booking — hard operational SLA||Daily fulfilment managed by Transport Operations Team in BLR||Manager: Supply Manager — Transport (Priority 1 hire)" x="189" y="878" width="153" height="148" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="stype-exp" data-icon="🎭" data-layer="17 SUPPLY COMPONENTS" data-title="Supply Types — Experiences" data-body="SIGHTSEEING TOURS: Half-day, full-day and multi-day guided tours (group and private)||ATTRACTIONS & TICKETS: Theme parks, museums, heritage sites, zoos — all ticketed entry||GUIDE & NATURALIST: Licensed local guides, wildlife naturalists, cultural specialists||ADVENTURE & SPORTS: Trekking, diving, surfing, paragliding, zip-lining, safaris||EVENTS & ENTERTAINMENT: Shows, festivals, sporting events, evening entertainment||Manager: Supply Manager — Experiences (Priority 1 hire)" x="350" y="878" width="153" height="148" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="stype-wel" data-icon="🍽️" data-layer="17 SUPPLY COMPONENTS" data-title="Supply Types — Wellness & Dining" data-body="RESTAURANT & DINING: Partnered restaurants, dinner shows, cooking classes, food tours||WELLNESS & SPA: Day spas, retreats, yoga, ayurvedic centres, meditation programmes||PHOTOGRAPHY & CONTENT: Professional photography, drone content, videography packages||SHOPPING & CRAFT: Shopping experiences, craft workshops, artisan studio tours||Particularly important for luxury, honeymoon and premium market segments||Manager: Supply Manager — Wellness, Dining & Lifestyle (Priority 2 hire)" x="511" y="878" width="153" height="148" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="stype-doc" data-icon="📋" data-layer="17 SUPPLY COMPONENTS" data-title="Supply Types — Documentation & Insurance" data-body="VISA & DOCUMENTATION: Visa processing across all key markets||Covers UAE, Thailand, UK, Schengen, Japan, Singapore, Australia, USA and more||Compliance critical — regulatory risk escalated to legal immediately||TRAVEL INSURANCE: Provider partnership — offered on every booking, no exceptions||FLIGHT TICKETS: Airline consolidator agreements and GDS access for packages||Manager: Supply Manager — Documentation and Insurance | Ops: Visa Team BLR" x="672" y="878" width="160" height="148" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="wf-1" data-icon="✍️" data-layer="SUPPLY WORKFLOW" data-title="Step 1 — Contract (In-Destination)" data-body="The PM or DMC negotiates and signs supply agreements locally||Uses the standard ORN rate request template — no informal outreach allowed||Net rate benchmarked against at least 2 competitor sources before signing||Both parties sign the ORN standard contract with mandatory rate parity clause||Signed contract uploaded to the contract tracker immediately" x="28" y="1072" width="153" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="wf-2" data-icon="⬆️" data-layer="SUPPLY WORKFLOW" data-title="Step 2 — Load (BLR, 24hr Hard SLA)" data-body="Disha's loading team loads all supply into platform within 24 hours of receipt||This is a HARD SLA — not a target. Missing it triggers an immediate escalation||The contracting person NEVER loads their own supply — mandatory separation||This two-step separation is the first quality gate in the entire system||All loading tracked on the daily tracker reviewed at 9am BLR standup" x="189" y="1072" width="153" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="wf-3" data-icon="🔍" data-layer="SUPPLY WORKFLOW" data-title="Step 3 — QC Check (Two-Eyes)" data-body="Disha's QC team audits every single loaded supply item before it goes live||Checks: rate accuracy, content completeness, image standards, category tagging||Rate parity check against live API rates — flags any undercut immediately||Any item failing QC returned to loader with a specific error note||Nothing goes live without QC sign-off — zero exceptions, no shortcuts" x="350" y="1072" width="153" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="wf-4" data-icon="🏷️" data-layer="SUPPLY WORKFLOW" data-title="Step 4 — Tag and Map" data-body="Each supply item tagged by type (Hotel, Transfer, Visa, Tour etc.)||Tagged by category group — G1 Accommodation through G5 Documentation||Tagged by destination — this tagging enables automatic product assembly||Tagged by season, inclusions and applicable market segments||Mapping QA pass rate must be greater than 98% before going live" x="511" y="1072" width="153" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="wf-5" data-icon="⚡" data-layer="SUPPLY WORKFLOW" data-title="Step 5 — Product Live (Auto-Created)" data-body="Once supply is loaded, QC-passed and correctly tagged — product is created automatically||No manual product build required — system assembles packages from tags instantly||Products appear immediately in destination pages for B2B agents to quote and book||Product curation team can then refine and promote auto-created products||More supply contracted means more products live and more revenue instantly" x="672" y="1072" width="160" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="p1" data-icon="💡" data-layer="KEY PRINCIPLES" data-title="Principle 1 — Supply Before Product" data-body="No product can exist without contracted and loaded supply||System builds products automatically once supply is loaded and correctly tagged||Contracting supply is the primary commercial activity of the entire division||Every hire, target and KPI in the Supply Division flows from this one principle" x="28" y="1238" width="153" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="p2" data-icon="💡" data-layer="KEY PRINCIPLES" data-title="Principle 2 — Category Expertise" data-body="Supply Managers own a supply TYPE globally — not a region||Accommodation Manager applies hotel expertise in Dubai, Bali, London and Cape Town equally||Creates genuine commercial depth — not generalist regional knowledge||New destinations never require new managers — the division scales cleanly" x="189" y="1238" width="153" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="p3" data-icon="💡" data-layer="KEY PRINCIPLES" data-title="Principle 3 — Destination Execution" data-body="In each destination, the PM or DMC contracts ALL supply types locally||They are the commercial relationship on the ground — not a relay point||They report to BLR Supply Managers by category type, not a regional director||They grow as the destination grows — from one person through to acquisition" x="350" y="1238" width="153" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="p4" data-icon="💡" data-layer="KEY PRINCIPLES" data-title="Principle 4 — Contract Never Equals Load" data-body="The person who contracts supply NEVER loads it — this is non-negotiable||Disha's team in BLR loads all supply from all contracted agreements||Two-step separation catches rate errors and compliance gaps before they go live||Every rate error that reaches the platform is a direct financial loss — this prevents it" x="511" y="1238" width="153" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
+<rect class="izone" data-id="p5" data-icon="💡" data-layer="KEY PRINCIPLES" data-title="Principle 5 — Growth Path Built In" data-body="Every destination starts as Individual PM/DMC and grows through defined stages||Stage 1: Individual, Stage 2: Small Team, Stage 3: Office, Stage 4: Acquisition||Each stage triggered by booking volume thresholds — not headcount decisions||Cost structure scales with revenue — we never over-invest ahead of demand" x="672" y="1238" width="160" height="90" fill="rgba(0,0,0,0.001)" stroke="none" rx="6" pointer-events="all"/>
 </svg>
-      </div>
-      <div class="svg-legend">
-        <div class="leg"><div class="ldot" style="background:#1B4F8A"></div>Accommodation</div>
-        <div class="leg"><div class="ldot" style="background:#065F46"></div>Transport</div>
-        <div class="leg"><div class="ldot" style="background:#7C2D12"></div>Experiences</div>
-        <div class="leg"><div class="ldot" style="background:#6B21A8"></div>Wellness &amp; Dining</div>
-        <div class="leg"><div class="ldot" style="background:#064E3B"></div>Docs &amp; Insurance</div>
-        <div class="leg"><div class="ldot" style="background:#C9A84C"></div>In-Destination</div>
-        <div class="leg"><div class="ldot" style="background:#534AB7"></div>Growth Path</div>
+        </div>
+        <div class="svg-legend">
+          <div class="leg"><div class="ldot" style="background:#1D4ED8"></div>Accommodation</div>
+          <div class="leg"><div class="ldot" style="background:#047857"></div>Transport</div>
+          <div class="leg"><div class="ldot" style="background:#B45309"></div>Experiences</div>
+          <div class="leg"><div class="ldot" style="background:#7C3AED"></div>Wellness &amp; Dining</div>
+          <div class="leg"><div class="ldot" style="background:#065F46"></div>Docs &amp; Insurance</div>
+          <div class="leg"><div class="ldot" style="background:#C9A84C"></div>In-Destination</div>
+          <div class="leg"><div class="ldot" style="background:#7C3AED"></div>Growth Path</div>
+        </div>
       </div>
     </div>
+
+    <!-- SIDEBAR (slides open beside SVG, never overlaps) -->
+    <div class="inf-sidebar" id="inf-sidebar">
+      <div class="sidebar" id="sidebar">
+        <div class="sb-head">
+          <div class="sb-eyebrow" id="sb-layer">SECTION DETAIL</div>
+          <div class="sb-title-row">
+            <div class="sb-emoji" id="sb-icon">📌</div>
+            <div class="sb-title" id="sb-title">Select a section</div>
+            <button class="sb-x" onclick="closePanel()">✕</button>
+          </div>
+        </div>
+        <div class="sb-nav">
+          <button id="sb-prev" onclick="navZone(-1)">← Prev</button>
+          <div class="sb-cnt" id="sb-cnt">— / 33</div>
+          <button id="sb-next" onclick="navZone(1)">Next →</button>
+        </div>
+        <div class="sb-body" id="sb-body">
+          <div class="sb-default">
+            <div>👆</div>
+            Click any highlighted box in the infographic to see its full explanation here.
+          </div>
+        </div>
+        <div class="sb-foot">
+          <span>← → keys · Esc to close</span>
+          <span style="color:var(--gold);font-family:'DM Mono',monospace;font-size:9px">PRESENTATION MODE</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
+<!-- TAB 2: DETAILED STRUCTURE -->
 <div class="panel" id="p2">
 <div class="wrap">
 
@@ -1057,7 +1103,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif;letter-spacing:0
 </div>
 </div>
 
-<!-- PERSON POPUP (for structure tab) -->
+<!-- PERSON POPUP -->
 <div class="pop-overlay" id="overlay" onclick="if(event.target===this)closePop()">
   <div class="popup">
     <div class="pop-hd">
@@ -1075,92 +1121,56 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif;letter-spacing:0
   </div>
 </div>
 
-<!-- SLIDE PANEL — direct child of body, no nesting -->
-<div class="sp-bd" id="sp-bd" onclick="closePanel()"></div>
-<div class="sp" id="sp">
-  <div class="sp-head">
-    <div class="sp-eyebrow" id="sp-layer">SECTION DETAIL</div>
-    <div class="sp-row">
-      <div class="sp-emoji" id="sp-icon">📌</div>
-      <div class="sp-title" id="sp-title">Click any box in the infographic</div>
-      <button class="sp-x" onclick="closePanel()">✕</button>
-    </div>
-  </div>
-  <div class="sp-nav">
-    <button id="sp-prev" onclick="navZone(-1)">← Prev</button>
-    <div class="sp-cnt" id="sp-cnt">— / 33</div>
-    <button id="sp-next" onclick="navZone(1)">Next →</button>
-  </div>
-  <div class="sp-body" id="sp-body">
-    <div style="color:#475569;font-size:12px;text-align:center;padding-top:40px">
-      Click any highlighted box in the infographic to see its full details here.
-    </div>
-  </div>
-  <div class="sp-foot">
-    <span>← → keys to navigate · Esc to close</span>
-    <em>PRESENTATION MODE</em>
-  </div>
-</div>
-
 <button class="pres-btn" id="pres-btn" onclick="togglePresent()">⛶ &nbsp;Present</button>
 <button class="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
 var curIdx = -1;
 
-// ── TAB SWITCHING ────────────────────────────────────────────────────────────
 function switchTab(n) {
-  document.getElementById('p1').classList.toggle('on', n === 1);
-  document.getElementById('p2').classList.toggle('on', n === 2);
-  document.getElementById('tab1').classList.toggle('on', n === 1);
-  document.getElementById('tab2').classList.toggle('on', n === 2);
-  window.scrollTo({top: 0, behavior: 'smooth'});
+  document.getElementById('p1').classList.toggle('on', n===1);
+  document.getElementById('p2').classList.toggle('on', n===2);
+  document.getElementById('tab1').classList.toggle('on', n===1);
+  document.getElementById('tab2').classList.toggle('on', n===2);
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ── SLIDE PANEL ──────────────────────────────────────────────────────────────
 function openPanel(el) {
   var allZ  = Array.from(document.querySelectorAll('.izone'));
   curIdx    = allZ.indexOf(el);
 
-  // Reset all zones
-  allZ.forEach(function(z) {
+  allZ.forEach(function(z){
     z.classList.remove('az');
-    z.setAttribute('stroke', 'none');
-    z.setAttribute('fill', 'rgba(0,0,0,0.001)');
+    z.setAttribute('stroke','none');
+    z.setAttribute('fill','rgba(0,0,0,0.001)');
   });
-
-  // Highlight clicked zone
   el.classList.add('az');
-  el.setAttribute('stroke', '#C9A84C');
-  el.setAttribute('stroke-width', '3');
-  el.setAttribute('fill', 'rgba(201,168,76,0.18)');
+  el.setAttribute('stroke','#C9A84C');
+  el.setAttribute('stroke-width','3');
+  el.setAttribute('fill','rgba(201,168,76,0.15)');
 
-  // Populate panel
-  document.getElementById('sp-layer').textContent = el.getAttribute('data-layer') || 'SECTION';
-  document.getElementById('sp-icon').textContent  = el.getAttribute('data-icon')  || '📌';
-  document.getElementById('sp-title').textContent = el.getAttribute('data-title') || '';
-  document.getElementById('sp-cnt').textContent   = (curIdx + 1) + ' / ' + allZ.length;
-  document.getElementById('sp-prev').disabled     = (curIdx <= 0);
-  document.getElementById('sp-next').disabled     = (curIdx >= allZ.length - 1);
+  document.getElementById('sb-layer').textContent = el.getAttribute('data-layer') || 'SECTION';
+  document.getElementById('sb-icon').textContent  = el.getAttribute('data-icon')  || '📌';
+  document.getElementById('sb-title').textContent = el.getAttribute('data-title') || '';
+  document.getElementById('sb-cnt').textContent   = (curIdx+1) + ' / ' + allZ.length;
+  document.getElementById('sb-prev').disabled     = curIdx <= 0;
+  document.getElementById('sb-next').disabled     = curIdx >= allZ.length-1;
 
-  var lines = (el.getAttribute('data-body') || '').split('||');
-  document.getElementById('sp-body').innerHTML = lines.filter(Boolean).map(function(ln) {
-    var fmt = ln.replace(/^([A-Z][A-Z &\/]+):\s*/g, '<strong>$1: </strong>');
-    return '<div class="sp-item"><div class="sp-dot"></div><div class="sp-text">' + fmt + '</div></div>';
+  var lines = (el.getAttribute('data-body')||'').split('||');
+  document.getElementById('sb-body').innerHTML = lines.filter(Boolean).map(function(ln){
+    var fmt = ln.replace(/^([A-Z][A-Z &\/]+):\s*/g,'<strong>$1: </strong>');
+    return '<div class="sb-item"><div class="sb-dot"></div><div class="sb-text">'+fmt+'</div></div>';
   }).join('');
 
-  // Open panel
-  document.getElementById('sp').classList.add('on');
-  document.getElementById('sp-bd').classList.add('on');
+  document.getElementById('inf-sidebar').classList.add('open');
 }
 
 function closePanel() {
-  document.getElementById('sp').classList.remove('on');
-  document.getElementById('sp-bd').classList.remove('on');
-  document.querySelectorAll('.izone').forEach(function(z) {
+  document.getElementById('inf-sidebar').classList.remove('open');
+  document.querySelectorAll('.izone').forEach(function(z){
     z.classList.remove('az');
-    z.setAttribute('stroke', 'none');
-    z.setAttribute('fill', 'rgba(0,0,0,0.001)');
+    z.setAttribute('stroke','none');
+    z.setAttribute('fill','rgba(0,0,0,0.001)');
   });
   curIdx = -1;
 }
@@ -1168,53 +1178,47 @@ function closePanel() {
 function navZone(d) {
   var allZ = Array.from(document.querySelectorAll('.izone'));
   var n = curIdx + d;
-  if (n >= 0 && n < allZ.length) openPanel(allZ[n]);
+  if (n>=0 && n<allZ.length) openPanel(allZ[n]);
 }
 
-// ── KEYBOARD ─────────────────────────────────────────────────────────────────
-document.addEventListener('keydown', function(e) {
-  var open = document.getElementById('sp').classList.contains('on');
-  if (e.key === 'Escape') { closePanel(); if (presenting) togglePresent(); return; }
+document.addEventListener('keydown', function(e){
+  var open = document.getElementById('inf-sidebar').classList.contains('open');
+  if (e.key==='Escape') { closePanel(); if(presenting) togglePresent(); return; }
   if (!open) return;
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  { e.preventDefault(); navZone(1); }
-  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    { e.preventDefault(); navZone(-1); }
+  if (e.key==='ArrowRight'||e.key==='ArrowDown') { e.preventDefault(); navZone(1); }
+  if (e.key==='ArrowLeft' ||e.key==='ArrowUp')   { e.preventDefault(); navZone(-1); }
 });
 
-// ── ATTACH ZONE CLICK HANDLERS ───────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.izone').forEach(function(z) {
-    z.addEventListener('click', function(e) {
-      e.stopPropagation();
-      openPanel(this);
-    });
-    z.addEventListener('mouseenter', function() {
-      if (!this.classList.contains('az')) {
-        this.setAttribute('stroke', '#C9A84C');
-        this.setAttribute('stroke-width', '2');
-        this.setAttribute('fill', 'rgba(201,168,76,0.1)');
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.izone').forEach(function(z){
+    z.addEventListener('click', function(e){ e.stopPropagation(); openPanel(this); });
+    z.addEventListener('mouseenter', function(){
+      if(!this.classList.contains('az')){
+        this.setAttribute('stroke','#C9A84C');
+        this.setAttribute('stroke-width','2');
+        this.setAttribute('fill','rgba(201,168,76,0.1)');
       }
     });
-    z.addEventListener('mouseleave', function() {
-      if (!this.classList.contains('az')) {
-        this.setAttribute('stroke', 'none');
-        this.setAttribute('stroke-width', '0');
-        this.setAttribute('fill', 'rgba(0,0,0,0.001)');
+    z.addEventListener('mouseleave', function(){
+      if(!this.classList.contains('az')){
+        this.setAttribute('stroke','none');
+        this.setAttribute('stroke-width','0');
+        this.setAttribute('fill','rgba(0,0,0,0.001)');
       }
     });
   });
   console.log('Zones ready:', document.querySelectorAll('.izone').length);
 });
 
-// ── PRESENT MODE ─────────────────────────────────────────────────────────────
 var presenting = false;
-function togglePresent() {
-  presenting = !presenting;
-  var btn = document.getElementById('pres-btn');
-  document.body.classList.toggle('pm', presenting);
-  btn.innerHTML = presenting ? '✕ &nbsp;Exit' : '⛶ &nbsp;Present';
-  btn.classList.toggle('on', presenting);
-  if (presenting && document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
-  else if (!presenting && document.exitFullscreen) document.exitFullscreen();
+function togglePresent(){
+  presenting=!presenting;
+  var btn=document.getElementById('pres-btn');
+  document.body.classList.toggle('pm',presenting);
+  btn.innerHTML=presenting?'✕ &nbsp;Exit':'⛶ &nbsp;Present';
+  btn.classList.toggle('on',presenting);
+  if(presenting && document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+  else if(!presenting && document.exitFullscreen) document.exitFullscreen();
 }
 
 // ── PEOPLE DATA ──────────────────────────────────────────────────────────────

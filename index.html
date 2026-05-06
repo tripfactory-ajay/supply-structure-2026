@@ -1,1 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TripFactory ORN — Supply Division Model</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0D1B2A;--brand:#1B4F8A;--gold:#C9A84C;
+  --teal:#0A7E8C;--green:#0B6E4F;--purple:#6B2FA0;
+  --orange:#C2410C;--slate:#475569;--muted:#94A3B8;
+  --border:#E2E8F0;--bg:#F8FAFC;--white:#fff;--dark:#0F172A;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--dark);line-height:1.6}
 
+/* ── HEADER ── */
+.hdr{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+.hdr-gold{height:3px;background:var(--gold)}
+.hdr-inner{max-width:960px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hdr-logo{height:36px;width:auto}
+.hdr-fallback{font-size:18px;font-weight:800;color:var(--navy)}
+.hdr-fallback em{color:var(--gold);font-style:normal}
+.hdr-div{width:1px;height:24px;background:var(--border)}
+.hdr-text{font-size:12px;color:var(--slate)}
+.hdr-right{margin-left:auto;display:flex;gap:8px}
+.hpill{font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;border:1.5px solid}
+.hp-gold{color:#92400E;border-color:rgba(201,168,76,.5);background:#FFFBEB}
+.hp-teal{color:#0F766E;border-color:rgba(10,118,110,.3);background:#F0FDFA}
+
+/* ── WRAP ── */
+.wrap{max-width:960px;margin:0 auto;padding:28px 24px 80px}
+
+/* ── INTRO ── */
+.intro{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:12px;padding:22px 26px;margin-bottom:24px}
+.intro h1{font-size:21px;font-weight:800;color:var(--navy);margin-bottom:6px;letter-spacing:-.4px}
+.intro p{font-size:12px;color:var(--slate);max-width:680px;line-height:1.75}
+.tips{display:flex;gap:18px;margin-top:12px;flex-wrap:wrap}
+.tip{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--slate)}
+.tdot{width:7px;height:7px;border-radius:50%}
+
+/* ── SECTION ── */
+.section{margin-bottom:12px;border:1.5px solid var(--border);border-radius:12px;overflow:hidden;background:var(--white)}
+.sec-hdr{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;user-select:none;transition:.15s}
+.sec-hdr:hover{background:#F8FAFC}
+.sec-layer{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 9px;border-radius:20px;color:#fff;white-space:nowrap;flex-shrink:0}
+.sec-title{font-size:13px;font-weight:700;color:var(--navy)}
+.sec-sub{font-size:11px;color:var(--muted);margin-left:4px}
+.sec-chev{margin-left:auto;font-size:13px;color:var(--muted);transition:.25s;flex-shrink:0}
+.section.open .sec-chev{transform:rotate(180deg)}
+.sec-body{display:none;border-top:1px solid var(--border);animation:fd .2s ease}
+.section.open .sec-body{display:block}
+@keyframes fd{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTION INTRO (the "why this exists") ── */
+.sec-intro{padding:16px 18px;background:var(--bg);border-bottom:1px solid var(--border);font-size:12px;color:var(--slate);line-height:1.7}
+.sec-intro strong{color:var(--navy)}
+
+/* ── CARD GRID ── */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px;padding:14px 18px}
+.card-grid.two{grid-template-columns:repeat(auto-fill,minmax(420px,1fr))}
+
+/* ── CARD ── */
+.card{border:1.5px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:.18s;background:var(--white)}
+.card:hover{box-shadow:0 4px 16px rgba(0,0,0,.09);border-color:var(--brand);transform:translateY(-1px)}
+.card.open{border-color:var(--brand);box-shadow:0 2px 10px rgba(27,79,138,.12)}
+.card-top{padding:14px 14px 10px;display:flex;gap:10px;align-items:flex-start}
+.card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.card-info{flex:1;min-width:0}
+.card-title{font-size:13px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:2px}
+.card-sub{font-size:11px;color:var(--slate);margin-bottom:5px}
+.card-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+.ctag{font-size:9px;font-weight:600;padding:2px 7px;border-radius:20px;text-transform:uppercase;letter-spacing:.2px}
+.card-hint{font-size:10px;color:var(--muted);padding:0 14px 8px;text-align:right;display:flex;align-items:center;justify-content:flex-end;gap:3px}
+.card-hint::after{content:'▾';font-size:9px;transition:.2s}
+.card.open .card-hint::after{content:'▴'}
+
+/* ── CARD BODY ── */
+.card-body{display:none;padding:12px 14px 14px;border-top:1px solid var(--border);animation:fd .2s ease}
+.card.open .card-body{display:block}
+.blabel{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);font-family:'DM Mono',monospace;margin:10px 0 6px;display:flex;align-items:center;gap:6px}
+.blabel::after{content:'';flex:1;height:1px;background:var(--border)}
+.jdlist{list-style:none;display:flex;flex-direction:column;gap:3px}
+.jdlist li{font-size:12px;color:var(--slate);display:flex;gap:7px;padding:3px 0;border-bottom:1px solid #F8FAFC;line-height:1.55}
+.jdlist li:last-child{border-bottom:none}
+.jdlist li::before{content:'·';color:var(--brand);font-size:15px;line-height:1.2;flex-shrink:0}
+.rbar{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--slate);background:#EFF6FF;border-radius:6px;padding:6px 10px;margin-top:10px}
+.rbar strong{color:var(--brand)}
+.kpis{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.kpi{background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:8px 12px;flex:1;min-width:80px;text-align:center}
+.kpiv{font-size:20px;font-weight:800;color:var(--navy)}
+.kpil{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;text-transform:uppercase;margin-top:1px}
+.stags{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.stag{font-size:10px;padding:3px 9px;border-radius:20px;border:1px solid;font-weight:500}
+
+/* ── NAME CHIP ── */
+.nchip{display:inline-flex;align-items:center;gap:5px;padding:3px 10px 3px 4px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1.5px solid;transition:.12s;margin:2px}
+.nchip:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.nchip.ok{background:#F0FDF4;color:#0B6E4F;border-color:#86EFAC}
+.nchip.vac{background:#FEF2F2;color:#991B1B;border-color:#FCA5A5;font-style:italic}
+.nchip.tbc{background:#FFFBEB;color:#92400E;border-color:#FCD34D}
+.nav{width:22px;height:22px;border-radius:50%;color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* ── WORKFLOW STEPS ── */
+.wflow{display:flex;align-items:stretch;overflow-x:auto;gap:0;padding:14px 18px}
+.wstep{flex:1;min-width:130px;background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:14px 12px;cursor:pointer;transition:.18s}
+.wstep:hover{border-color:var(--brand);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.wstep.on{border-color:var(--brand);background:#EFF6FF}
+.wnum{font-size:22px;font-weight:800;color:var(--border);line-height:1;margin-bottom:4px}
+.wstep.on .wnum{color:var(--brand)}
+.wtitle{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.wsub{font-size:10px;color:var(--muted);line-height:1.4}
+.wdetail{display:none;margin-top:10px;padding-top:8px;border-top:1px solid var(--border);font-size:12px;color:var(--slate);line-height:1.65;animation:fd .2s ease}
+.wstep.on .wdetail{display:block}
+.warr{display:flex;align-items:center;padding:0 6px;color:var(--muted);font-size:20px;flex-shrink:0;align-self:center;margin-top:-4px}
+
+/* ── GROWTH PATH ── */
+.gpath{display:flex;align-items:stretch;overflow-x:auto;gap:0;padding:14px 18px}
+.gstage{flex:1;min-width:140px;background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:14px;cursor:pointer;text-align:center;transition:.18s}
+.gstage:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.gstage.on{border-color:var(--purple);background:#FAF5FF}
+.gnum{font-size:24px;font-weight:800;color:var(--border);line-height:1;margin-bottom:5px}
+.gstage.on .gnum{color:var(--purple)}
+.gtitle{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.gtrig{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace}
+.gdetail{display:none;margin-top:10px;padding-top:8px;border-top:1px solid var(--border);font-size:11px;color:var(--slate);text-align:left;line-height:1.65;animation:fd .2s ease}
+.gstage.on .gdetail{display:block}
+.garr{display:flex;align-items:center;padding:0 6px;color:var(--muted);font-size:20px;flex-shrink:0;align-self:center}
+
+/* ── SUPPLY TYPES GRID ── */
+.scat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;padding:14px 18px}
+.scat{border-radius:10px;overflow:hidden;border:1.5px solid var(--border)}
+.scat-hdr{padding:10px 12px}
+.scat-title{font-size:12px;font-weight:700;margin-bottom:2px}
+.scat-mgr{font-size:10px;opacity:.75}
+.scat-types{padding:8px 12px 10px;display:flex;flex-direction:column;gap:3px}
+.stype{font-size:11px;padding:4px 8px;border-radius:5px;display:flex;align-items:center;gap:6px;cursor:pointer;transition:.1s}
+.stype:hover{filter:brightness(.94)}
+.sdot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+
+/* ── DEST REGIONS ── */
+.dreg{border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin:0 18px 10px}
+.dreg-hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;user-select:none;transition:.12s}
+.dreg-hdr:hover{background:var(--bg)}
+.dreg-pill{font-weight:700;font-size:11px;color:#fff;padding:3px 10px;border-radius:20px}
+.dreg-count{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace}
+.dreg-chev{margin-left:auto;font-size:10px;color:var(--muted);transition:.2s}
+.dreg.open .dreg-chev{transform:rotate(90deg)}
+.dreg-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:7px;padding:10px 14px 14px}
+.dreg.open .dreg-grid{display:grid}
+.dcard{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:9px 11px;cursor:pointer;transition:.14s}
+.dcard:hover{background:var(--white);border-color:var(--brand);transform:translateY(-1px)}
+.dcard.open{background:var(--white);border-color:var(--brand)}
+.dname{font-weight:700;font-size:12px;color:var(--navy);margin-bottom:2px}
+.ddmc{font-size:10px;color:var(--slate);margin-bottom:4px}
+.ddetail{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:11px;color:var(--slate);animation:fd .2s ease}
+.dcard.open .ddetail{display:block}
+
+/* ── PRINCIPLES ── */
+.princ-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;padding:14px 18px}
+.princ{background:var(--white);border:1.5px solid var(--border);border-top:4px solid;border-radius:10px;padding:14px 15px}
+.pnum{font-size:24px;font-weight:800;color:var(--border);line-height:1;margin-bottom:5px}
+.ptitle{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:5px}
+.pbody{font-size:11px;color:var(--slate);line-height:1.65}
+
+/* ── OUTPUT BOX ── */
+.output-box{margin:0 18px 18px;background:var(--navy);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px}
+.output-box .ob-icon{font-size:28px;flex-shrink:0}
+.ob-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:3px}
+.ob-sub{font-size:11px;color:var(--muted)}
+
+/* ── POPUP ── */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:800;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+.overlay.open{display:flex}
+.popup{background:var(--white);border-radius:14px;width:370px;max-width:92vw;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2);animation:popIn .2s ease}
+@keyframes popIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.pop-hd{padding:18px 20px 14px;border-bottom:1px solid var(--border)}
+.pop-avrow{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.pop-av{width:50px;height:50px;border-radius:50%;color:#fff;font-size:17px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pop-name{font-size:17px;font-weight:800;color:var(--navy)}
+.pop-role{font-size:12px;color:var(--slate);margin-top:2px}
+.pop-bd{padding:14px 20px}
+.pfield{display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #F8FAFC;font-size:12px;align-items:flex-start}
+.pfield:last-child{border-bottom:none}
+.pfl{color:var(--muted);width:72px;flex-shrink:0;font-family:'DM Mono',monospace;font-size:10px;padding-top:1px}
+.pfv{color:var(--dark);flex:1;line-height:1.5}
+.pop-ft{padding:10px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+.pbtn{font-size:11px;padding:5px 13px;border-radius:7px;border:1.5px solid var(--border);background:var(--white);color:var(--slate);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:.12s}
+.pbtn:hover{border-color:var(--brand);color:var(--brand)}
+.pbtn.ok{background:var(--brand);color:#fff;border-color:var(--brand)}
+
+.fab{position:fixed;bottom:20px;right:20px;width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.25);transition:.15s;z-index:100}
+.fab:hover{background:var(--brand);transform:translateY(-2px)}
+.hidden{display:none!important}
+@media(max-width:640px){.card-grid,.card-grid.two{grid-template-columns:1fr}.wflow,.gpath{flex-wrap:wrap}.hdr-right{display:none}.wrap{padding:16px 14px 60px}}
+</style>
+</head>
+<body>
+
+<!-- WHITE HEADER WITH ORN LOGO -->
+<div class="hdr">
+  <div class="hdr-gold"></div>
+  <div class="hdr-inner">
+    <img src="orn-logo.png" alt="ORN" class="hdr-logo" onerror="this.style.display='none';document.getElementById('hdr-fb').style.display='block'">
+    <div id="hdr-fb" style="display:none" class="hdr-fallback">Trip<em>Factory</em> ORN</div>
+    <div class="hdr-div"></div>
+    <div class="hdr-text">Supply Division &nbsp;·&nbsp; Structure &amp; Operating Model &nbsp;·&nbsp; May 2026</div>
+    <div class="hdr-right">
+      <span class="hpill hp-gold">Head of Supply: Sachin Keni</span>
+      <span class="hpill hp-teal">Admin &amp; QC: Disha</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- INTRO -->
+<div class="intro">
+  <h1>Supply Division — Structure &amp; Operating Model</h1>
+  <p>Supply is the raw material of every TripFactory ORN product — hotels, transport, visa, tours, restaurants and 13 more component types. Once supply is contracted in-destination, loaded by BLR, quality-checked by Disha's team and correctly tagged, the platform creates products automatically. Click any section to expand it and read the detail.</p>
+  <div class="tips">
+    <div class="tip"><div class="tdot" style="background:var(--gold)"></div>Click any section header to expand</div>
+    <div class="tip"><div class="tdot" style="background:var(--green)"></div>Click a card for full role details</div>
+    <div class="tip"><div class="tdot" style="background:var(--brand)"></div>Click a name chip to see their profile</div>
+    <div class="tip"><div class="tdot" style="background:var(--purple)"></div>Internal use only · May 2026</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     LAYER 1 — BLR LEADERSHIP
+══════════════════════════════════════════════ -->
+<div class="section open" id="s-l1">
+  <div class="sec-hdr" onclick="toggleSec('s-l1')">
+    <span class="sec-layer" style="background:var(--navy)">Layer 1</span>
+    <span class="sec-title">BLR Leadership</span>
+    <span class="sec-sub">Head of Supply + Supply Admin &amp; QC · Bangalore</span>
+    <span class="sec-chev">▾</span>
+  </div>
+  <div class="sec-body">
+    <div class="sec-intro">
+      <strong>What this layer does:</strong> The Head of Supply (Sachin Keni) owns all supply globally — all 5 category groups, all 50 destinations and the entire BLR team. Directly beneath him, the Head of Supply Administration &amp; Quality (Disha) runs the loading, QC and content teams that turn contracted agreements into live platform inventory. These two roles are the commercial and operational backbone of the entire division.
+    </div>
+    <div class="card-grid two">
+
+      <!-- Head of Supply -->
+      <div class="card" id="c-l1" onclick="toggleCard('c-l1')">
+        <div style="height:3px;background:var(--navy)"></div>
+        <div class="card-top">
+          <div class="card-icon" style="background:#EFF6FF">🏢</div>
+          <div class="card-info">
+            <div class="card-title">Head of Supply</div>
+            <div class="card-sub">Global ownership of all supply · BLR Bangalore</div>
+            <div class="card-tags">
+              <span class="ctag" style="background:var(--navy);color:var(--gold)">Leadership</span>
+              <span class="ctag" style="background:#F0FDF4;color:#0B6E4F">✓ Confirmed</span>
+            </div>
+            <span class="nchip ok" onclick="openPop(event,'sachin')">
+              <span class="nav" style="background:var(--brand)">SK</span>Sachin Keni
+            </span>
+          </div>
+        </div>
+        <div class="card-hint">Click to expand full role</div>
+        <div class="card-body">
+          <div class="blabel">Key Responsibilities</div>
+          <ul class="jdlist">
+            <li>Owns all supply globally across all 5 category groups and 50+ destinations</li>
+            <li>Sets supply strategy, commercial targets and category manager KPIs</li>
+            <li>Manages all 5 Supply Managers — holds them accountable to contracting targets daily</li>
+            <li>Approves all new DMC agreements and major supply contracts before sign-off</li>
+            <li>Owns the Supply Admin &amp; Quality function through Disha</li>
+            <li>Oversees Visa Operations and Transport Operations teams in BLR</li>
+            <li>Monthly P&amp;L review with Ajay Kawa — supply cost vs booking revenue</li>
+          </ul>
+          <div class="kpis">
+            <div class="kpi"><div class="kpiv">5</div><div class="kpil">Category Mgrs</div></div>
+            <div class="kpi"><div class="kpiv">50</div><div class="kpil">Destinations</div></div>
+            <div class="kpi"><div class="kpiv">17</div><div class="kpil">Supply types</div></div>
+            <div class="kpi"><div class="kpiv">~80</div><div class="kpil">BLR team</div></div>
+          </div>
+          <div class="rbar">📤 Reports to <strong>CPSO / Ajay Kawa</strong></div>
+        </div>
+      </div>
+
+      <!-- Head Admin & QC -->
+      <div class="card" id="c-l2" onclick="toggleCard('c-l2')">
+        <div style="height:3px;background:var(--teal)"></div>
+        <div class="card-top">
+          <div class="card-icon" style="background:#F0FDFA">✅</div>
+          <div class="card-info">
+            <div class="card-title">Head of Supply Administration &amp; Quality</div>
+            <div class="card-sub">Loading · QC &amp; Audit · Content · Rate parity · BLR</div>
+            <div class="card-tags">
+              <span class="ctag" style="background:var(--teal);color:#fff">Admin &amp; QC</span>
+              <span class="ctag" style="background:#F0FDF4;color:#0B6E4F">✓ Confirmed</span>
+            </div>
+            <span class="nchip ok" onclick="openPop(event,'disha')">
+              <span class="nav" style="background:var(--teal)">DI</span>Disha
+            </span>
+          </div>
+        </div>
+        <div class="card-hint">Click to expand full role</div>
+        <div class="card-body">
+          <div class="blabel">Key Responsibilities</div>
+          <ul class="jdlist">
+            <li>Manages all supply loading, QC auditing, two-eyes quality checks and rate parity monitoring</li>
+            <li>Owns all BLR supply SLAs: loading 24hr, mapping 24hr, content creation 48hr</li>
+            <li>Manages Loading Team ×10, QC &amp; Audit Team ×6, Content Team ×4, Data Analyst ×1</li>
+            <li>Daily error log — chairs 9am BLR standup every morning without exception</li>
+            <li>Enforces the golden rule: the person who contracts supply never loads it</li>
+            <li>Rate parity monitoring — flags any API rate undercutting direct within 2 hours</li>
+          </ul>
+          <div class="kpis">
+            <div class="kpi"><div class="kpiv">24h</div><div class="kpil">Load SLA</div></div>
+            <div class="kpi"><div class="kpiv">24h</div><div class="kpil">Mapping SLA</div></div>
+            <div class="kpi"><div class="kpiv">48h</div><div class="kpil">Content SLA</div></div>
+            <div class="kpi"><div class="kpiv">0</div><div class="kpil">Rate errors/wk</div></div>
+          </div>
+          <div class="blabel">Team under Disha</div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap">
+            <span class="nchip tbc" onclick="openPop(event,'team-load')"><span class="nav" style="background:var(--teal)">×10</span>Loading team</span>
+            <span class="nchip tbc" onclick="openPop(event,'team-qc')"><span class="nav" style="background:var(--teal)">×6</span>QC &amp; Audit</span>
+            <span class="nchip tbc" onclick="openPop(event,'team-content')"><span class="nav" style="background:var(--teal)">×4</span>Content</span>
+            <span class="nchip tbc" onclick="openPop(event,'team-analyst')"><span class="nav" style="background:#92400E">×1</span>Data analyst</span>
+          </div>
+          <div class="rbar">📤 Reports to <strong>Sachin Keni (Head of Supply)</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     LAYER 2 — SUPPLY MANAGERS
+══════════════════════════════════════════════ -->
+<div class="section" id="s-l2">
+  <div class="sec-hdr" onclick="toggleSec('s-l2')">
+    <span class="sec-layer" style="background:var(--brand)">Layer 2</span>
+    <span class="sec-title">Supply Managers — 5 Category Groups</span>
+    <span class="sec-sub">BLR Bangalore · commercial ownership by supply type globally</span>
+    <span class="sec-chev">▾</span>
+  </div>
+  <div class="sec-body">
+    <div class="sec-intro">
+      <strong>Why category groups?</strong> Rather than organising supply managers by region, we organise them by supply type. This creates deep commercial expertise — the Accommodation Manager knows hotel contracting deeply and applies that expertise in Dubai, Bali, London and Cape Town equally. Each manager owns their category across all 50 destinations and directs the in-destination PM or DMC on what to contract.
+    </div>
+    <div class="card-grid">
+
+      <div class="card" id="c-sm1" onclick="toggleCard('c-sm1')">
+        <div style="height:3px;background:#1B4F8A"></div>
+        <div class="card-top">
+          <div class="card-icon" style="background:#EFF6FF">🏨</div>
+          <div class="card-info">
+            <div class="card-title">Supply Manager — Accommodation</div>
+            <div class="card-sub">Hotels · resorts · cruises · yachts · global</div>
+            <div class="card-tags">
+              <span class="ctag" style="background:#1B4F8A;color:#fff">G1 · Accommodation</span>
+              <span class="ctag" style="background:#FEF2F2;color:#991B1B">Priority 1 hire</span>
+            </div>
+            <span class="nchip vac" onclick="openPop(event,'vac')">← Allocate name</span>
+          </div>
+        </div>
+        <div class="card-hint">Click to expand</div>
+        <div class="card-body">
+          <div class="blabel">Responsibilities</div>
+          <ul class="jdlist">
+            <li>Owns all hotel, resort, cruise and yacht contracting globally across all 50 destinations</li>
+            <li>Sets accommodation category strategy — rate targets, minimum standards, quality tiers</li>
+            <li>Manages destination PMs specifically on accommodation supply and benchmarking</li>
+            <li>Rate parity accountability — escalates API undercuts within 48 hours</li>
+            <li>Manages volume deals, allotments and preferred supplier programmes globally</li>
+          </ul>
+          <div class="blabel">Supply types owned</div>
+          <div class="stags">
+            <span class="stag" style="background:#EFF6FF;color:#1E40AF;border-color:#B5D4F4">Hotel &amp; Accommodation</span>
+            <span class="stag" style="background:#EFF6FF;color:#1E40AF;border-color:#B5D4F4">Cruise &amp; Yacht</span>
+          </div>
+          <div class="rbar">📤 Reports to <strong>Sachin Keni</strong> · Priority 1 hire</div>
+        </div>
+      </div>
+
+      <div class="card" id="c-sm2" onclick="toggleCard('c-sm2')">
+        <div style="height:3px;background:var(--teal)"></div>
+        <div class="card-top">
+          <div class="card-icon" style="background:#F0FDFA">🚌</div>
+          <div class="card-info">
+            <div class="card-title">Supply Manager — Transport</div>
+            <div class="card-sub">Transfers · airport reps · service points · global</div>
+            <div class="card-tags">
+              <span class="ctag" style="background:var(--teal);color:#fff">G2 · Transport</span>
+              <span class="ctag" style="background:#FEF2F2;color:#991B1B">Priority 1 hire</span>
+            </div>
+            <span class="nchip vac" onclick="openPop(event,'vac')">← Allocate name</span>
+          </div>
+        </div>
+        <div class="card-hint">Click to expand</div>
+        <div class="card-body">
+          <div class="blabel">Responsibilities</div>
+          <ul class="jdlist">
+            <li>Owns all transport, transfer, airport rep and service point contracting globally</li>
+            <li>Manages the Transport Operations Team in BLR — daily fulfilment accountability</li>
+            <li>Sets transport category standards, vehicle quality minimums and driver briefing SLAs</li>
+            <li>Monitors transfer confirmation SLAs — all transfers confirmed within 2 hours of booking</li>
+          </ul>
+          <div class="blabel">Supply types owned</div>
+          <div class="stags">
+            <span class="stag" style="background:#F0FDFA;color:#065F46;border-color:#9FE1CB">Transport &amp; Transfers</span>
+            <span class="stag" style="background:#F0FDFA;color:#065F46;border-color:#9FE1CB">Airport Representative</span>
+            <span class="stag" style="background:#F0FDFA;color:#065F46;border-color:#9FE1CB">Service Points</span>
+          </div>
+          <div class="rbar">📤 Reports to <strong>Sachin Keni</strong> · Also manages Transport Ops Team</div>
+        </div>
+      </div>
+
+      <div class="card" id="c-sm3" onclick="toggleCard('c-sm3')">
+        <div style="height:3px;background:var(--orange)"></div>
+        <div class="card-top">
+          <div class="card-icon" style="background:#FFF7ED">🎭</div>
+          <div class="card-info">
+            <div class="card-title">Supply Manager — Experiences</div>
+            <div class="card-sub">Tours · attractions · guides · adventure · events</div>
+            <div class="card-tags">
+              <span class="ctag" style="background:var(--orange);color:#fff">G3 · Experiences</span>
+              <span class="ctag" style="background:#FEF2F2;color:#991B1B">Priority 1 hire</span>
+            </div>
+            <span class="nchip vac" onclick="openPop(event,'vac')">← Allocate name</span>
+          </div>
+        </div>
+        <div class="card-hint">Click to expand</div>
+        <div class="card-body">
+          <div class="blabel">Responsibilities</div>
+          <ul class="jdlist">
+            <li>Owns all tour, attraction ticket, guide, adventure and events contracting globally</li>
+            <li>Builds the experience product library per destination — top 20 experiences per priority destination</li>
+            <li>Works with destination PMs on exclusive or preferred-rate experience partnerships</li>
+            <li>Manages adventure and sports operators for safety standards compliance</li>
+          </ul>
+          <div class="blabel">Supply types owned (5)</div>
+          <div class="stags">
+            <span class="stag" style="background:#FFF7ED;color:#7C2D12;border-color:#FED7AA">Sightseeing Tours</span>
+            <span class="stag" style="background:#FFF7ED;color:#7C2D12;border-color:#FED7AA">Attractions &amp; Tickets</span>
+            <span class="stag" style="background:#FFF7ED;color:#7C2D12;border-color:#FED7AA">Guide &amp; Naturalist</span>
+            <span class="stag" style="background:#FFF7ED;color:#7C2D12;border-color:#FED7AA">Adventure &amp; Sports</span>
+            <span class="stag" style="background:#FFF7ED;color:#7C2D12;border-color:#FED7AA">Events &amp; Entertainment</span>
+          </div>
+          <div class="rbar">📤 Reports to <strong>Sachin Keni</strong> · Priority 1 hire</div>
+        </div>
+      </div>
+
+      <div class="card" id="c-sm4" onclick="toggleCard('c-sm4')">
+        <div style="height:3px;background:var(--purple)"></div>
+        <div class="card-top">
+          <div class="card-icon" style="background:#FAF5FF">🍽️</div>
+          <div class="card-info">
+            <div class="card-title">Supply Manager — Wellness, Dining &amp; Lifestyle</div>
+            <div class="card-sub">Restaurants · spas · photography · shopping</div>
+            <div class="card-tags">
+              <span class="ctag" style="background:var(--purple);color:#fff">G4 · Wellness &amp; Dining</span>
+              <span class="ctag" style="background:#FFFBEB;color:#92400E">Priority 2</span>
+            </div>
+            <span class="nchip vac" onclick="openPop(event,'vac')">← Allocate name</span>
+          </div>
+        </div>
+        <div class="card-hint">Click to expand</div>
+        <div class="card-body">
+          <div class="blabel">Responsibilities</div>
+          <ul class="jdlist">
+            <li>Owns restaurant, spa, photography, shopping and craft contracting globally</li>
+            <li>Builds lifestyle add-on supply per destination — curated dining and wellness packages</li>
+            <li>Works with destination PMs on exclusive dining and spa partnerships</li>
+            <li>Photography and content packages — growing priority for luxury market</li>
+          </ul>
+          <div class="blabel">Supply types owned (4)</div>
+          <div class="stags">
+            <span class="stag" style="background:#FAF5FF;color:#6B21A8;border-color:#D8B4FE">Restaurant &amp; Dining</span>
+            <span class="stag" style="background:#FAF5FF;color:#6B21A8;border-color:#D8B4FE">Wellness &amp; Spa</span>
+            <span class="stag" style="background:#FAF5FF;color:#6B21A8;border-color:#D8B4FE">Photography &amp; Content</span>
+            <span class="stag" style="background:#FAF5FF;color:#6B21A8;border-color:#D8B4FE">Shopping &amp; Craft</span>
+          </div>
+          <div class="rbar">📤 Reports to <strong>Sachin Keni</strong></div>
+        </div>
+      </div>
+
+      <div class="card" id="c-sm5" onclick="toggleCard('c-sm5')">
+        <div style="height:3px;background:var(--green)"></div>
+        <div class="card-top">
+          <div class="card-icon" style="background:#F0FDF4">📋</div>
+          <div class="card-info">
+            <div class="card-title">Supply Manager — Documentation &amp; Insurance</div>
+            <div class="card-sub">Visa · travel insurance · flight tickets · global</div>
+            <div class="card-tags">
+              <span class="ctag" style="background:var(--green);color:#fff">G5 · Docs &amp; Insurance</span>
+              <span class="ctag" style="background:#FEF2F2;color:#991B1B">Priority 1 hire</span>
+            </div>
+            <span class="nchip vac" onclick="openPop(event,'vac')">← Allocate name</span>
+          </div>
+        </div>
+        <div class="card-hint">Click to expand</div>
+        <div class="card-body">
+          <div class="blabel">Responsibilities</div>
+          <ul class="jdlist">
+            <li>Owns all visa, documentation, travel insurance and flight ticket contracting globally</li>
+            <li>Manages Visa &amp; Documentation Operations Team in BLR — compliance and regulatory</li>
+            <li>Confirms insurance provider agreement and commission structure</li>
+            <li>Manages consolidator and airline agreements for flight ticket sourcing</li>
+            <li>Compliance critical — any regulatory risk escalated immediately to Sachin Keni and legal</li>
+          </ul>
+          <div class="blabel">Supply types owned (3)</div>
+          <div class="stags">
+            <span class="stag" style="background:#F0FDF4;color:#064E3B;border-color:#A7F3D0">Visa &amp; Documentation</span>
+            <span class="stag" style="background:#F0FDF4;color:#064E3B;border-color:#A7F3D0">Travel Insurance</span>
+            <span class="stag" style="background:#F0FDF4;color:#064E3B;border-color:#A7F3D0">Flight Tickets</span>
+          </div>
+          <div class="rbar">📤 Reports to <strong>Sachin Keni</strong> · Also manages Visa Ops Team</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Ops Teams sub-section -->
+    <div style="margin:0 18px 6px;font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.5px;padding:6px 0 4px;border-top:1px solid var(--border)">Operations Teams — BLR Bangalore</div>
+    <div class="card-grid two" style="padding-top:0">
+
+      <div class="card" id="c-vdops" onclick="toggleCard('c-vdops')">
+        <div style="height:3px;background:var(--green)"></div>
+        <div class="card-top">
+          <div class="card-icon" style="background:#F0FDF4">🛂</div>
+          <div class="card-info">
+            <div class="card-title">Visa &amp; Documentation Operations Team</div>
+            <div class="card-sub">End-to-end visa processing · embassy · insurance · BLR</div>
+            <div class="card-tags">
+              <span class="ctag" style="background:var(--green);color:#fff">Operations</span>
+              <span class="ctag" style="background:#FEF2F2;color:#991B1B">Build required</span>
+            </div>
+            <div style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap">
+              <span class="nchip vac" onclick="openPop(event,'vac')">← Visa Ops Manager</span>
+              <span class="nchip tbc" onclick="openPop(event,'team-visa')"><span class="nav" style="background:#92400E">×6</span>Processing</span>
+              <span class="nchip tbc" onclick="openPop(event,'team-vdoc')"><span class="nav" style="background:#92400E">×3</span>Documentation</span>
+              <span class="nchip tbc" onclick="openPop(event,'team-ins')"><span class="nav" style="background:#92400E">×2</span>Insurance</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-hint">Click to expand</div>
+        <div class="card-body">
+          <div class="blabel">What this team does</div>
+          <ul class="jdlist">
+            <li>Processes all visa applications end-to-end: document collection, submission, embassy tracking, collection and delivery</li>
+            <li>Covers UAE, Thailand, UK, Schengen, Japan, Singapore, Australia, USA and all key visa markets</li>
+            <li>Issues travel insurance for all bookings — must be offered on every booking per policy</li>
+            <li>Manages insurance claims liaison and customer support for insurance queries</li>
+          </ul>
+          <div class="rbar">📤 Reports to <strong>Supply Manager — Documentation &amp; Insurance</strong></div>
+        </div>
+      </div>
+
+      <div class="card" id="c-tops" onclick="toggleCard('c-tops')">
+        <div style="height:3px;background:var(--teal)"></div>
+        <div class="card-top">
+          <div class="card-icon" style="background:#F0FDFA">🚐</div>
+          <div class="card-info">
+            <div class="card-title">Transport Operations Team</div>
+            <div class="card-sub">Transfer fulfilment · drivers · airport reps · BLR</div>
+            <div class="card-tags">
+              <span class="ctag" style="background:var(--teal);color:#fff">Operations</span>
+              <span class="ctag" style="background:#FEF2F2;color:#991B1B">Build required</span>
+            </div>
+            <div style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap">
+              <span class="nchip vac" onclick="openPop(event,'vac')">← Transport Ops Manager</span>
+              <span class="nchip tbc" onclick="openPop(event,'team-tres')"><span class="nav" style="background:#92400E">×6</span>Reservations</span>
+              <span class="nchip tbc" onclick="openPop(event,'team-airp')"><span class="nav" style="background:#92400E">×2</span>Airport Reps</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-hint">Click to expand</div>
+        <div class="card-body">
+          <div class="blabel">What this team does</div>
+          <ul class="jdlist">
+            <li>Processes all transport bookings: transfer confirmations, private cars, coach hires daily</li>
+            <li>Coordinates with destination DMCs and suppliers on vehicle availability and scheduling</li>
+            <li>Manages all airport representative bookings — passenger manifests and driver briefings</li>
+            <li>Ensures all transfers confirmed within 2 hours of booking — hard SLA</li>
+          </ul>
+          <div class="rbar">📤 Reports to <strong>Supply Manager — Transport</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     LAYER 3 — IN-DESTINATION
+══════════════════════════════════════════════ -->
+<div class="section" id="s-l3">
+  <div class="sec-hdr" onclick="toggleSec('s-l3')">
+    <span class="sec-layer" style="background:var(--green)">Layer 3</span>
+    <span class="sec-title">In-Destination — Product Managers &amp; DMC Partners</span>
+    <span class="sec-sub">50 destinations · 6 regions · contract all supply on the ground</span>
+    <span class="sec-chev">▾</span>
+  </div>
+  <div class="sec-body">
+    <div class="sec-intro">
+      <strong>How this works:</strong> Each of our 50 destinations has one Product Manager or DMC partner who contracts all supply elements locally — hotels, transport, tours, restaurants, visa agents and all other types. They report functionally to the relevant Supply Manager in BLR by category (e.g. on hotel matters they speak to the Accommodation Manager; on visa matters to the Documentation Manager). As booking volume grows, each destination follows the growth path: individual → small team → in-destination office → potential DMC acquisition.
+    </div>
+    <div style="padding:0 18px 8px">
+      <div id="dest-regions"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     17 SUPPLY TYPES
+══════════════════════════════════════════════ -->
+<div class="section" id="s-supply">
+  <div class="sec-hdr" onclick="toggleSec('s-supply')">
+    <span class="sec-layer" style="background:var(--slate)">Supply Types</span>
+    <span class="sec-title">17 Supply Components — 5 Category Groups</span>
+    <span class="sec-sub">Contracted in-destination · loaded and QC'd in BLR · auto-creates products</span>
+    <span class="sec-chev">▾</span>
+  </div>
+  <div class="sec-body">
+    <div class="sec-intro">
+      <strong>Why 17 types matter:</strong> Every TripFactory product package is assembled from one or more of these 17 supply components. When a supply item is contracted, loaded, QC-checked and tagged with its type, the platform assembles packages automatically. The more supply types covered in each destination, the richer and more complete the products the system can build.
+    </div>
+    <div class="scat-grid" id="scat-grid"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     WORKFLOW
+══════════════════════════════════════════════ -->
+<div class="section" id="s-wf">
+  <div class="sec-hdr" onclick="toggleSec('s-wf')">
+    <span class="sec-layer" style="background:var(--brand)">Workflow</span>
+    <span class="sec-title">From Contract to Live Product — 5 Steps</span>
+    <span class="sec-sub">Click each step to see what happens</span>
+    <span class="sec-chev">▾</span>
+  </div>
+  <div class="sec-body">
+    <div class="sec-intro">
+      <strong>The key principle:</strong> The person who contracts supply never loads it. This two-step separation — contracting in-destination, loading in BLR — is the quality gate that catches rate errors, missing content and compliance gaps before anything goes live. Every step has a hard SLA, not a target.
+    </div>
+    <div class="wflow" id="wflow"></div>
+    <div class="output-box">
+      <div class="ob-icon">⚡</div>
+      <div>
+        <div class="ob-title">Product created automatically</div>
+        <div class="ob-sub">Once supply is contracted · loaded · QC-checked and tagged — the platform builds the product package automatically. No manual product creation needed.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     GROWTH PATH
+══════════════════════════════════════════════ -->
+<div class="section" id="s-growth">
+  <div class="sec-hdr" onclick="toggleSec('s-growth')">
+    <span class="sec-layer" style="background:var(--purple)">Growth Model</span>
+    <span class="sec-title">Destination Growth Path</span>
+    <span class="sec-sub">Volume-triggered · built into the model from day one · click each stage</span>
+    <span class="sec-chev">▾</span>
+  </div>
+  <div class="sec-body">
+    <div class="sec-intro">
+      <strong>Built to scale:</strong> Every destination starts with a single PM or DMC partner and grows through defined stages triggered by booking volume. This means the cost structure scales with revenue — we never over-invest ahead of demand. At the top of the path, a DMC acquisition gives us full control of the supply chain in that destination.
+    </div>
+    <div class="gpath" id="gpath"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     5 KEY PRINCIPLES
+══════════════════════════════════════════════ -->
+<div class="section" id="s-princs">
+  <div class="sec-hdr" onclick="toggleSec('s-princs')">
+    <span class="sec-layer" style="background:var(--navy)">Principles</span>
+    <span class="sec-title">5 Key Operating Principles</span>
+    <span class="sec-sub">The rules that govern every supply decision</span>
+    <span class="sec-chev">▾</span>
+  </div>
+  <div class="sec-body">
+    <div class="princ-grid" id="princ-grid"></div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- PERSON POPUP -->
+<div class="overlay" id="overlay" onclick="if(event.target===this)closePop()">
+  <div class="popup">
+    <div class="pop-hd">
+      <div class="pop-avrow">
+        <div class="pop-av" id="pav"></div>
+        <div>
+          <div class="pop-name" id="pname"></div>
+          <div class="pop-role" id="prole"></div>
+        </div>
+      </div>
+      <div id="ptags" style="display:flex;gap:5px;flex-wrap:wrap"></div>
+    </div>
+    <div class="pop-bd" id="pbd"></div>
+    <div class="pop-ft">
+      <button class="pbtn" onclick="closePop()">Close</button>
+      <button class="pbtn ok" onclick="closePop()">Got it</button>
+    </div>
+  </div>
+</div>
+
+<button class="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ── PEOPLE DATA ──────────────────────────────────────────────────────────────
+var PD = {
+  sachin:{name:'Sachin Keni',init:'SK',color:'#1B4F8A',role:'Head of Supply',status:'Confirmed',dept:'Leadership',loc:'BLR Bangalore',reports:'CPSO / Ajay Kawa',email:'sachin@tripfactory.com',notes:'Confirmed Head of Supply. Owns all supply globally across all 5 category groups and 50 destinations. P&L accountability to Ajay Kawa.'},
+  disha:{name:'Disha',init:'DI',color:'#0A7E8C',role:'Head of Supply Administration & Quality',status:'Confirmed',dept:'Admin & QC',loc:'BLR Bangalore',reports:'Sachin Keni',email:'TBC',notes:'Confirmed as Head of Supply Admin & Quality. Owns all loading SLAs, QC, rate parity monitoring and the daily error log. Manages a team of ~21.'},
+  'team-load':{name:'Loading Team',init:'×10',color:'#0A7E8C',role:'Supply Loading Executives (×10)',status:'Pool · 10 headcount',dept:'Admin & QC',loc:'BLR Bangalore',reports:'Disha',notes:'10 loading executives. Each loads contracted supply into the platform within 24 hours of receipt. Two-eyes quality check on all rates before publishing.'},
+  'team-qc':{name:'QC & Audit Team',init:'×6',color:'#0A7E8C',role:'Supply QC & Audit Executives (×6)',status:'Pool · 6 headcount',dept:'Admin & QC',loc:'BLR Bangalore',reports:'Disha',notes:'6 QC executives. Audit all loaded supply: rate accuracy, content completeness, image standards, category tagging. Rate parity monitoring. Daily error log.'},
+  'team-content':{name:'Content Team',init:'×4',color:'#0A7E8C',role:'Supply Content Executives (×4)',status:'Pool · 4 headcount',dept:'Admin & QC',loc:'BLR Bangalore',reports:'Disha',notes:'4 content executives. Create and maintain supply content on platform: hotel descriptions, activity listings, restaurant profiles. 48hr SLA from contract receipt.'},
+  'team-analyst':{name:'Data & Reporting Analyst',init:'DA',color:'#92400E',role:'Supply Data Analyst (×1)',status:'TBC · 1 role',dept:'Admin & QC',loc:'BLR Bangalore',reports:'Disha',notes:'Weekly and monthly supply performance reports: contracts loaded, coverage by destination, rate parity flags, QC pass rates.'},
+  'team-visa':{name:'Visa Processing Team',init:'×6',color:'#0B6E4F',role:'Visa Processing Executives',status:'Pool · 6 headcount',dept:'Operations',loc:'BLR Bangalore',reports:'Visa Ops Manager',notes:'Processes visa applications end-to-end across all key visa markets. UAE, Thailand, UK, Schengen, Japan, Singapore, Australia, USA covered.'},
+  'team-vdoc':{name:'Visa Documentation Team',init:'×3',color:'#0B6E4F',role:'Visa Documentation Executives',status:'Pool · 3 headcount',dept:'Operations',loc:'BLR Bangalore',reports:'Visa Ops Manager',notes:'Document preparation, customer communication, visa status updates and filing of completed applications.'},
+  'team-ins':{name:'Insurance Team',init:'×2',color:'#0B6E4F',role:'Travel Insurance Executives',status:'Pool · 2 headcount',dept:'Operations',loc:'BLR Bangalore',reports:'Visa Ops Manager',notes:'Travel insurance issuance and claims liaison. Must be offered on every booking per policy.'},
+  'team-tres':{name:'Transport Reservations',init:'×6',color:'#0A7E8C',role:'Transport Reservations Executives',status:'Pool · 6 headcount',dept:'Operations',loc:'BLR Bangalore',reports:'Transport Ops Manager',notes:'Processes all transport bookings, transfer confirmations, private car and coach bookings.'},
+  'team-airp':{name:'Airport Rep Coordinators',init:'×2',color:'#0A7E8C',role:'Airport Representative Coordinators',status:'Pool · 2 headcount',dept:'Operations',loc:'BLR Bangalore',reports:'Transport Ops Manager',notes:'Manages all airport representative bookings, passenger manifests and driver briefings before each arrival.'},
+  vac:{name:'Role Vacant',init:'?',color:'#991B1B',role:'Not yet allocated — action required',status:'Vacant',dept:'TBC',loc:'BLR Bangalore',reports:'TBC',notes:'This role has not yet been allocated. Please update the Supply Hub Excel file with the allocated name and status.'}
+};
+
+// ── DESTINATIONS DATA ─────────────────────────────────────────────────────────
+var REGIONS = [
+  {name:'Middle East & Islands',color:'#0F766E',dests:[
+    {name:'Dubai',dmc:'Adventure Heritage · Rayna · GTDS',model:'DMC Partner',status:'Active'},
+    {name:'Abu Dhabi',dmc:'Via Dubai DMC',model:'DMC Partner',status:'Active'},
+    {name:'Oman',dmc:'Tawfeeq · Easy Travels',model:'DMC Partner',status:'Active'},
+    {name:'Qatar',dmc:'Tawfeeq Holidays',model:'DMC Partner',status:'Active'},
+    {name:'Bahrain',dmc:'Best of Bahrain',model:'DMC Partner',status:'Active'},
+    {name:'Saudi Arabia',dmc:'Alzajil Tours',model:'DMC Partner',status:'Active'},
+    {name:'Egypt',dmc:'Excel Travel · Travetrolly',model:'DMC Partner',status:'Active'},
+    {name:'Morocco',dmc:'Bey Tours Morocco',model:'DMC Partner',status:'Active'},
+    {name:'Jordan',dmc:'Cozmo Travel',model:'DMC Partner',status:'Active'},
+    {name:'Maldives',dmc:'AEW · Lets Go · My Value Travel',model:'DMC Partner',status:'Active'},
+    {name:'Seychelles',dmc:'AEW · Mason Travel',model:'DMC Partner',status:'Active'},
+    {name:'Mauritius',dmc:'AEW · Mason Travel',model:'DMC Partner',status:'Active'},
+    {name:'Zanzibar',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+  ]},
+  {name:'SE Asia & Pacific',color:'#065F46',dests:[
+    {name:'Singapore',dmc:'Travel Bulz · Luxury Singapore Asia',model:'DMC Partner',status:'Active'},
+    {name:'Thailand',dmc:'JEK · Enchantasia',model:'DMC Partner',status:'Active'},
+    {name:'Vietnam',dmc:'JEK · AEW',model:'DMC Partner',status:'Active'},
+    {name:'Bali / Indonesia',dmc:'Sachin Kurte · U&I',model:'DMC Partner',status:'Active'},
+    {name:'Malaysia',dmc:'Jeeva · AEW',model:'DMC Partner',status:'Active'},
+    {name:'Hong Kong / Macau',dmc:'AEW · URTravel',model:'DMC Partner',status:'Active'},
+    {name:'Philippines',dmc:'Nexus',model:'DMC Partner',status:'Active'},
+    {name:'Cambodia / Laos / Myanmar',dmc:'ICS',model:'DMC Partner',status:'Active'},
+    {name:'Japan',dmc:'KIC · Japan E Tours',model:'DMC Partner',status:'Active'},
+    {name:'China',dmc:'Nimbus Travels',model:'DMC Partner',status:'Active'},
+    {name:'Sri Lanka',dmc:'Nkar Travels · Apple Holidays',model:'DMC Partner',status:'Active'},
+    {name:'Nepal / Bhutan',dmc:'Own / Partner',model:'Own PM',status:'Active'},
+  ]},
+  {name:'India',color:'#7C2D12',dests:[
+    {name:'Kerala & Andaman',dmc:'Leisure Tour India · Andaman Bliss',model:'DMC Partner',status:'Active'},
+    {name:'Goa',dmc:'Sofine Tours & Events',model:'DMC Partner',status:'Active'},
+    {name:'J&K / Ladakh / Himachal',dmc:'Columbia · Samsara · Chaudhary',model:'DMC Partner',status:'Active'},
+    {name:'Rajasthan / Gujarat',dmc:'Ayodhyataxi · Gujarat Trails',model:'DMC Partner',status:'Active'},
+    {name:'Maharashtra / Karnataka / TN',dmc:'Shirdi Sai Yatra · Navik Global',model:'DMC Partner',status:'Active'},
+    {name:'NE India / Sikkim / WB',dmc:'Own — Siliguri HQ',model:'Own Office',status:'Active'},
+    {name:'UP / MP / Uttarakhand / Odisha',dmc:'Ram Raj · MP Holidays · Balwant',model:'DMC Partner',status:'Active'},
+  ]},
+  {name:'Europe',color:'#1E40AF',dests:[
+    {name:'United Kingdom',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+    {name:'France',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+    {name:'Italy',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+    {name:'Spain',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+    {name:'Germany / Austria / Switzerland',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+    {name:'Greece',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+    {name:'Portugal',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+    {name:'Nordics / Iceland',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+    {name:'Eastern Europe',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+    {name:'Turkey',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+  ]},
+  {name:'Americas & Africa',color:'#6B21A8',dests:[
+    {name:'USA / Canada',dmc:'Elife Limo + partners',model:'DMC Partner',status:'Active'},
+    {name:'Mexico / Caribbean',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+    {name:'Latin America',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+    {name:'South Africa',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+    {name:'Kenya / Tanzania',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+    {name:'West / East Africa',dmc:'TBC',model:'DMC Partner',status:'Not Yet Active'},
+  ]},
+  {name:'Central Asia & Oceania',color:'#9D174D',dests:[
+    {name:'Uzbekistan / Silk Road',dmc:'ONS · Rocket DMC',model:'DMC Partner',status:'Active'},
+    {name:'Kazakhstan',dmc:'Skyway LTD',model:'DMC Partner',status:'Active'},
+    {name:'Russia',dmc:'Fun & Sun Tourism · ONS',model:'DMC Partner',status:'Active'},
+    {name:'Caucasus (Az / Am / Ge)',dmc:'ONS · Liberty · Georgia DMC',model:'DMC Partner',status:'Active'},
+    {name:'Australia / NZ / Fiji',dmc:'Own Operations',model:'Own Office',status:'Active'},
+  ]},
+];
+
+// ── SUPPLY CATEGORIES ─────────────────────────────────────────────────────────
+var SCATS = [
+  {name:'Accommodation',color:'#1E40AF',bg:'#EFF6FF',typebg:'#DBEAFE',typec:'#1E3A8A',mgr:'Supply Manager — Accommodation',types:['Hotel & Accommodation','Cruise & Yacht']},
+  {name:'Transport',color:'#065F46',bg:'#F0FDFA',typebg:'#CCFBF1',typec:'#064E3B',mgr:'Supply Manager — Transport',types:['Transport & Transfers','Airport Representative','Service Points']},
+  {name:'Experiences',color:'#7C2D12',bg:'#FFF7ED',typebg:'#FED7AA',typec:'#7C2D12',mgr:'Supply Manager — Experiences',types:['Sightseeing Tours','Attractions & Tickets','Guide & Naturalist','Adventure & Sports','Events & Entertainment']},
+  {name:'Wellness & Dining',color:'#6B21A8',bg:'#FAF5FF',typebg:'#EDE9FE',typec:'#4C1D95',mgr:'Supply Manager — Wellness, Dining & Lifestyle',types:['Restaurant & Dining','Wellness & Spa','Photography & Content','Shopping & Craft']},
+  {name:'Docs & Insurance',color:'#065F46',bg:'#F0FDF4',typebg:'#A7F3D0',typec:'#064E3B',mgr:'Supply Manager — Documentation & Insurance',types:['Visa & Documentation','Travel Insurance','Flight Tickets']},
+];
+
+// ── WORKFLOW ──────────────────────────────────────────────────────────────────
+var WSTEPS = [
+  {n:'01',title:'Contract',sub:'In-destination',detail:'The Product Manager or DMC partner negotiates and signs supply agreements locally using the standard ORN rate request template. Net rate must be benchmarked against at least 2 competitor sources. Both parties sign the standard ORN contract. PM uploads to contract tracker.'},
+  {n:'02',title:'Load',sub:'BLR · 24hr SLA',detail:"Disha's loading team receives the signed contract and loads all supply into the platform within 24 hours — hard SLA, not a target. The person who contracts supply never loads it. This separation is the first quality gate."},
+  {n:'03',title:'QC Check',sub:'Two-eyes · Disha',detail:"Disha's QC team audits every loaded supply item: rate accuracy, content completeness, image standards, category tagging, and rate parity against live API rates. Any item failing QC is returned to the loader with a clear error note. Nothing goes live without QC sign-off."},
+  {n:'04',title:'Tag & Map',sub:'Category & destination',detail:'Each supply item is tagged by type (e.g. Hotel, Transfer, Visa), category group (G1–G5) and destination. This tagging is what enables automatic product creation — the system reads the tags and assembles packages automatically.'},
+  {n:'05',title:'Product live',sub:'Auto-created',detail:'Once supply is loaded, QC-passed and correctly tagged, the platform creates the product automatically. No manual product build needed. Products appear in the relevant destination pages, available for B2B agents to quote and book immediately.'},
+];
+
+// ── GROWTH PATH ───────────────────────────────────────────────────────────────
+var GSTAGES = [
+  {n:'01',title:'Individual PM / DMC',trig:'From day one',detail:'A single Product Manager or DMC partner contracts all supply in the destination. Could be an individual on retainer or a DMC partner organisation. Reports to BLR Supply Managers by category. Low cost, fast to activate.'},
+  {n:'02',title:'Small team',trig:'~500 bookings/month',detail:'As volume grows, the individual PM is supported by 2–4 additional staff covering specific supply types. The DMC may be asked to expand their team. BLR provides additional loading and QC resource to match the supply pipeline.'},
+  {n:'03',title:'In-destination office',trig:'~2,000 bookings/month',detail:'At significant scale, TripFactory ORN establishes a small local office in the destination — 5–10 people covering contracting, operations and customer experience. The office reports directly to Sachin Keni.'},
+  {n:'04',title:'DMC acquisition',trig:'Strategic opportunity',detail:'Where a DMC partner has become critical and the relationship is near-exclusive, TripFactory ORN may acquire the DMC. This gives full control of the supply chain, eliminates the commercial middleman and creates proprietary competitive advantage.'},
+];
+
+// ── PRINCIPLES ────────────────────────────────────────────────────────────────
+var PRINCS = [
+  {n:'01',title:'Supply before product',color:'#1B4F8A',body:'No product can be created without contracted supply. The system builds products automatically once supply is loaded and tagged. Contracting supply is the primary commercial activity of the entire division.'},
+  {n:'02',title:'Category expertise',color:'#0A7E8C',body:'Supply Managers own a category globally — not a region. The Accommodation Manager applies hotel contracting expertise in Dubai, Bali, London and Cape Town equally. Deep commercial knowledge, not geographic spreading.'},
+  {n:'03',title:'Destination execution',color:'#C2410C',body:'The PM or DMC contracts all supply types locally. They are the commercial relationship on the ground. They grow as the destination grows — from one person through to potential acquisition.'},
+  {n:'04',title:'Contract ≠ Load',color:'#6B2FA0',body:"The person who contracts supply never loads it. Disha's team loads all supply from contracted agreements. This two-step process is the quality gate that catches rate errors and compliance gaps."},
+  {n:'05',title:'Growth path built in',color:'#0B6E4F',body:'Individual → Small Team → In-Destination Office → DMC Acquisition. Each step is triggered by booking volume thresholds — not headcount decisions. The cost structure scales with revenue.'},
+];
+
+// ── BUILD FUNCTIONS ───────────────────────────────────────────────────────────
+function buildDests() {
+  var c = document.getElementById('dest-regions');
+  REGIONS.forEach(function(reg) {
+    var active = reg.dests.filter(function(d){return d.status==='Active'}).length;
+    var dr = document.createElement('div');
+    dr.className = 'dreg';
+    dr.innerHTML = '<div class="dreg-hdr" onclick="tReg(this.parentNode)"><span class="dreg-pill" style="background:'+reg.color+'">'+reg.name+'</span><span class="dreg-count">'+active+' active · '+reg.dests.length+' total</span><span class="dreg-chev">▶</span></div><div class="dreg-grid"></div>';
+    var grid = dr.querySelector('.dreg-grid');
+    reg.dests.forEach(function(d, i) {
+      var stBg = d.status==='Active' ? '#F0FDF4' : (d.dmc==='TBC' ? '#FFFBEB' : '#F1F5F9');
+      var stC  = d.status==='Active' ? '#0B6E4F' : (d.dmc==='TBC' ? '#92400E' : '#64748B');
+      var dc = document.createElement('div');
+      dc.className = 'dcard';
+      dc.innerHTML = '<div class="dname">'+d.name+'</div><div class="ddmc">'+d.dmc+'</div><span style="font-size:9px;font-weight:600;padding:2px 7px;border-radius:20px;background:'+stBg+';color:'+stC+'">'+d.status+'</span><div class="ddetail"><div style="font-size:11px;margin-bottom:5px"><strong style="color:var(--brand)">Model:</strong> '+d.model+'</div><div style="font-size:11px;margin-bottom:6px"><strong style="color:var(--brand)">DMC/Partner:</strong> '+d.dmc+'</div><span class="nchip vac" onclick="openPop(event,\'vac\')">← Enter PM / contact name</span></div>';
+      dc.addEventListener('click', function(){ this.classList.toggle('open'); });
+      grid.appendChild(dc);
+    });
+    c.appendChild(dr);
+  });
+}
+
+function buildSCats() {
+  var c = document.getElementById('scat-grid');
+  SCATS.forEach(function(sc) {
+    var el = document.createElement('div');
+    el.className = 'scat';
+    var types = sc.types.map(function(t) {
+      return '<div class="stype" style="background:'+sc.typebg+';color:'+sc.typec+'"><span class="sdot" style="background:'+sc.color+'"></span>'+t+'</div>';
+    }).join('');
+    el.innerHTML = '<div class="scat-hdr" style="background:'+sc.bg+'"><div class="scat-title" style="color:'+sc.color+'">'+sc.name+'</div><div class="scat-mgr" style="color:'+sc.color+'">'+sc.mgr+'</div></div><div class="scat-types">'+types+'</div>';
+    c.appendChild(el);
+  });
+}
+
+function buildWorkflow() {
+  var c = document.getElementById('wflow');
+  WSTEPS.forEach(function(s, i) {
+    var w = document.createElement('div');
+    w.className = 'wstep';
+    w.innerHTML = '<div class="wnum">'+s.n+'</div><div class="wtitle">'+s.title+'</div><div class="wsub">'+s.sub+'</div><div class="wdetail">'+s.detail+'</div>';
+    w.addEventListener('click', function(){ this.classList.toggle('on'); });
+    c.appendChild(w);
+    if(i < WSTEPS.length-1) {
+      var a = document.createElement('div');
+      a.className = 'warr';
+      a.textContent = '→';
+      c.appendChild(a);
+    }
+  });
+}
+
+function buildGrowth() {
+  var c = document.getElementById('gpath');
+  GSTAGES.forEach(function(s, i) {
+    var g = document.createElement('div');
+    g.className = 'gstage';
+    g.innerHTML = '<div class="gnum">'+s.n+'</div><div class="gtitle">'+s.title+'</div><div class="gtrig">'+s.trig+'</div><div class="gdetail">'+s.detail+'</div>';
+    g.addEventListener('click', function(){ this.classList.toggle('on'); });
+    c.appendChild(g);
+    if(i < GSTAGES.length-1) {
+      var a = document.createElement('div');
+      a.className = 'garr';
+      a.textContent = '→';
+      c.appendChild(a);
+    }
+  });
+}
+
+function buildPrincs() {
+  var c = document.getElementById('princ-grid');
+  PRINCS.forEach(function(p) {
+    var el = document.createElement('div');
+    el.className = 'princ';
+    el.style.borderTopColor = p.color;
+    el.innerHTML = '<div class="pnum">'+p.n+'</div><div class="ptitle" style="color:'+p.color+'">'+p.title+'</div><div class="pbody">'+p.body+'</div>';
+    c.appendChild(el);
+  });
+}
+
+// ── TOGGLES ───────────────────────────────────────────────────────────────────
+function toggleSec(id) {
+  var el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
+function toggleCard(id) {
+  var el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
+function tReg(el) {
+  el.classList.toggle('open');
+}
+
+// ── POPUP ─────────────────────────────────────────────────────────────────────
+function openPop(e, id) {
+  e.stopPropagation();
+  var p = PD[id] || PD['vac'];
+  document.getElementById('pav').style.background = p.color;
+  document.getElementById('pav').textContent = p.init;
+  document.getElementById('pname').textContent = p.name;
+  document.getElementById('prole').textContent = p.role;
+  var stBg = p.status==='Confirmed' ? '#F0FDF4' : (p.status==='Vacant' ? '#FEF2F2' : '#FFFBEB');
+  var stC  = p.status==='Confirmed' ? '#0B6E4F' : (p.status==='Vacant' ? '#991B1B' : '#92400E');
+  document.getElementById('ptags').innerHTML =
+    '<span class="ctag" style="background:'+stBg+';color:'+stC+';font-size:10px;padding:3px 9px;border-radius:20px">'+p.status+'</span>' +
+    '<span class="ctag" style="background:#EFF6FF;color:#1B4F8A;font-size:10px;padding:3px 9px;border-radius:20px">'+p.dept+'</span>';
+  document.getElementById('pbd').innerHTML = [
+    ['Location', p.loc],
+    ['Reports to', p.reports],
+    ['Email', p.email || 'TBC'],
+    ['Notes', p.notes]
+  ].map(function(f){
+    return '<div class="pfield"><span class="pfl">'+f[0]+'</span><span class="pfv">'+f[1]+'</span></div>';
+  }).join('');
+  document.getElementById('overlay').classList.add('open');
+}
+
+function closePop() {
+  document.getElementById('overlay').classList.remove('open');
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+buildDests();
+buildSCats();
+buildWorkflow();
+buildGrowth();
+buildPrincs();
+</script>
+</body>
+</html>

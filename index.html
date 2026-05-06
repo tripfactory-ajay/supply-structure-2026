@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TripFactory ORN — Supply Division Model</title>
+<title>TripFactory ORN — Supply Division</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --navy:#0D1B2A;--brand:#1B4F8A;--gold:#C9A84C;
@@ -194,18 +195,43 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 .fab:hover{background:var(--brand);transform:translateY(-2px)}
 .hidden{display:none!important}
 @media(max-width:640px){.card-grid,.card-grid.two{grid-template-columns:1fr}.wflow,.gpath{flex-wrap:wrap}.hdr-right{display:none}.wrap{padding:16px 14px 60px}}
+
+
+.tab-bar{background:#fff;border-bottom:2px solid #E2E8F0;position:sticky;top:57px;z-index:190;display:flex}
+.tbtn{padding:13px 28px;font-size:13px;font-weight:700;color:#94A3B8;cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;transition:.18s;font-family:'Plus Jakarta Sans',sans-serif;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.tbtn:hover{color:#0D1B2A;background:#F8FAFC}
+.tbtn.on{color:#1B4F8A;border-bottom-color:#C9A84C}
+.tpanel{display:none}
+.tpanel.on{display:block}
+.svg-wrap{max-width:860px;margin:0 auto;padding:24px 20px 60px}
+.svg-box{background:#0D1B2A;border:1px solid #1e2533;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.3)}
+.svg-top{padding:16px 22px 14px;border-bottom:1px solid #1e2533;display:flex;align-items:center;gap:12px}
+.svg-top h2{font-size:15px;font-weight:800;color:#fff}
+.svg-top p{font-size:11px;color:#94A3B8;margin-top:2px}
+.svg-dl{margin-left:auto;font-size:11px;font-weight:600;padding:5px 13px;border-radius:7px;border:1.5px solid rgba(201,168,76,.4);background:rgba(201,168,76,.08);color:#C9A84C;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:.15s;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap}
+.svg-dl:hover{background:rgba(201,168,76,.15)}
+.svg-note{padding:10px 22px;background:#0f1820;border-bottom:1px solid #1e2533;font-size:11px;color:#64748B;line-height:1.6}
+.svg-note strong{color:#C9A84C}
+.svg-body{padding:20px;overflow-x:auto}
+.svg-legend{display:flex;gap:14px;flex-wrap:wrap;padding:12px 22px;border-top:1px solid #1e2533;background:#0a1520}
+.leg{display:flex;align-items:center;gap:5px;font-size:11px;color:#64748B}
+.ldot{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+
 </style>
 </head>
 <body>
 
-<!-- WHITE HEADER WITH ORN LOGO -->
 <div class="hdr">
   <div class="hdr-gold"></div>
   <div class="hdr-inner">
-    <img src="orn-logo.png" alt="ORN" class="hdr-logo" onerror="this.style.display='none';document.getElementById('hdr-fb').style.display='block'">
-    <div id="hdr-fb" style="display:none" class="hdr-fallback">Trip<em>Factory</em> ORN</div>
+    <img src="orn-logo.png" alt="ORN" class="hdr-logo"
+         onerror="this.style.display='none';document.getElementById('hfb').style.display='block'">
+    <div id="hfb" style="display:none;font-size:18px;font-weight:800;color:#0D1B2A;font-family:'Plus Jakarta Sans',sans-serif">ORN</div>
     <div class="hdr-div"></div>
-    <div class="hdr-text">Supply Division &nbsp;·&nbsp; Structure &amp; Operating Model &nbsp;·&nbsp; May 2026</div>
+    <div>
+      <div style="font-size:12px;font-weight:700;color:#0D1B2A;line-height:1">Supply Division</div>
+      <div style="font-size:10px;color:#94A3B8;font-family:'DM Mono',monospace;margin-top:2px">Structure &amp; Operating Model · May 2026</div>
+    </div>
     <div class="hdr-right">
       <span class="hpill hp-gold">Head of Supply: Sachin Keni</span>
       <span class="hpill hp-teal">Admin &amp; QC: Disha</span>
@@ -213,6 +239,315 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
   </div>
 </div>
 
+<div class="tab-bar">
+  <button class="tbtn on" id="tb1" onclick="switchTab(1)">📊 &nbsp;Visual Infographic</button>
+  <button class="tbtn" id="tb2" onclick="switchTab(2)">🏗️ &nbsp;Detailed Structure &amp; Roles</button>
+</div>
+
+<div class="tpanel on" id="tp1">
+  <div class="svg-wrap">
+    <div class="svg-box">
+      <div class="svg-top">
+        <div>
+          <h2>Supply Division — Structure, Workflow &amp; Model</h2>
+          <p>All layers · supply types · workflow · destinations · growth path · principles</p>
+        </div>
+        <a class="svg-dl" href="orn_supply_model_infographic.svg" download>⬇ Download SVG</a>
+      </div>
+      <div class="svg-note">
+        Scroll to see the complete infographic. Switch to <strong>Detailed Structure</strong> to explore each role with expandable descriptions, team details and name allocation.
+      </div>
+      <div class="svg-body">
+<svg viewBox="0 0 800 1304" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:800px;height:auto;display:block;margin:0 auto;background:#0D1B2A">
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+    <path d="M1 1L9 5L1 9" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<style>text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif;letter-spacing:0}</style>
+<rect x="0" y="0" width="800" height="72" fill="#0D1B2A"/>
+<rect x="0" y="68" width="800" height="4" fill="#C9A84C"/>
+<text x="400" y="28" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="700">TripFactory ORN — Supply Division</text>
+<text x="400" y="50" text-anchor="middle" fill="#94A3B8" font-size="12" font-weight="400">Structure · Workflow · Operating Model · May 2026</text>
+<rect x="24" y="84" width="752" height="13" fill="#C9A84C" rx="3" opacity="0.2"/>
+<text x="400" y="94" text-anchor="middle" fill="#C9A84C" font-size="9" font-weight="600">LAYER 1 — BLR LEADERSHIP</text>
+<rect x="240" y="104" width="320" height="68" fill="#1E293B" rx="10" stroke="#334155" stroke-width="1"/>
+<rect x="240" y="104" width="320" height="4" fill="#C9A84C" rx="3"/>
+<rect x="240" y="105" width="320" height="3" fill="#C9A84C"/>
+<text x="400" y="126" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="700">Head of Supply</text>
+<text x="400" y="146" text-anchor="middle" fill="#5EEAD4" font-size="11" font-weight="500">Sachin Keni · BLR Bangalore</text>
+<text x="400" y="162" text-anchor="middle" fill="#94A3B8" font-size="9" font-weight="400">Reports to: CPSO / Ajay Kawa</text>
+<line x1="400" y1="180" x2="400" y2="196" stroke="#94A3B8" stroke-width="1"/>
+<line x1="44" y1="196" x2="756" y2="196" stroke="#94A3B8" stroke-width="0.5"/>
+<rect x="24" y="196" width="752" height="13" fill="#1B4F8A" rx="3" opacity="0.15"/>
+<text x="400" y="206" text-anchor="middle" fill="#1B4F8A" font-size="9" font-weight="600">LAYER 2 — SUPPLY MANAGERS BY CATEGORY · BLR BANGALORE</text>
+<rect x="24" y="216" width="144" height="90" fill="#DBEAFE" rx="8" stroke="#1E40AF" stroke-width="1"/>
+<rect x="24" y="216" width="144" height="24" fill="#1E40AF" rx="8"/>
+<rect x="24" y="232" width="144" height="8" fill="#1E40AF"/>
+<text x="96" y="231" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Accommodation</text>
+<text x="96" y="254" text-anchor="middle" fill="#1E3A8A" font-size="9" font-weight="400">Hotels & Resorts</text>
+<text x="96" y="270" text-anchor="middle" fill="#1E3A8A" font-size="9" font-weight="400">Cruises & Yachts</text>
+<text x="96" y="292" text-anchor="middle" fill="#1E40AF" font-size="8" font-weight="500">← Allocate name</text>
+<line x1="96" y1="212" x2="96" y2="216" stroke="#93C5FD" stroke-width="0.8"/>
+<rect x="176" y="216" width="144" height="90" fill="#D1FAE5" rx="8" stroke="#065F46" stroke-width="1"/>
+<rect x="176" y="216" width="144" height="24" fill="#065F46" rx="8"/>
+<rect x="176" y="232" width="144" height="8" fill="#065F46"/>
+<text x="248" y="231" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Transport</text>
+<text x="248" y="254" text-anchor="middle" fill="#064E3B" font-size="9" font-weight="400">Transfers & Drivers</text>
+<text x="248" y="270" text-anchor="middle" fill="#064E3B" font-size="9" font-weight="400">Airport Reps · Service Pts</text>
+<text x="248" y="292" text-anchor="middle" fill="#065F46" font-size="8" font-weight="500">← Allocate name</text>
+<line x1="248" y1="212" x2="248" y2="216" stroke="#6EE7B7" stroke-width="0.8"/>
+<rect x="328" y="216" width="144" height="90" fill="#FED7AA" rx="8" stroke="#7C2D12" stroke-width="1"/>
+<rect x="328" y="216" width="144" height="24" fill="#7C2D12" rx="8"/>
+<rect x="328" y="232" width="144" height="8" fill="#7C2D12"/>
+<text x="400" y="231" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Experiences</text>
+<text x="400" y="254" text-anchor="middle" fill="#7C2D12" font-size="9" font-weight="400">Tours · Attractions</text>
+<text x="400" y="270" text-anchor="middle" fill="#7C2D12" font-size="9" font-weight="400">Guides · Adventure · Events</text>
+<text x="400" y="292" text-anchor="middle" fill="#7C2D12" font-size="8" font-weight="500">← Allocate name</text>
+<line x1="400" y1="212" x2="400" y2="216" stroke="#FDBA74" stroke-width="0.8"/>
+<rect x="480" y="216" width="144" height="90" fill="#EDE9FE" rx="8" stroke="#6B21A8" stroke-width="1"/>
+<rect x="480" y="216" width="144" height="24" fill="#6B21A8" rx="8"/>
+<rect x="480" y="232" width="144" height="8" fill="#6B21A8"/>
+<text x="552" y="231" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Wellness & Dining</text>
+<text x="552" y="254" text-anchor="middle" fill="#4C1D95" font-size="9" font-weight="400">Restaurants · Spas</text>
+<text x="552" y="270" text-anchor="middle" fill="#4C1D95" font-size="9" font-weight="400">Photography · Shopping</text>
+<text x="552" y="292" text-anchor="middle" fill="#6B21A8" font-size="8" font-weight="500">← Allocate name</text>
+<line x1="552" y1="212" x2="552" y2="216" stroke="#C4B5FD" stroke-width="0.8"/>
+<rect x="632" y="216" width="144" height="90" fill="#A7F3D0" rx="8" stroke="#064E3B" stroke-width="1"/>
+<rect x="632" y="216" width="144" height="24" fill="#064E3B" rx="8"/>
+<rect x="632" y="232" width="144" height="8" fill="#064E3B"/>
+<text x="704" y="231" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">Docs & Insurance</text>
+<text x="704" y="254" text-anchor="middle" fill="#064E3B" font-size="9" font-weight="400">Visa & Documentation</text>
+<text x="704" y="270" text-anchor="middle" fill="#064E3B" font-size="9" font-weight="400">Insurance · Flight Tickets</text>
+<text x="704" y="292" text-anchor="middle" fill="#064E3B" font-size="8" font-weight="500">← Allocate name</text>
+<line x1="704" y1="212" x2="704" y2="216" stroke="#34D399" stroke-width="0.8"/>
+<line x1="44" y1="318" x2="756" y2="318" stroke="#94A3B8" stroke-width="0.3"/>
+<line x1="96" y1="318" x2="96" y2="330" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+<line x1="248" y1="318" x2="248" y2="330" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+<line x1="400" y1="318" x2="400" y2="330" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+<line x1="552" y1="318" x2="552" y2="330" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+<line x1="704" y1="318" x2="704" y2="330" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+<rect x="24" y="330" width="752" height="13" fill="#0A7E8C" rx="3" opacity="0.15"/>
+<text x="400" y="340" text-anchor="middle" fill="#0A7E8C" font-size="9" font-weight="600">LAYER 3 — SUPPLY ADMINISTRATION, QUALITY CONTROL & OPERATIONS · BLR</text>
+<rect x="24" y="350" width="370" height="100" fill="#0F2922" rx="10" stroke="#6EE7B7" stroke-width="1"/>
+<rect x="24" y="350" width="370" height="4" fill="#0A7E8C" rx="3"/>
+<rect x="24" y="351" width="370" height="3" fill="#0A7E8C"/>
+<text x="209" y="370" text-anchor="middle" fill="#5EEAD4" font-size="12" font-weight="700">Supply Admin & Quality Control</text>
+<text x="209" y="388" text-anchor="middle" fill="#A7F3D0" font-size="10" font-weight="500">Head: Disha · BLR Bangalore</text>
+<text x="209" y="404" text-anchor="middle" fill="#6EE7B7" font-size="9" font-weight="400">Loading ×10 · QC & Audit ×6 · Content ×4</text>
+<rect x="34" y="415" width="66" height="20" fill="#065F46" rx="5"/>
+<text x="67" y="428" text-anchor="middle" fill="#6EE7B7" font-size="8" font-weight="600">Load 24h</text>
+<rect x="106" y="415" width="62" height="20" fill="#065F46" rx="5"/>
+<text x="137" y="428" text-anchor="middle" fill="#6EE7B7" font-size="8" font-weight="600">Map 24h</text>
+<rect x="174" y="415" width="78" height="20" fill="#065F46" rx="5"/>
+<text x="213" y="428" text-anchor="middle" fill="#6EE7B7" font-size="8" font-weight="600">Content 48h</text>
+<rect x="258" y="415" width="62" height="20" fill="#065F46" rx="5"/>
+<text x="289" y="428" text-anchor="middle" fill="#6EE7B7" font-size="8" font-weight="600">0 errors</text>
+<rect x="406" y="350" width="370" height="100" fill="#1C0E00" rx="10" stroke="#EF9F27" stroke-width="1"/>
+<rect x="406" y="350" width="370" height="4" fill="#C2410C" rx="3"/>
+<rect x="406" y="351" width="370" height="3" fill="#C2410C"/>
+<text x="591" y="370" text-anchor="middle" fill="#FED7AA" font-size="12" font-weight="700">Operations Teams</text>
+<text x="591" y="386" text-anchor="middle" fill="#EF9F27" font-size="10" font-weight="400">BLR Bangalore · daily fulfilment</text>
+<rect x="416" y="400" width="171" height="36" fill="#3C1A00" rx="7"/>
+<text x="501" y="415" text-anchor="middle" fill="#FED7AA" font-size="9" font-weight="600">Visa & Documentation</text>
+<text x="501" y="429" text-anchor="middle" fill="#EF9F27" font-size="8" font-weight="400">processing · embassy · insurance</text>
+<rect x="595" y="400" width="171" height="36" fill="#3C1A00" rx="7"/>
+<text x="680" y="415" text-anchor="middle" fill="#FED7AA" font-size="9" font-weight="600">Transport Operations</text>
+<text x="680" y="429" text-anchor="middle" fill="#EF9F27" font-size="8" font-weight="400">transfers · drivers · reps</text>
+<line x1="24" y1="460" x2="776" y2="460" stroke="#C9A84C" stroke-width="0.5"/>
+<text x="400" y="472" text-anchor="middle" fill="#C9A84C" font-size="8" font-weight="500">CONTRACTING RELATIONSHIP — Supply Managers direct in-destination supply</text>
+<rect x="24" y="482" width="752" height="13" fill="#0B6E4F" rx="3" opacity="0.15"/>
+<text x="400" y="492" text-anchor="middle" fill="#0B6E4F" font-size="9" font-weight="600">LAYER 4 — IN-DESTINATION · PRODUCT MANAGER or DMC PARTNER</text>
+<rect x="24" y="502" width="752" height="190" fill="none" rx="12" stroke="#0B6E4F" stroke-width="0.8" stroke-dasharray="6 3"/>
+<text x="400" y="518" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="500">50 destinations across 6 regions — one PM or DMC per destination each</text>
+<rect x="32" y="532" width="178" height="52" fill="#0F766E" rx="7" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+<text x="121" y="547" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">Middle East & Islands</text>
+<text x="121" y="563" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="8" font-weight="400">Dubai · Oman · Egypt · Maldives</text>
+<text x="121" y="577" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8" font-weight="400">Morocco · Jordan · 13 dests</text>
+<rect x="218" y="532" width="178" height="52" fill="#065F46" rx="7" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+<text x="307" y="547" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">SE Asia & Pacific</text>
+<text x="307" y="563" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="8" font-weight="400">Thailand · Japan · Bali · Vietnam</text>
+<text x="307" y="577" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8" font-weight="400">Singapore · HK · 12 dests</text>
+<rect x="404" y="532" width="178" height="52" fill="#7C2D12" rx="7" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+<text x="493" y="547" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">India</text>
+<text x="493" y="563" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="8" font-weight="400">Kerala · Goa · Rajasthan · J&K</text>
+<text x="493" y="577" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8" font-weight="400">NE India · Andaman · 7 dests</text>
+<rect x="590" y="532" width="178" height="52" fill="#1E40AF" rx="7" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+<text x="679" y="547" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">Europe</text>
+<text x="679" y="563" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="8" font-weight="400">UK · France · Italy · Spain</text>
+<text x="679" y="577" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8" font-weight="400">Greece · Germany · 10 dests</text>
+<rect x="32" y="592" width="364" height="44" fill="#6B21A8" rx="7" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+<text x="214" y="607" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">Americas & Africa</text>
+<text x="214" y="621" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="8" font-weight="400">USA · Canada · LatAm · Caribbean</text>
+<text x="214" y="635" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8" font-weight="400">South Africa · Kenya · Tanzania · 6 dests</text>
+<rect x="404" y="592" width="364" height="44" fill="#9D174D" rx="7" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+<text x="586" y="607" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">Central Asia & Oceania</text>
+<text x="586" y="621" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="8" font-weight="400">Uzbekistan · Kazakhstan · Russia · Georgia</text>
+<text x="586" y="635" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8" font-weight="400">Australia · NZ · Fiji · Bora Bora · 8 dests</text>
+<rect x="24" y="706" width="752" height="13" fill="#6B2FA0" rx="3" opacity="0.15"/>
+<text x="400" y="716" text-anchor="middle" fill="#6B2FA0" font-size="9" font-weight="600">DESTINATION GROWTH PATH — volume-triggered, built in from day one</text>
+<rect x="24" y="726" width="752" height="72" fill="none" rx="10" stroke="#6B2FA0" stroke-width="0.8"/>
+<rect x="32" y="734" width="176" height="56" fill="#EEEDFE" rx="7"/>
+<text x="120" y="750" text-anchor="middle" fill="#3C3489" font-size="8" font-weight="600">Stage 1</text>
+<text x="120" y="766" text-anchor="middle" fill="#3C3489" font-size="10" font-weight="700">Individual PM / DMC</text>
+<text x="120" y="782" text-anchor="middle" fill="#3C3489" font-size="8" font-weight="400">From day one</text>
+<text x="213" y="766" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="400">→</text>
+<rect x="218" y="734" width="176" height="56" fill="#CECBF6" rx="7"/>
+<text x="306" y="750" text-anchor="middle" fill="#26215C" font-size="8" font-weight="600">Stage 2</text>
+<text x="306" y="766" text-anchor="middle" fill="#26215C" font-size="10" font-weight="700">Small Team (2–5)</text>
+<text x="306" y="782" text-anchor="middle" fill="#26215C" font-size="8" font-weight="400">~500 bkgs/month</text>
+<text x="399" y="766" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="400">→</text>
+<rect x="404" y="734" width="176" height="56" fill="#AFA9EC" rx="7"/>
+<text x="492" y="750" text-anchor="middle" fill="#1E1B4B" font-size="8" font-weight="600">Stage 3</text>
+<text x="492" y="766" text-anchor="middle" fill="#1E1B4B" font-size="10" font-weight="700">In-Dest. Office</text>
+<text x="492" y="782" text-anchor="middle" fill="#1E1B4B" font-size="8" font-weight="400">~2,000 bkgs/month</text>
+<text x="585" y="766" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="400">→</text>
+<rect x="590" y="734" width="176" height="56" fill="#534AB7" rx="7"/>
+<text x="678" y="750" text-anchor="middle" fill="#FFFFFF" font-size="8" font-weight="600">Stage 4</text>
+<text x="678" y="766" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">DMC Acquisition</text>
+<text x="678" y="782" text-anchor="middle" fill="#FFFFFF" font-size="8" font-weight="400">Strategic opportunity</text>
+<rect x="24" y="812" width="752" height="13" fill="#C9A84C" rx="3" opacity="0.2"/>
+<text x="400" y="822" text-anchor="middle" fill="#C9A84C" font-size="9" font-weight="600">17 SUPPLY COMPONENTS — contracted in-destination · loaded and QC'd in BLR</text>
+<rect x="24" y="832" width="144" height="136" fill="#DBEAFE" rx="8" stroke="#1E40AF" stroke-width="1"/>
+<rect x="24" y="832" width="144" height="24" fill="#1E40AF" rx="8"/>
+<rect x="24" y="848" width="144" height="8" fill="#1E40AF"/>
+<text x="96" y="847" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Accommodation</text>
+<rect x="29" y="866" width="134" height="17" fill="#1E40AF" rx="4" opacity="0.3"/>
+<text x="96" y="877" text-anchor="middle" fill="#1E3A8A" font-size="8" font-weight="400">Hotel & Accommodation</text>
+<rect x="29" y="886" width="134" height="17" fill="#1E40AF" rx="4" opacity="0.3"/>
+<text x="96" y="897" text-anchor="middle" fill="#1E3A8A" font-size="8" font-weight="400">Cruise & Yacht</text>
+<rect x="176" y="832" width="144" height="136" fill="#D1FAE5" rx="8" stroke="#065F46" stroke-width="1"/>
+<rect x="176" y="832" width="144" height="24" fill="#065F46" rx="8"/>
+<rect x="176" y="848" width="144" height="8" fill="#065F46"/>
+<text x="248" y="847" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Transport</text>
+<rect x="181" y="866" width="134" height="17" fill="#065F46" rx="4" opacity="0.3"/>
+<text x="248" y="877" text-anchor="middle" fill="#064E3B" font-size="8" font-weight="400">Transport & Transfers</text>
+<rect x="181" y="886" width="134" height="17" fill="#065F46" rx="4" opacity="0.3"/>
+<text x="248" y="897" text-anchor="middle" fill="#064E3B" font-size="8" font-weight="400">Airport Representative</text>
+<rect x="181" y="906" width="134" height="17" fill="#065F46" rx="4" opacity="0.3"/>
+<text x="248" y="917" text-anchor="middle" fill="#064E3B" font-size="8" font-weight="400">Service Points</text>
+<rect x="328" y="832" width="144" height="136" fill="#FED7AA" rx="8" stroke="#7C2D12" stroke-width="1"/>
+<rect x="328" y="832" width="144" height="24" fill="#7C2D12" rx="8"/>
+<rect x="328" y="848" width="144" height="8" fill="#7C2D12"/>
+<text x="400" y="847" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Experiences</text>
+<rect x="333" y="866" width="134" height="17" fill="#7C2D12" rx="4" opacity="0.3"/>
+<text x="400" y="877" text-anchor="middle" fill="#7C2D12" font-size="8" font-weight="400">Sightseeing Tours</text>
+<rect x="333" y="886" width="134" height="17" fill="#7C2D12" rx="4" opacity="0.3"/>
+<text x="400" y="897" text-anchor="middle" fill="#7C2D12" font-size="8" font-weight="400">Attractions & Tickets</text>
+<rect x="333" y="906" width="134" height="17" fill="#7C2D12" rx="4" opacity="0.3"/>
+<text x="400" y="917" text-anchor="middle" fill="#7C2D12" font-size="8" font-weight="400">Guide & Naturalist</text>
+<rect x="333" y="926" width="134" height="17" fill="#7C2D12" rx="4" opacity="0.3"/>
+<text x="400" y="937" text-anchor="middle" fill="#7C2D12" font-size="8" font-weight="400">Adventure & Sports</text>
+<rect x="333" y="946" width="134" height="17" fill="#7C2D12" rx="4" opacity="0.3"/>
+<text x="400" y="957" text-anchor="middle" fill="#7C2D12" font-size="8" font-weight="400">Events & Entertainment</text>
+<rect x="480" y="832" width="144" height="136" fill="#EDE9FE" rx="8" stroke="#6B21A8" stroke-width="1"/>
+<rect x="480" y="832" width="144" height="24" fill="#6B21A8" rx="8"/>
+<rect x="480" y="848" width="144" height="8" fill="#6B21A8"/>
+<text x="552" y="847" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Wellness & Dining</text>
+<rect x="485" y="866" width="134" height="17" fill="#6B21A8" rx="4" opacity="0.3"/>
+<text x="552" y="877" text-anchor="middle" fill="#4C1D95" font-size="8" font-weight="400">Restaurant & Dining</text>
+<rect x="485" y="886" width="134" height="17" fill="#6B21A8" rx="4" opacity="0.3"/>
+<text x="552" y="897" text-anchor="middle" fill="#4C1D95" font-size="8" font-weight="400">Wellness & Spa</text>
+<rect x="485" y="906" width="134" height="17" fill="#6B21A8" rx="4" opacity="0.3"/>
+<text x="552" y="917" text-anchor="middle" fill="#4C1D95" font-size="8" font-weight="400">Photography & Content</text>
+<rect x="485" y="926" width="134" height="17" fill="#6B21A8" rx="4" opacity="0.3"/>
+<text x="552" y="937" text-anchor="middle" fill="#4C1D95" font-size="8" font-weight="400">Shopping & Craft</text>
+<rect x="632" y="832" width="144" height="136" fill="#A7F3D0" rx="8" stroke="#064E3B" stroke-width="1"/>
+<rect x="632" y="832" width="144" height="24" fill="#064E3B" rx="8"/>
+<rect x="632" y="848" width="144" height="8" fill="#064E3B"/>
+<text x="704" y="847" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Docs & Insurance</text>
+<rect x="637" y="866" width="134" height="17" fill="#064E3B" rx="4" opacity="0.3"/>
+<text x="704" y="877" text-anchor="middle" fill="#064E3B" font-size="8" font-weight="400">Visa & Documentation</text>
+<rect x="637" y="886" width="134" height="17" fill="#064E3B" rx="4" opacity="0.3"/>
+<text x="704" y="897" text-anchor="middle" fill="#064E3B" font-size="8" font-weight="400">Travel Insurance</text>
+<rect x="637" y="906" width="134" height="17" fill="#064E3B" rx="4" opacity="0.3"/>
+<text x="704" y="917" text-anchor="middle" fill="#064E3B" font-size="8" font-weight="400">Flight Tickets</text>
+<rect x="24" y="982" width="752" height="13" fill="#1B4F8A" rx="3" opacity="0.15"/>
+<text x="400" y="992" text-anchor="middle" fill="#1B4F8A" font-size="9" font-weight="600">SUPPLY WORKFLOW — from contract to live product on platform</text>
+<rect x="24" y="1002" width="142" height="80" fill="#1B4F8A" rx="8"/>
+<text x="95" y="1020" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">1. Contract</text>
+<text x="95" y="1040" text-anchor="middle" fill="#B5D4F4" font-size="9" font-weight="400">PM / DMC negotiates</text>
+<text x="95" y="1056" text-anchor="middle" fill="#B5D4F4" font-size="9" font-weight="400">& signs in-destination</text>
+<text x="171" y="1046" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="400">→</text>
+<rect x="176" y="1002" width="142" height="80" fill="#0A7E8C" rx="8"/>
+<text x="247" y="1020" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">2. Load (24h)</text>
+<text x="247" y="1040" text-anchor="middle" fill="#6EE7B7" font-size="9" font-weight="400">BLR loads all supply</text>
+<text x="247" y="1056" text-anchor="middle" fill="#6EE7B7" font-size="9" font-weight="400">to platform — hard SLA</text>
+<text x="323" y="1046" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="400">→</text>
+<rect x="328" y="1002" width="142" height="80" fill="#C2410C" rx="8"/>
+<text x="399" y="1020" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">3. QC Check</text>
+<text x="399" y="1040" text-anchor="middle" fill="#FED7AA" font-size="9" font-weight="400">Disha team audits</text>
+<text x="399" y="1056" text-anchor="middle" fill="#FED7AA" font-size="9" font-weight="400">rates · content · parity</text>
+<text x="475" y="1046" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="400">→</text>
+<rect x="480" y="1002" width="142" height="80" fill="#0B6E4F" rx="8"/>
+<text x="551" y="1020" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">4. Tag & Map</text>
+<text x="551" y="1040" text-anchor="middle" fill="#A7F3D0" font-size="9" font-weight="400">Tagged by type, category</text>
+<text x="551" y="1056" text-anchor="middle" fill="#A7F3D0" font-size="9" font-weight="400">and destination</text>
+<text x="627" y="1046" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="400">→</text>
+<rect x="632" y="1002" width="142" height="80" fill="#6B2FA0" rx="8"/>
+<text x="703" y="1020" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">5. Live</text>
+<text x="703" y="1040" text-anchor="middle" fill="#D8B4FE" font-size="9" font-weight="400">Product auto-created</text>
+<text x="703" y="1056" text-anchor="middle" fill="#D8B4FE" font-size="9" font-weight="400">from tagged supply</text>
+<rect x="80" y="1092" width="640" height="52" fill="#0D1B2A" rx="10" stroke="#C9A84C" stroke-width="1"/>
+<text x="400" y="1112" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="700">⚡  Product Created Automatically</text>
+<text x="400" y="1130" text-anchor="middle" fill="#94A3B8" font-size="9" font-weight="400">Supply contracted · loaded · QC'd · tagged → platform builds product automatically</text>
+<rect x="24" y="1158" width="752" height="13" fill="#C9A84C" rx="3" opacity="0.2"/>
+<text x="400" y="1168" text-anchor="middle" fill="#C9A84C" font-size="9" font-weight="600">5 KEY OPERATING PRINCIPLES</text>
+<rect x="24" y="1178" width="144" height="80" fill="#0F1F35" rx="8" stroke="#1B4F8A" stroke-width="1.5"/>
+<rect x="24" y="1178" width="144" height="4" fill="#1B4F8A" rx="3"/>
+<rect x="24" y="1179" width="144" height="3" fill="#1B4F8A"/>
+<text x="96" y="1198" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Supply Before</text>
+<text x="96" y="1212" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Product</text>
+<text x="96" y="1230" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">No product without supply.</text>
+<text x="96" y="1243" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">System auto-builds when tagged.</text>
+<rect x="176" y="1178" width="144" height="80" fill="#0F1F35" rx="8" stroke="#0A7E8C" stroke-width="1.5"/>
+<rect x="176" y="1178" width="144" height="4" fill="#0A7E8C" rx="3"/>
+<rect x="176" y="1179" width="144" height="3" fill="#0A7E8C"/>
+<text x="248" y="1198" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Category</text>
+<text x="248" y="1212" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Expertise</text>
+<text x="248" y="1230" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">Managers own a type globally,</text>
+<text x="248" y="1243" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">not a region.</text>
+<rect x="328" y="1178" width="144" height="80" fill="#0F1F35" rx="8" stroke="#C2410C" stroke-width="1.5"/>
+<rect x="328" y="1178" width="144" height="4" fill="#C2410C" rx="3"/>
+<rect x="328" y="1179" width="144" height="3" fill="#C2410C"/>
+<text x="400" y="1198" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Destination</text>
+<text x="400" y="1212" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Execution</text>
+<text x="400" y="1230" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">PM or DMC contracts all</text>
+<text x="400" y="1243" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">types locally on the ground.</text>
+<rect x="480" y="1178" width="144" height="80" fill="#0F1F35" rx="8" stroke="#6B2FA0" stroke-width="1.5"/>
+<rect x="480" y="1178" width="144" height="4" fill="#6B2FA0" rx="3"/>
+<rect x="480" y="1179" width="144" height="3" fill="#6B2FA0"/>
+<text x="552" y="1198" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Contract</text>
+<text x="552" y="1212" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Never = Load</text>
+<text x="552" y="1230" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">Two people. Two steps.</text>
+<text x="552" y="1243" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">The quality gate.</text>
+<rect x="632" y="1178" width="144" height="80" fill="#0F1F35" rx="8" stroke="#0B6E4F" stroke-width="1.5"/>
+<rect x="632" y="1178" width="144" height="4" fill="#0B6E4F" rx="3"/>
+<rect x="632" y="1179" width="144" height="3" fill="#0B6E4F"/>
+<text x="704" y="1198" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Growth Path</text>
+<text x="704" y="1212" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="700">Built In</text>
+<text x="704" y="1230" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">Contractor → Team → Office</text>
+<text x="704" y="1243" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="400">→ DMC Acquisition.</text>
+<rect x="0" y="1270" width="800" height="3" fill="#C9A84C" opacity="0.6"/>
+<rect x="0" y="1273" width="800" height="26" fill="#0D1B2A"/>
+<text x="400" y="1288" text-anchor="middle" fill="#475569" font-size="8" font-weight="400">TripFactory ORN · Supply Division · Internal & Confidential · May 2026 · Head of Supply: Sachin Keni · Admin & QC: Disha</text>
+</svg>
+      </div>
+      <div class="svg-legend">
+        <div class="leg"><div class="ldot" style="background:#0D1B2A;border:1px solid #334155"></div>Leadership</div>
+        <div class="leg"><div class="ldot" style="background:#1E40AF"></div>Accommodation</div>
+        <div class="leg"><div class="ldot" style="background:#065F46"></div>Transport</div>
+        <div class="leg"><div class="ldot" style="background:#7C2D12"></div>Experiences</div>
+        <div class="leg"><div class="ldot" style="background:#6B21A8"></div>Wellness &amp; Dining</div>
+        <div class="leg"><div class="ldot" style="background:#064E3B"></div>Docs &amp; Insurance</div>
+        <div class="leg"><div class="ldot" style="background:#C9A84C"></div>In-Destination</div>
+        <div class="leg"><div class="ldot" style="background:#534AB7"></div>Growth Path</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tpanel" id="tp2">
 <div class="wrap">
 
 <!-- INTRO -->
@@ -685,7 +1020,8 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
   </div>
 </div>
 
-</div><!-- /wrap -->
+</div>
+</div>
 
 <!-- PERSON POPUP -->
 <div class="overlay" id="overlay" onclick="if(event.target===this)closePop()">
@@ -697,20 +1033,19 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
           <div class="pop-name" id="pname"></div>
           <div class="pop-role" id="prole"></div>
         </div>
-      </div>
-      <div id="ptags" style="display:flex;gap:5px;flex-wrap:wrap"></div>
-    </div>
-    <div class="pop-bd" id="pbd"></div>
-    <div class="pop-ft">
-      <button class="pbtn" onclick="closePop()">Close</button>
-      <button class="pbtn ok" onclick="closePop()">Got it</button>
-    </div>
-  </div>
-</div>
 
 <button class="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
+function switchTab(n){
+  document.querySelectorAll('.tpanel').forEach(function(p){p.classList.remove('on')});
+  document.getElementById('tb1').classList.remove('on');
+  document.getElementById('tb2').classList.remove('on');
+  document.getElementById('tp'+n).classList.add('on');
+  document.getElementById('tb'+n).classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
 // ── PEOPLE DATA ──────────────────────────────────────────────────────────────
 var PD = {
   sachin:{name:'Sachin Keni',init:'SK',color:'#1B4F8A',role:'Head of Supply',status:'Confirmed',dept:'Leadership',loc:'BLR Bangalore',reports:'CPSO / Ajay Kawa',email:'sachin@tripfactory.com',notes:'Confirmed Head of Supply. Owns all supply globally across all 5 category groups and 50 destinations. P&L accountability to Ajay Kawa.'},
@@ -960,6 +1295,7 @@ buildSCats();
 buildWorkflow();
 buildGrowth();
 buildPrincs();
+
 </script>
 </body>
 </html>

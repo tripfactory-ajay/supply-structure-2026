@@ -84,8 +84,6 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:var(--bg);color:var(-
 /* When panel is open:   SVG shrinks, sidebar appears beside it               */
 .inf-layout{display:flex;align-items:flex-start;min-height:calc(100vh - 100px)}
 .inf-svg-col{flex:1;min-width:0;transition:all .3s ease;padding:20px}
-.inf-sidebar{width:0;overflow:hidden;transition:width .3s cubic-bezier(.4,0,.2,1);flex-shrink:0}
-.inf-sidebar.open{width:400px}
 
 /* SVG box */
 .svg-box{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -103,34 +101,35 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:var(--bg);color:var(-
 .leg{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted)}
 .ldot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
 
-/* ── SIDEBAR PANEL ───────────────────────────────────────────────────────── */
-.sidebar{height:calc(100vh - 100px);position:sticky;top:100px;display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
-.sb-head{padding:16px 18px 14px;border-bottom:1px solid var(--border);background:var(--navy);flex-shrink:0}
-.sb-eyebrow{font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--gold);font-family:"DM Mono",monospace;margin-bottom:8px}
-.sb-title-row{display:flex;align-items:flex-start;gap:10px}
-.sb-emoji{font-size:24px;flex-shrink:0;line-height:1;margin-top:2px}
-.sb-title{font-size:15px;font-weight:800;color:#fff;line-height:1.3;flex:1}
-.sb-x{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#94A3B8;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s;font-family:sans-serif}
-.sb-x:hover{background:#C8102E;color:#fff;border-color:#C8102E}
-.sb-nav{display:flex;align-items:center;padding:8px 18px;border-bottom:1px solid var(--border);background:#F8FAFC;flex-shrink:0;gap:8px}
-.sb-nav button{font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;transition:.15s}
-.sb-nav button:hover:not(:disabled){border-color:var(--brand);color:var(--brand)}
-.sb-nav button:disabled{opacity:.35;cursor:default}
-.sb-cnt{font-size:10px;color:var(--muted);font-family:"DM Mono",monospace;margin:0 auto}
-.sb-body{padding:16px 18px;flex:1;overflow-y:auto}
-.sb-body::-webkit-scrollbar{width:3px}
-.sb-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-.sb-item{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #F1F5F9}
-.sb-item:last-child{border-bottom:none}
-.sb-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px}
-.sb-text{font-size:12px;color:#334155;line-height:1.7;flex:1}
-.sb-text strong{color:var(--navy);font-weight:700}
-.sb-foot{padding:10px 18px;border-top:1px solid var(--border);background:#F8FAFC;flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
-.sb-foot span{font-size:9px;color:var(--muted);font-family:"DM Mono",monospace}
-.sb-default{color:var(--muted);font-size:12px;text-align:center;padding:40px 0;line-height:1.6}
-.sb-default div{font-size:28px;margin-bottom:10px}
+/* ── MODAL POPUP ─────────────────────────────────────────────────────────── */
+.modal-bd{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9998;align-items:center;justify-content:center;padding:20px}
+.modal-bd.open{display:flex}
+.modal{background:#fff;border-radius:16px;width:600px;max-width:96vw;max-height:82vh;display:flex;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,.22);animation:mIn .22s cubic-bezier(.4,0,.2,1)}
+@keyframes mIn{from{opacity:0;transform:scale(.94) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-head{padding:20px 22px 16px;background:var(--navy);border-radius:16px 16px 0 0;flex-shrink:0}
+.modal-eyebrow{font-size:9px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:var(--gold);font-family:"DM Mono",monospace;margin-bottom:8px}
+.modal-title-row{display:flex;align-items:flex-start;gap:12px}
+.modal-emoji{font-size:26px;line-height:1;flex-shrink:0;margin-top:2px}
+.modal-title{font-size:17px;font-weight:800;color:#fff;line-height:1.3;flex:1}
+.modal-x{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#94A3B8;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:sans-serif}
+.modal-x:hover{background:#C8102E;color:#fff;border-color:#C8102E}
+.modal-nav{display:flex;align-items:center;padding:9px 22px;border-bottom:1px solid var(--border);background:#F8FAFC;flex-shrink:0;gap:8px}
+.modal-nav button{font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;transition:.15s}
+.modal-nav button:hover:not(:disabled){border-color:var(--brand);color:var(--brand)}
+.modal-nav button:disabled{opacity:.3;cursor:default}
+.modal-cnt{font-size:10px;color:var(--muted);font-family:"DM Mono",monospace;margin:0 auto}
+.modal-body{padding:20px 22px;overflow-y:auto;flex:1}
+.modal-body::-webkit-scrollbar{width:4px}
+.modal-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.modal-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #F1F5F9}
+.modal-item:last-child{border-bottom:none}
+.modal-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px}
+.modal-text{font-size:13px;color:#334155;line-height:1.7;flex:1}
+.modal-text strong{color:var(--navy);font-weight:700}
+.modal-foot{padding:12px 22px;border-top:1px solid var(--border);background:#F8FAFC;border-radius:0 0 16px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.modal-foot span{font-size:9px;color:var(--muted);font-family:"DM Mono",monospace}
 
-/* ── STRUCTURE TAB ───────────────────────────────────────────────────────── */
+/* ── STRUCTURE TAB/* ── STRUCTURE TAB ───────────────────────────────────────────────────────── */
 .wrap{max-width:1080px;margin:0 auto;padding:24px 20px 60px}
 .intro{background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:10px;padding:20px 24px;margin-bottom:20px}
 .intro h1{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:5px}
@@ -263,7 +262,7 @@ body.pm .inf-layout{min-height:100vh}
 body.pm .inf-svg-col{padding:0}
 body.pm .svg-box{border-radius:0;border:none;box-shadow:none}
 body.pm .svg-body{padding:4px}
-@media(max-width:700px){.inf-sidebar.open{width:100%;position:fixed;bottom:0;left:0;right:0;top:auto;height:60vh;z-index:300;border-radius:16px 16px 0 0}.inf-layout{flex-direction:column}.card-grid,.card-grid.two{grid-template-columns:1fr}.hdr-pills{display:none}.wrap{padding:14px 12px 50px}}
+@media(max-width:700px){.inf-layout{flex-direction:column}.card-grid,.card-grid.two{grid-template-columns:1fr}.hdr-pills{display:none}.wrap{padding:14px 12px 50px}}
 text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
 <rect x="0" y="0" width="860" height="80" fill="#0D1B2A"/>
 <rect x="0" y="76" width="860" height="4" fill="#C9A84C"/>
@@ -594,35 +593,6 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
       </div>
     </div>
 
-    <!-- SIDEBAR (slides open beside SVG, never overlaps) -->
-    <div class="inf-sidebar" id="inf-sidebar">
-      <div class="sidebar" id="sidebar">
-        <div class="sb-head">
-          <div class="sb-eyebrow" id="sb-layer">SECTION DETAIL</div>
-          <div class="sb-title-row">
-            <div class="sb-emoji" id="sb-icon">📌</div>
-            <div class="sb-title" id="sb-title">Select a section</div>
-            <button class="sb-x" onclick="closePanel()">✕</button>
-          </div>
-        </div>
-        <div class="sb-nav">
-          <button id="sb-prev" onclick="navZone(-1)">← Prev</button>
-          <div class="sb-cnt" id="sb-cnt">— / 33</div>
-          <button id="sb-next" onclick="navZone(1)">Next →</button>
-        </div>
-        <div class="sb-body" id="sb-body">
-          <div class="sb-default">
-            <div>👆</div>
-            Click any highlighted box in the infographic to see its full explanation here.
-          </div>
-        </div>
-        <div class="sb-foot">
-          <span>← → keys · Esc to close</span>
-          <span style="color:var(--gold);font-family:'DM Mono',monospace;font-size:9px">PRESENTATION MODE</span>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>
 
@@ -646,7 +616,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
      LAYER 1 — BLR LEADERSHIP
 ══════════════════════════════════════════════ -->
 <div class="section open" id="s-l1">
-  <div class="sec-hdr" onclick="toggleSec('s-l1')">
+  <div class="sec-hdr" data-sec="s-l1" onclick="toggleSec(this.dataset.sec)">
     <span class="sec-layer" style="background:var(--navy)">Layer 1</span>
     <span class="sec-title">BLR Leadership</span>
     <span class="sec-sub">Head of Supply + Supply Admin &amp; QC · Bangalore</span>
@@ -659,7 +629,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
     <div class="card-grid two">
 
       <!-- Head of Supply -->
-      <div class="card" id="c-l1" onclick="toggleCard('c-l1')">
+      <div class="card" id="c-l1" data-card="c-l1" onclick="toggleCard(this.dataset.card)">
         <div style="height:3px;background:var(--navy)"></div>
         <div class="card-top">
           <div class="card-icon" style="background:#EFF6FF">🏢</div>
@@ -670,7 +640,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
               <span class="ctag" style="background:var(--navy);color:var(--gold)">Leadership</span>
               <span class="ctag" style="background:#F0FDF4;color:#0B6E4F">✓ Confirmed</span>
             </div>
-            <span class="nchip ok" onclick="openPop(event,'sachin')">
+            <span class="nchip ok" data-pid="sachin" onclick="openPop(event,this.dataset.pid)">
               <span class="nav" style="background:var(--brand)">SK</span>Sachin Keni
             </span>
           </div>
@@ -698,7 +668,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
       </div>
 
       <!-- Head Admin & QC -->
-      <div class="card" id="c-l2" onclick="toggleCard('c-l2')">
+      <div class="card" id="c-l2" data-card="c-l2" onclick="toggleCard(this.dataset.card)">
         <div style="height:3px;background:var(--teal)"></div>
         <div class="card-top">
           <div class="card-icon" style="background:#F0FDFA">✅</div>
@@ -709,7 +679,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
               <span class="ctag" style="background:var(--teal);color:#fff">Admin &amp; QC</span>
               <span class="ctag" style="background:#F0FDF4;color:#0B6E4F">✓ Confirmed</span>
             </div>
-            <span class="nchip ok" onclick="openPop(event,'disha')">
+            <span class="nchip ok" data-pid="disha" onclick="openPop(event,this.dataset.pid)">
               <span class="nav" style="background:var(--teal)">DI</span>Disha
             </span>
           </div>
@@ -733,10 +703,10 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
           </div>
           <div class="blabel">Team under Disha</div>
           <div style="display:flex;gap:5px;flex-wrap:wrap">
-            <span class="nchip tbc" onclick="openPop(event,'team-load')"><span class="nav" style="background:var(--teal)">×10</span>Loading team</span>
-            <span class="nchip tbc" onclick="openPop(event,'team-qc')"><span class="nav" style="background:var(--teal)">×6</span>QC &amp; Audit</span>
-            <span class="nchip tbc" onclick="openPop(event,'team-content')"><span class="nav" style="background:var(--teal)">×4</span>Content</span>
-            <span class="nchip tbc" onclick="openPop(event,'team-analyst')"><span class="nav" style="background:#92400E">×1</span>Data analyst</span>
+            <span class="nchip tbc" data-pid="team-load" onclick="openPop(event,this.dataset.pid)"><span class="nav" style="background:var(--teal)">×10</span>Loading team</span>
+            <span class="nchip tbc" data-pid="team-qc" onclick="openPop(event,this.dataset.pid)"><span class="nav" style="background:var(--teal)">×6</span>QC &amp; Audit</span>
+            <span class="nchip tbc" data-pid="team-content" onclick="openPop(event,this.dataset.pid)"><span class="nav" style="background:var(--teal)">×4</span>Content</span>
+            <span class="nchip tbc" data-pid="team-analyst" onclick="openPop(event,this.dataset.pid)"><span class="nav" style="background:#92400E">×1</span>Data analyst</span>
           </div>
           <div class="rbar">📤 Reports to <strong>Sachin Keni (Head of Supply)</strong></div>
         </div>
@@ -750,7 +720,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
      LAYER 2 — SUPPLY MANAGERS
 ══════════════════════════════════════════════ -->
 <div class="section" id="s-l2">
-  <div class="sec-hdr" onclick="toggleSec('s-l2')">
+  <div class="sec-hdr" data-sec="s-l2" onclick="toggleSec(this.dataset.sec)">
     <span class="sec-layer" style="background:var(--brand)">Layer 2</span>
     <span class="sec-title">Supply Managers — 5 Category Groups</span>
     <span class="sec-sub">BLR Bangalore · commercial ownership by supply type globally</span>
@@ -762,7 +732,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
     </div>
     <div class="card-grid">
 
-      <div class="card" id="c-sm1" onclick="toggleCard('c-sm1')">
+      <div class="card" id="c-sm1" data-card="c-sm1" onclick="toggleCard(this.dataset.card)">
         <div style="height:3px;background:#1B4F8A"></div>
         <div class="card-top">
           <div class="card-icon" style="background:#EFF6FF">🏨</div>
@@ -773,7 +743,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
               <span class="ctag" style="background:#1B4F8A;color:#fff">G1 · Accommodation</span>
               <span class="ctag" style="background:#FEF2F2;color:#991B1B">Priority 1 hire</span>
             </div>
-            <span class="nchip vac" onclick="openPop(event,'vac')">← Allocate name</span>
+            <span class="nchip vac" data-pid="vac" onclick="openPop(event,this.dataset.pid)">← Allocate name</span>
           </div>
         </div>
         <div class="card-hint">Click to expand</div>
@@ -795,7 +765,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
         </div>
       </div>
 
-      <div class="card" id="c-sm2" onclick="toggleCard('c-sm2')">
+      <div class="card" id="c-sm2" data-card="c-sm2" onclick="toggleCard(this.dataset.card)">
         <div style="height:3px;background:var(--teal)"></div>
         <div class="card-top">
           <div class="card-icon" style="background:#F0FDFA">🚌</div>
@@ -806,7 +776,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
               <span class="ctag" style="background:var(--teal);color:#fff">G2 · Transport</span>
               <span class="ctag" style="background:#FEF2F2;color:#991B1B">Priority 1 hire</span>
             </div>
-            <span class="nchip vac" onclick="openPop(event,'vac')">← Allocate name</span>
+            <span class="nchip vac" data-pid="vac" onclick="openPop(event,this.dataset.pid)">← Allocate name</span>
           </div>
         </div>
         <div class="card-hint">Click to expand</div>
@@ -828,7 +798,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
         </div>
       </div>
 
-      <div class="card" id="c-sm3" onclick="toggleCard('c-sm3')">
+      <div class="card" id="c-sm3" data-card="c-sm3" onclick="toggleCard(this.dataset.card)">
         <div style="height:3px;background:var(--orange)"></div>
         <div class="card-top">
           <div class="card-icon" style="background:#FFF7ED">🎭</div>
@@ -839,7 +809,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
               <span class="ctag" style="background:var(--orange);color:#fff">G3 · Experiences</span>
               <span class="ctag" style="background:#FEF2F2;color:#991B1B">Priority 1 hire</span>
             </div>
-            <span class="nchip vac" onclick="openPop(event,'vac')">← Allocate name</span>
+            <span class="nchip vac" data-pid="vac" onclick="openPop(event,this.dataset.pid)">← Allocate name</span>
           </div>
         </div>
         <div class="card-hint">Click to expand</div>
@@ -863,7 +833,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
         </div>
       </div>
 
-      <div class="card" id="c-sm4" onclick="toggleCard('c-sm4')">
+      <div class="card" id="c-sm4" data-card="c-sm4" onclick="toggleCard(this.dataset.card)">
         <div style="height:3px;background:var(--purple)"></div>
         <div class="card-top">
           <div class="card-icon" style="background:#FAF5FF">🍽️</div>
@@ -874,7 +844,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
               <span class="ctag" style="background:var(--purple);color:#fff">G4 · Wellness &amp; Dining</span>
               <span class="ctag" style="background:#FFFBEB;color:#92400E">Priority 2</span>
             </div>
-            <span class="nchip vac" onclick="openPop(event,'vac')">← Allocate name</span>
+            <span class="nchip vac" data-pid="vac" onclick="openPop(event,this.dataset.pid)">← Allocate name</span>
           </div>
         </div>
         <div class="card-hint">Click to expand</div>
@@ -897,7 +867,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
         </div>
       </div>
 
-      <div class="card" id="c-sm5" onclick="toggleCard('c-sm5')">
+      <div class="card" id="c-sm5" data-card="c-sm5" onclick="toggleCard(this.dataset.card)">
         <div style="height:3px;background:var(--green)"></div>
         <div class="card-top">
           <div class="card-icon" style="background:#F0FDF4">📋</div>
@@ -908,7 +878,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
               <span class="ctag" style="background:var(--green);color:#fff">G5 · Docs &amp; Insurance</span>
               <span class="ctag" style="background:#FEF2F2;color:#991B1B">Priority 1 hire</span>
             </div>
-            <span class="nchip vac" onclick="openPop(event,'vac')">← Allocate name</span>
+            <span class="nchip vac" data-pid="vac" onclick="openPop(event,this.dataset.pid)">← Allocate name</span>
           </div>
         </div>
         <div class="card-hint">Click to expand</div>
@@ -937,7 +907,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
     <div style="margin:0 18px 6px;font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.5px;padding:6px 0 4px;border-top:1px solid var(--border)">Operations Teams — BLR Bangalore</div>
     <div class="card-grid two" style="padding-top:0">
 
-      <div class="card" id="c-vdops" onclick="toggleCard('c-vdops')">
+      <div class="card" id="c-vdops" data-card="c-vdops" onclick="toggleCard(this.dataset.card)">
         <div style="height:3px;background:var(--green)"></div>
         <div class="card-top">
           <div class="card-icon" style="background:#F0FDF4">🛂</div>
@@ -949,10 +919,10 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
               <span class="ctag" style="background:#FEF2F2;color:#991B1B">Build required</span>
             </div>
             <div style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap">
-              <span class="nchip vac" onclick="openPop(event,'vac')">← Visa Ops Manager</span>
-              <span class="nchip tbc" onclick="openPop(event,'team-visa')"><span class="nav" style="background:#92400E">×6</span>Processing</span>
-              <span class="nchip tbc" onclick="openPop(event,'team-vdoc')"><span class="nav" style="background:#92400E">×3</span>Documentation</span>
-              <span class="nchip tbc" onclick="openPop(event,'team-ins')"><span class="nav" style="background:#92400E">×2</span>Insurance</span>
+              <span class="nchip vac" data-pid="vac" onclick="openPop(event,this.dataset.pid)">← Visa Ops Manager</span>
+              <span class="nchip tbc" data-pid="team-visa" onclick="openPop(event,this.dataset.pid)"><span class="nav" style="background:#92400E">×6</span>Processing</span>
+              <span class="nchip tbc" data-pid="team-vdoc" onclick="openPop(event,this.dataset.pid)"><span class="nav" style="background:#92400E">×3</span>Documentation</span>
+              <span class="nchip tbc" data-pid="team-ins" onclick="openPop(event,this.dataset.pid)"><span class="nav" style="background:#92400E">×2</span>Insurance</span>
             </div>
           </div>
         </div>
@@ -969,7 +939,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
         </div>
       </div>
 
-      <div class="card" id="c-tops" onclick="toggleCard('c-tops')">
+      <div class="card" id="c-tops" data-card="c-tops" onclick="toggleCard(this.dataset.card)">
         <div style="height:3px;background:var(--teal)"></div>
         <div class="card-top">
           <div class="card-icon" style="background:#F0FDFA">🚐</div>
@@ -981,9 +951,9 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
               <span class="ctag" style="background:#FEF2F2;color:#991B1B">Build required</span>
             </div>
             <div style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap">
-              <span class="nchip vac" onclick="openPop(event,'vac')">← Transport Ops Manager</span>
-              <span class="nchip tbc" onclick="openPop(event,'team-tres')"><span class="nav" style="background:#92400E">×6</span>Reservations</span>
-              <span class="nchip tbc" onclick="openPop(event,'team-airp')"><span class="nav" style="background:#92400E">×2</span>Airport Reps</span>
+              <span class="nchip vac" data-pid="vac" onclick="openPop(event,this.dataset.pid)">← Transport Ops Manager</span>
+              <span class="nchip tbc" data-pid="team-tres" onclick="openPop(event,this.dataset.pid)"><span class="nav" style="background:#92400E">×6</span>Reservations</span>
+              <span class="nchip tbc" data-pid="team-airp" onclick="openPop(event,this.dataset.pid)"><span class="nav" style="background:#92400E">×2</span>Airport Reps</span>
             </div>
           </div>
         </div>
@@ -1008,7 +978,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
      LAYER 3 — IN-DESTINATION
 ══════════════════════════════════════════════ -->
 <div class="section" id="s-l3">
-  <div class="sec-hdr" onclick="toggleSec('s-l3')">
+  <div class="sec-hdr" data-sec="s-l3" onclick="toggleSec(this.dataset.sec)">
     <span class="sec-layer" style="background:var(--green)">Layer 3</span>
     <span class="sec-title">In-Destination — Product Managers &amp; DMC Partners</span>
     <span class="sec-sub">50 destinations · 6 regions · contract all supply on the ground</span>
@@ -1028,7 +998,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
      17 SUPPLY TYPES
 ══════════════════════════════════════════════ -->
 <div class="section" id="s-supply">
-  <div class="sec-hdr" onclick="toggleSec('s-supply')">
+  <div class="sec-hdr" data-sec="s-supply" onclick="toggleSec(this.dataset.sec)">
     <span class="sec-layer" style="background:var(--slate)">Supply Types</span>
     <span class="sec-title">17 Supply Components — 5 Category Groups</span>
     <span class="sec-sub">Contracted in-destination · loaded and QC'd in BLR · auto-creates products</span>
@@ -1046,7 +1016,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
      WORKFLOW
 ══════════════════════════════════════════════ -->
 <div class="section" id="s-wf">
-  <div class="sec-hdr" onclick="toggleSec('s-wf')">
+  <div class="sec-hdr" data-sec="s-wf" onclick="toggleSec(this.dataset.sec)">
     <span class="sec-layer" style="background:var(--brand)">Workflow</span>
     <span class="sec-title">From Contract to Live Product — 5 Steps</span>
     <span class="sec-sub">Click each step to see what happens</span>
@@ -1071,7 +1041,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
      GROWTH PATH
 ══════════════════════════════════════════════ -->
 <div class="section" id="s-growth">
-  <div class="sec-hdr" onclick="toggleSec('s-growth')">
+  <div class="sec-hdr" data-sec="s-growth" onclick="toggleSec(this.dataset.sec)">
     <span class="sec-layer" style="background:var(--purple)">Growth Model</span>
     <span class="sec-title">Destination Growth Path</span>
     <span class="sec-sub">Volume-triggered · built into the model from day one · click each stage</span>
@@ -1089,7 +1059,7 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
      5 KEY PRINCIPLES
 ══════════════════════════════════════════════ -->
 <div class="section" id="s-princs">
-  <div class="sec-hdr" onclick="toggleSec('s-princs')">
+  <div class="sec-hdr" data-sec="s-princs" onclick="toggleSec(this.dataset.sec)">
     <span class="sec-layer" style="background:var(--navy)">Principles</span>
     <span class="sec-title">5 Key Operating Principles</span>
     <span class="sec-sub">The rules that govern every supply decision</span>
@@ -1121,110 +1091,44 @@ text{font-family:"Plus Jakarta Sans","DM Sans",Arial,sans-serif}</style>
   </div>
 </div>
 
+<!-- MODAL POPUP -->
+<div class="modal-bd" id="modal-bd" onclick="if(event.target===this)closePanel()">
+  <div class="modal" id="modal">
+    <div class="modal-head">
+      <div class="modal-eyebrow" id="modal-layer">SECTION DETAIL</div>
+      <div class="modal-title-row">
+        <div class="modal-emoji" id="modal-icon">📌</div>
+        <div class="modal-title" id="modal-title">Select a section</div>
+        <button class="modal-x" onclick="closePanel()">&#x2715;</button>
+      </div>
+    </div>
+    <div class="modal-nav">
+      <button id="modal-prev" onclick="navZone(-1)">&#x2190; Prev</button>
+      <div class="modal-cnt" id="modal-cnt">&#x2014; / 33</div>
+      <button id="modal-next" onclick="navZone(1)">Next &#x2192;</button>
+    </div>
+    <div class="modal-body" id="modal-body">
+      <div style="color:#94A3B8;font-size:12px;text-align:center;padding:40px 0">Click any highlighted box in the infographic to see its full detail here.</div>
+    </div>
+    <div class="modal-foot">
+      <span>&#x2190; &#x2192; keys to navigate &nbsp;&#xB7;&nbsp; Esc to close</span>
+      <span style="color:var(--gold);font-family:DM Mono,monospace;font-size:9px;font-weight:700">PRESENTATION MODE</span>
+    </div>
+  </div>
+</div>
+
 <button class="pres-btn" id="pres-btn" onclick="togglePresent()">⛶ &nbsp;Present</button>
 <button class="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
 var curIdx = -1;
-
-function switchTab(n) {
-  document.getElementById('p1').classList.toggle('on', n===1);
-  document.getElementById('p2').classList.toggle('on', n===2);
-  document.getElementById('tab1').classList.toggle('on', n===1);
-  document.getElementById('tab2').classList.toggle('on', n===2);
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function openPanel(el) {
-  var allZ  = Array.from(document.querySelectorAll('.izone'));
-  curIdx    = allZ.indexOf(el);
-
-  allZ.forEach(function(z){
-    z.classList.remove('az');
-    z.setAttribute('stroke','none');
-    z.setAttribute('fill','rgba(0,0,0,0.001)');
-  });
-  el.classList.add('az');
-  el.setAttribute('stroke','#C9A84C');
-  el.setAttribute('stroke-width','3');
-  el.setAttribute('fill','rgba(201,168,76,0.15)');
-
-  document.getElementById('sb-layer').textContent = el.getAttribute('data-layer') || 'SECTION';
-  document.getElementById('sb-icon').textContent  = el.getAttribute('data-icon')  || '📌';
-  document.getElementById('sb-title').textContent = el.getAttribute('data-title') || '';
-  document.getElementById('sb-cnt').textContent   = (curIdx+1) + ' / ' + allZ.length;
-  document.getElementById('sb-prev').disabled     = curIdx <= 0;
-  document.getElementById('sb-next').disabled     = curIdx >= allZ.length-1;
-
-  var lines = (el.getAttribute('data-body')||'').split('||');
-  document.getElementById('sb-body').innerHTML = lines.filter(Boolean).map(function(ln){
-    var fmt = ln.replace(/^([A-Z][A-Z &\/]+):\s*/g,'<strong>$1: </strong>');
-    return '<div class="sb-item"><div class="sb-dot"></div><div class="sb-text">'+fmt+'</div></div>';
-  }).join('');
-
-  document.getElementById('inf-sidebar').classList.add('open');
-}
-
-function closePanel() {
-  document.getElementById('inf-sidebar').classList.remove('open');
-  document.querySelectorAll('.izone').forEach(function(z){
-    z.classList.remove('az');
-    z.setAttribute('stroke','none');
-    z.setAttribute('fill','rgba(0,0,0,0.001)');
-  });
-  curIdx = -1;
-}
-
-function navZone(d) {
-  var allZ = Array.from(document.querySelectorAll('.izone'));
-  var n = curIdx + d;
-  if (n>=0 && n<allZ.length) openPanel(allZ[n]);
-}
-
-document.addEventListener('keydown', function(e){
-  var open = document.getElementById('inf-sidebar').classList.contains('open');
-  if (e.key==='Escape') { closePanel(); if(presenting) togglePresent(); return; }
-  if (!open) return;
-  if (e.key==='ArrowRight'||e.key==='ArrowDown') { e.preventDefault(); navZone(1); }
-  if (e.key==='ArrowLeft' ||e.key==='ArrowUp')   { e.preventDefault(); navZone(-1); }
-});
-
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('.izone').forEach(function(z){
-    z.addEventListener('click', function(e){ e.stopPropagation(); openPanel(this); });
-    z.addEventListener('mouseenter', function(){
-      if(!this.classList.contains('az')){
-        this.setAttribute('stroke','#C9A84C');
-        this.setAttribute('stroke-width','2');
-        this.setAttribute('fill','rgba(201,168,76,0.1)');
-      }
-    });
-    z.addEventListener('mouseleave', function(){
-      if(!this.classList.contains('az')){
-        this.setAttribute('stroke','none');
-        this.setAttribute('stroke-width','0');
-        this.setAttribute('fill','rgba(0,0,0,0.001)');
-      }
-    });
-  });
-  console.log('Zones ready:', document.querySelectorAll('.izone').length);
-});
-
 var presenting = false;
-function togglePresent(){
-  presenting=!presenting;
-  var btn=document.getElementById('pres-btn');
-  document.body.classList.toggle('pm',presenting);
-  btn.innerHTML=presenting?'✕ &nbsp;Exit':'⛶ &nbsp;Present';
-  btn.classList.toggle('on',presenting);
-  if(presenting && document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
-  else if(!presenting && document.exitFullscreen) document.exitFullscreen();
-}
 
-// ── PEOPLE DATA ──────────────────────────────────────────────────────────────
+// ── DATA ─────────────────────────────────────────────────────────────────────
+
 var PD = {
-  sachin:{name:'Sachin Keni',init:'SK',color:'#1B4F8A',role:'Head of Supply',status:'Confirmed',dept:'Leadership',loc:'BLR Bangalore',reports:'CPSO / Ajay Kawa',email:'sachin@tripfactory.com',notes:'Confirmed Head of Supply. Owns all supply globally across all 5 category groups and 50 destinations. P&L accountability to Ajay Kawa.'},
-  disha:{name:'Disha',init:'DI',color:'#0A7E8C',role:'Head of Supply Administration & Quality',status:'Confirmed',dept:'Admin & QC',loc:'BLR Bangalore',reports:'Sachin Keni',email:'TBC',notes:'Confirmed as Head of Supply Admin & Quality. Owns all loading SLAs, QC, rate parity monitoring and the daily error log. Manages a team of ~21.'},
+  'sachin':{name:'Sachin Keni',init:'SK',color:'#1B4F8A',role:'Head of Supply',status:'Confirmed',dept:'Leadership',loc:'BLR Bangalore',reports:'CPSO / Ajay Kawa',email:'sachin@tripfactory.com',notes:'Confirmed Head of Supply. Owns all supply globally across all 5 category groups and 50 destinations. P&L accountability to Ajay Kawa.'},
+  'disha':{name:'Disha',init:'DI',color:'#0A7E8C',role:'Head of Supply Administration & Quality',status:'Confirmed',dept:'Admin & QC',loc:'BLR Bangalore',reports:'Sachin Keni',email:'TBC',notes:'Confirmed as Head of Supply Admin & Quality. Owns all loading SLAs, QC, rate parity monitoring and the daily error log. Manages a team of ~21.'},
   'team-load':{name:'Loading Team',init:'×10',color:'#0A7E8C',role:'Supply Loading Executives (×10)',status:'Pool · 10 headcount',dept:'Admin & QC',loc:'BLR Bangalore',reports:'Disha',notes:'10 loading executives. Each loads contracted supply into the platform within 24 hours of receipt. Two-eyes quality check on all rates before publishing.'},
   'team-qc':{name:'QC & Audit Team',init:'×6',color:'#0A7E8C',role:'Supply QC & Audit Executives (×6)',status:'Pool · 6 headcount',dept:'Admin & QC',loc:'BLR Bangalore',reports:'Disha',notes:'6 QC executives. Audit all loaded supply: rate accuracy, content completeness, image standards, category tagging. Rate parity monitoring. Daily error log.'},
   'team-content':{name:'Content Team',init:'×4',color:'#0A7E8C',role:'Supply Content Executives (×4)',status:'Pool · 4 headcount',dept:'Admin & QC',loc:'BLR Bangalore',reports:'Disha',notes:'4 content executives. Create and maintain supply content on platform: hotel descriptions, activity listings, restaurant profiles. 48hr SLA from contract receipt.'},
@@ -1234,10 +1138,9 @@ var PD = {
   'team-ins':{name:'Insurance Team',init:'×2',color:'#0B6E4F',role:'Travel Insurance Executives',status:'Pool · 2 headcount',dept:'Operations',loc:'BLR Bangalore',reports:'Visa Ops Manager',notes:'Travel insurance issuance and claims liaison. Must be offered on every booking per policy.'},
   'team-tres':{name:'Transport Reservations',init:'×6',color:'#0A7E8C',role:'Transport Reservations Executives',status:'Pool · 6 headcount',dept:'Operations',loc:'BLR Bangalore',reports:'Transport Ops Manager',notes:'Processes all transport bookings, transfer confirmations, private car and coach bookings.'},
   'team-airp':{name:'Airport Rep Coordinators',init:'×2',color:'#0A7E8C',role:'Airport Representative Coordinators',status:'Pool · 2 headcount',dept:'Operations',loc:'BLR Bangalore',reports:'Transport Ops Manager',notes:'Manages all airport representative bookings, passenger manifests and driver briefings before each arrival.'},
-  vac:{name:'Role Vacant',init:'?',color:'#991B1B',role:'Not yet allocated — action required',status:'Vacant',dept:'TBC',loc:'BLR Bangalore',reports:'TBC',notes:'This role has not yet been allocated. Please update the Supply Hub Excel file with the allocated name and status.'}
+  'vac':{name:'Role Vacant',init:'?',color:'#991B1B',role:'Not yet allocated — action required',status:'Vacant',dept:'TBC',loc:'BLR Bangalore',reports:'TBC',notes:'This role has not yet been allocated. Please update the Supply Hub Excel file with the allocated name and status.'}
 };
 
-// ── DESTINATIONS DATA ─────────────────────────────────────────────────────────
 var REGIONS = [
   {name:'Middle East & Islands',color:'#0F766E',dests:[
     {name:'Dubai',dmc:'Adventure Heritage · Rayna · GTDS',model:'DMC Partner',status:'Active'},
@@ -1306,7 +1209,6 @@ var REGIONS = [
   ]},
 ];
 
-// ── SUPPLY CATEGORIES ─────────────────────────────────────────────────────────
 var SCATS = [
   {name:'Accommodation',color:'#1E40AF',bg:'#EFF6FF',typebg:'#DBEAFE',typec:'#1E3A8A',mgr:'Supply Manager — Accommodation',types:['Hotel & Accommodation','Cruise & Yacht']},
   {name:'Transport',color:'#065F46',bg:'#F0FDFA',typebg:'#CCFBF1',typec:'#064E3B',mgr:'Supply Manager — Transport',types:['Transport & Transfers','Airport Representative','Service Points']},
@@ -1315,7 +1217,6 @@ var SCATS = [
   {name:'Docs & Insurance',color:'#065F46',bg:'#F0FDF4',typebg:'#A7F3D0',typec:'#064E3B',mgr:'Supply Manager — Documentation & Insurance',types:['Visa & Documentation','Travel Insurance','Flight Tickets']},
 ];
 
-// ── WORKFLOW ──────────────────────────────────────────────────────────────────
 var WSTEPS = [
   {n:'01',title:'Contract',sub:'In-destination',detail:'The Product Manager or DMC partner negotiates and signs supply agreements locally using the standard ORN rate request template. Net rate must be benchmarked against at least 2 competitor sources. Both parties sign the standard ORN contract. PM uploads to contract tracker.'},
   {n:'02',title:'Load',sub:'BLR · 24hr SLA',detail:"Disha's loading team receives the signed contract and loads all supply into the platform within 24 hours — hard SLA, not a target. The person who contracts supply never loads it. This separation is the first quality gate."},
@@ -1324,7 +1225,6 @@ var WSTEPS = [
   {n:'05',title:'Product live',sub:'Auto-created',detail:'Once supply is loaded, QC-passed and correctly tagged, the platform creates the product automatically. No manual product build needed. Products appear in the relevant destination pages, available for B2B agents to quote and book immediately.'},
 ];
 
-// ── GROWTH PATH ───────────────────────────────────────────────────────────────
 var GSTAGES = [
   {n:'01',title:'Individual PM / DMC',trig:'From day one',detail:'A single Product Manager or DMC partner contracts all supply in the destination. Could be an individual on retainer or a DMC partner organisation. Reports to BLR Supply Managers by category. Low cost, fast to activate.'},
   {n:'02',title:'Small team',trig:'~500 bookings/month',detail:'As volume grows, the individual PM is supported by 2–4 additional staff covering specific supply types. The DMC may be asked to expand their team. BLR provides additional loading and QC resource to match the supply pipeline.'},
@@ -1332,61 +1232,254 @@ var GSTAGES = [
   {n:'04',title:'DMC acquisition',trig:'Strategic opportunity',detail:'Where a DMC partner has become critical and the relationship is near-exclusive, TripFactory ORN may acquire the DMC. This gives full control of the supply chain, eliminates the commercial middleman and creates proprietary competitive advantage.'},
 ];
 
-// ── PRINCIPLES ────────────────────────────────────────────────────────────────
 var PRINCS = [
   {n:'01',title:'Supply before product',color:'#1B4F8A',body:'No product can be created without contracted supply. The system builds products automatically once supply is loaded and tagged. Contracting supply is the primary commercial activity of the entire division.'},
   {n:'02',title:'Category expertise',color:'#0A7E8C',body:'Supply Managers own a category globally — not a region. The Accommodation Manager applies hotel contracting expertise in Dubai, Bali, London and Cape Town equally. Deep commercial knowledge, not geographic spreading.'},
   {n:'03',title:'Destination execution',color:'#C2410C',body:'The PM or DMC contracts all supply types locally. They are the commercial relationship on the ground. They grow as the destination grows — from one person through to potential acquisition.'},
-  {n:'04',title:'Contract ≠ Load',color:'#6B2FA0',body:"The person who contracts supply never loads it. Disha's team loads all supply from contracted agreements. This two-step process is the quality gate that catches rate errors and compliance gaps."},
+  {n:'04',title:'Contract vs Load',color:'#6B2FA0',body:'The person who contracts supply never loads it. Disha team loads all supply. This two-step separation is the quality gate.'},
   {n:'05',title:'Growth path built in',color:'#0B6E4F',body:'Individual → Small Team → In-Destination Office → DMC Acquisition. Each step is triggered by booking volume thresholds — not headcount decisions. The cost structure scales with revenue.'},
 ];
+
+// ── TABS ─────────────────────────────────────────────────────────────────────
+function switchTab(n) {
+  document.getElementById('p1').classList.toggle('on', n === 1);
+  document.getElementById('p2').classList.toggle('on', n === 2);
+  document.getElementById('tab1').classList.toggle('on', n === 1);
+  document.getElementById('tab2').classList.toggle('on', n === 2);
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// ── MODAL ────────────────────────────────────────────────────────────────────
+function openPanel(el) {
+  var allZ = Array.from(document.querySelectorAll('.izone'));
+  curIdx = allZ.indexOf(el);
+  allZ.forEach(function(z) {
+    z.classList.remove('az');
+    z.setAttribute('stroke', 'none');
+    z.setAttribute('fill', 'rgba(0,0,0,0.001)');
+  });
+  el.classList.add('az');
+  el.setAttribute('stroke', '#C9A84C');
+  el.setAttribute('stroke-width', '3');
+  el.setAttribute('fill', 'rgba(201,168,76,0.15)');
+  document.getElementById('modal-layer').textContent = el.getAttribute('data-layer') || 'SECTION';
+  document.getElementById('modal-icon').textContent  = el.getAttribute('data-icon')  || '\u{1F4CC}';
+  document.getElementById('modal-title').textContent = el.getAttribute('data-title') || '';
+  document.getElementById('modal-cnt').textContent   = (curIdx + 1) + ' / ' + allZ.length;
+  document.getElementById('modal-prev').disabled = (curIdx <= 0);
+  document.getElementById('modal-next').disabled = (curIdx >= allZ.length - 1);
+  var lines = (el.getAttribute('data-body') || '').split('||');
+  document.getElementById('modal-body').innerHTML = lines.filter(Boolean).map(function(ln) {
+    var fmt = ln.replace(/^([A-Z][A-Z &\/]+):\s*/g, '<strong>$1: </strong>');
+    return '<div class="modal-item"><div class="modal-dot"></div><div class="modal-text">' + fmt + '</div></div>';
+  }).join('');
+  document.getElementById('modal-bd').classList.add('open');
+}
+
+function closePanel() {
+  document.getElementById('modal-bd').classList.remove('open');
+  document.querySelectorAll('.izone').forEach(function(z) {
+    z.classList.remove('az');
+    z.setAttribute('stroke', 'none');
+    z.setAttribute('fill', 'rgba(0,0,0,0.001)');
+  });
+  curIdx = -1;
+}
+
+function navZone(d) {
+  var allZ = Array.from(document.querySelectorAll('.izone'));
+  var n = curIdx + d;
+  if (n >= 0 && n < allZ.length) openPanel(allZ[n]);
+}
+
+// ── KEYBOARD ─────────────────────────────────────────────────────────────────
+document.addEventListener('keydown', function(e) {
+  var open = document.getElementById('modal-bd').classList.contains('open');
+  if (e.key === 'Escape') { closePanel(); if (presenting) togglePresent(); return; }
+  if (!open) return;
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); navZone(1);  }
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); navZone(-1); }
+});
+
+// ── ZONE LISTENERS ───────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.izone').forEach(function(z) {
+    z.addEventListener('click', function(e) {
+      e.stopPropagation();
+      openPanel(this);
+    });
+    z.addEventListener('mouseenter', function() {
+      if (!this.classList.contains('az')) {
+        this.setAttribute('stroke', '#C9A84C');
+        this.setAttribute('stroke-width', '2');
+        this.setAttribute('fill', 'rgba(201,168,76,0.1)');
+      }
+    });
+    z.addEventListener('mouseleave', function() {
+      if (!this.classList.contains('az')) {
+        this.setAttribute('stroke', 'none');
+        this.setAttribute('stroke-width', '0');
+        this.setAttribute('fill', 'rgba(0,0,0,0.001)');
+      }
+    });
+  });
+});
+
+// ── PRESENT MODE ─────────────────────────────────────────────────────────────
+function togglePresent() {
+  presenting = !presenting;
+  var btn = document.getElementById('pres-btn');
+  document.body.classList.toggle('pm', presenting);
+  btn.innerHTML = presenting ? '&#x2715; &nbsp;Exit' : '&#x26F6; &nbsp;Present';
+  btn.classList.toggle('on', presenting);
+  if (presenting && document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen();
+  } else if (!presenting && document.exitFullscreen) {
+    document.exitFullscreen();
+  }
+}
+
+// ── DESTINATION REGIONS ───────────────────────────────────────────────────────
+function tReg(el) {
+  el.classList.toggle('open');
+  var chev = el.querySelector('.dreg-chev');
+  if (chev) chev.style.transform = el.classList.contains('open') ? 'rotate(90deg)' : '';
+  var grid = el.querySelector('.dreg-grid');
+  if (grid) grid.style.display = el.classList.contains('open') ? 'grid' : 'none';
+}
 
 // ── BUILD FUNCTIONS ───────────────────────────────────────────────────────────
 function buildDests() {
   var c = document.getElementById('dest-regions');
+  if (!c) return;
   REGIONS.forEach(function(reg) {
-    var active = reg.dests.filter(function(d){return d.status==='Active'}).length;
-    var dr = document.createElement('div');
-    dr.className = 'dreg';
-    dr.innerHTML = '<div class="dreg-hdr" onclick="tReg(this.parentNode)"><span class="dreg-pill" style="background:'+reg.color+'">'+reg.name+'</span><span class="dreg-count">'+active+' active · '+reg.dests.length+' total</span><span class="dreg-chev">▶</span></div><div class="dreg-grid"></div>';
-    var grid = dr.querySelector('.dreg-grid');
-    reg.dests.forEach(function(d, i) {
-      var stBg = d.status==='Active' ? '#F0FDF4' : (d.dmc==='TBC' ? '#FFFBEB' : '#F1F5F9');
-      var stC  = d.status==='Active' ? '#0B6E4F' : (d.dmc==='TBC' ? '#92400E' : '#64748B');
+    var active = reg.dests.filter(function(d) { return d.status === 'Active'; }).length;
+
+    var dr   = document.createElement('div');
+    dr.className = 'dregion';
+
+    var hdr  = document.createElement('div');
+    hdr.className = 'dreg-hdr';
+    hdr.addEventListener('click', function() { tReg(dr); });
+
+    var pill = document.createElement('span');
+    pill.className = 'dreg-label';
+    pill.style.background = reg.color;
+    pill.textContent = reg.name;
+
+    var cnt  = document.createElement('span');
+    cnt.className = 'dreg-count';
+    cnt.textContent = active + ' active · ' + reg.dests.length + ' total';
+
+    var chev = document.createElement('span');
+    chev.className = 'dreg-chev';
+    chev.style.cssText = 'margin-left:auto;font-size:10px;color:#94A3B8;transition:transform .2s';
+    chev.textContent = '▶';
+
+    hdr.appendChild(pill);
+    hdr.appendChild(cnt);
+    hdr.appendChild(chev);
+    dr.appendChild(hdr);
+
+    var grid = document.createElement('div');
+    grid.className = 'dreg-grid';
+    grid.style.display = 'none';
+
+    reg.dests.forEach(function(d) {
+      var stBg = d.status === 'Active' ? '#F0FDF4' : (d.dmc === 'TBC' ? '#FFFBEB' : '#F1F5F9');
+      var stC  = d.status === 'Active' ? '#0B6E4F' : (d.dmc === 'TBC' ? '#92400E' : '#64748B');
+
       var dc = document.createElement('div');
       dc.className = 'dcard';
-      dc.innerHTML = '<div class="dname">'+d.name+'</div><div class="ddmc">'+d.dmc+'</div><span style="font-size:9px;font-weight:600;padding:2px 7px;border-radius:20px;background:'+stBg+';color:'+stC+'">'+d.status+'</span><div class="ddetail"><div style="font-size:11px;margin-bottom:5px"><strong style="color:var(--brand)">Model:</strong> '+d.model+'</div><div style="font-size:11px;margin-bottom:6px"><strong style="color:var(--brand)">DMC/Partner:</strong> '+d.dmc+'</div><span class="nchip vac" onclick="openPop(event,\'vac\')">← Enter PM / contact name</span></div>';
-      dc.addEventListener('click', function(){ this.classList.toggle('open'); });
+
+      var dn = document.createElement('div');
+      dn.className = 'dname';
+      dn.textContent = d.name;
+      dc.appendChild(dn);
+
+      var dd = document.createElement('div');
+      dd.className = 'ddmc';
+      dd.textContent = d.dmc;
+      dc.appendChild(dd);
+
+      var badge = document.createElement('span');
+      badge.style.cssText = 'font-size:9px;font-weight:600;padding:2px 7px;border-radius:20px;background:' + stBg + ';color:' + stC;
+      badge.textContent = d.status;
+      dc.appendChild(badge);
+
+      var detail = document.createElement('div');
+      detail.className = 'ddetail';
+
+      var m1 = document.createElement('div');
+      m1.style.cssText = 'font-size:11px;margin-bottom:5px';
+      var m1b = document.createElement('strong');
+      m1b.style.color = 'var(--brand)';
+      m1b.textContent = 'Model: ';
+      m1.appendChild(m1b);
+      m1.appendChild(document.createTextNode(d.model));
+      detail.appendChild(m1);
+
+      var m2 = document.createElement('div');
+      m2.style.cssText = 'font-size:11px;margin-bottom:6px';
+      var m2b = document.createElement('strong');
+      m2b.style.color = 'var(--brand)';
+      m2b.textContent = 'DMC/Partner: ';
+      m2.appendChild(m2b);
+      m2.appendChild(document.createTextNode(d.dmc));
+      detail.appendChild(m2);
+
+      var chip = document.createElement('span');
+      chip.className = 'nchip vac';
+      chip.textContent = '← Enter PM / contact name';
+      chip.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openPop(e, 'vac');
+      });
+      detail.appendChild(chip);
+
+      dc.appendChild(detail);
+      dc.addEventListener('click', function() { this.classList.toggle('open'); });
       grid.appendChild(dc);
     });
+
+    dr.appendChild(grid);
     c.appendChild(dr);
   });
 }
 
 function buildSCats() {
   var c = document.getElementById('scat-grid');
+  if (!c) return;
   SCATS.forEach(function(sc) {
     var el = document.createElement('div');
     el.className = 'scat';
     var types = sc.types.map(function(t) {
-      return '<div class="stype" style="background:'+sc.typebg+';color:'+sc.typec+'"><span class="sdot" style="background:'+sc.color+'"></span>'+t+'</div>';
+      return '<div class="stype" style="background:' + sc.typebg + ';color:' + sc.typec + '">' +
+             '<span class="sdot" style="background:' + sc.color + '"></span>' + t + '</div>';
     }).join('');
-    el.innerHTML = '<div class="scat-hdr" style="background:'+sc.bg+'"><div class="scat-title" style="color:'+sc.color+'">'+sc.name+'</div><div class="scat-mgr" style="color:'+sc.color+'">'+sc.mgr+'</div></div><div class="scat-types">'+types+'</div>';
+    el.innerHTML = '<div class="scat-hdr" style="background:' + sc.bg + '">' +
+      '<div class="scat-title" style="color:' + sc.color + '">' + sc.name + '</div>' +
+      '<div class="scat-mgr" style="color:' + sc.color + '">' + sc.mgr + '</div>' +
+      '</div><div class="scat-types">' + types + '</div>';
     c.appendChild(el);
   });
 }
 
 function buildWorkflow() {
   var c = document.getElementById('wflow');
+  if (!c) return;
   WSTEPS.forEach(function(s, i) {
     var w = document.createElement('div');
     w.className = 'wstep';
-    w.innerHTML = '<div class="wnum">'+s.n+'</div><div class="wtitle">'+s.title+'</div><div class="wsub">'+s.sub+'</div><div class="wdetail">'+s.detail+'</div>';
-    w.addEventListener('click', function(){ this.classList.toggle('on'); });
+    w.innerHTML = '<div class="wnum">' + s.n + '</div>' +
+      '<div class="wtitle">' + s.title + '</div>' +
+      '<div class="wsub">' + s.sub + '</div>' +
+      '<div class="wdetail">' + s.detail + '</div>';
+    w.addEventListener('click', function() { this.classList.toggle('on'); });
     c.appendChild(w);
-    if(i < WSTEPS.length-1) {
+    if (i < WSTEPS.length - 1) {
       var a = document.createElement('div');
-      a.className = 'warr';
+      a.className = 'warrow';
       a.textContent = '→';
       c.appendChild(a);
     }
@@ -1395,15 +1488,19 @@ function buildWorkflow() {
 
 function buildGrowth() {
   var c = document.getElementById('gpath');
+  if (!c) return;
   GSTAGES.forEach(function(s, i) {
     var g = document.createElement('div');
     g.className = 'gstage';
-    g.innerHTML = '<div class="gnum">'+s.n+'</div><div class="gtitle">'+s.title+'</div><div class="gtrig">'+s.trig+'</div><div class="gdetail">'+s.detail+'</div>';
-    g.addEventListener('click', function(){ this.classList.toggle('on'); });
+    g.innerHTML = '<div class="gnum">' + s.n + '</div>' +
+      '<div class="gtitle">' + s.title + '</div>' +
+      '<div class="gtrig">' + s.trig + '</div>' +
+      '<div class="gdetail">' + s.detail + '</div>';
+    g.addEventListener('click', function() { this.classList.toggle('on'); });
     c.appendChild(g);
-    if(i < GSTAGES.length-1) {
+    if (i < GSTAGES.length - 1) {
       var a = document.createElement('div');
-      a.className = 'garr';
+      a.className = 'garrow';
       a.textContent = '→';
       c.appendChild(a);
     }
@@ -1412,31 +1509,31 @@ function buildGrowth() {
 
 function buildPrincs() {
   var c = document.getElementById('princ-grid');
-  PRINCS.forEach(function(p) {
+  if (!c) return;
+  var accents = ['#1B4F8A','#0A7E8C','#C2410C','#6B2FA0','#0B6E4F'];
+  PRINCS.forEach(function(p, i) {
     var el = document.createElement('div');
     el.className = 'princ';
-    el.style.borderTopColor = p.color;
-    el.innerHTML = '<div class="pnum">'+p.n+'</div><div class="ptitle" style="color:'+p.color+'">'+p.title+'</div><div class="pbody">'+p.body+'</div>';
+    el.style.borderTopColor = accents[i];
+    el.innerHTML = '<div class="pnum">' + p.n + '</div>' +
+      '<div class="ptitle" style="color:' + accents[i] + '">' + p.title + '</div>' +
+      '<div class="pbody">' + p.body + '</div>';
     c.appendChild(el);
   });
 }
 
-// ── TOGGLES ───────────────────────────────────────────────────────────────────
+// ── SECTION / CARD TOGGLES ────────────────────────────────────────────────────
 function toggleSec(id) {
   var el = document.getElementById(id);
-  el.classList.toggle('open');
+  if (el) el.classList.toggle('open');
 }
 
 function toggleCard(id) {
   var el = document.getElementById(id);
-  el.classList.toggle('open');
+  if (el) el.classList.toggle('open');
 }
 
-function tReg(el) {
-  el.classList.toggle('open');
-}
-
-// ── POPUP ─────────────────────────────────────────────────────────────────────
+// ── PERSON POPUP ──────────────────────────────────────────────────────────────
 function openPop(e, id) {
   e.stopPropagation();
   var p = PD[id] || PD['vac'];
@@ -1444,18 +1541,16 @@ function openPop(e, id) {
   document.getElementById('pav').textContent = p.init;
   document.getElementById('pname').textContent = p.name;
   document.getElementById('prole').textContent = p.role;
-  var stBg = p.status==='Confirmed' ? '#F0FDF4' : (p.status==='Vacant' ? '#FEF2F2' : '#FFFBEB');
-  var stC  = p.status==='Confirmed' ? '#0B6E4F' : (p.status==='Vacant' ? '#991B1B' : '#92400E');
+  var stBg = p.status === 'Confirmed' ? '#F0FDF4' : (p.status === 'Vacant' ? '#FEF2F2' : '#FFFBEB');
+  var stC  = p.status === 'Confirmed' ? '#0B6E4F' : (p.status === 'Vacant' ? '#991B1B' : '#92400E');
   document.getElementById('ptags').innerHTML =
-    '<span class="ctag" style="background:'+stBg+';color:'+stC+';font-size:10px;padding:3px 9px;border-radius:20px">'+p.status+'</span>' +
-    '<span class="ctag" style="background:#EFF6FF;color:#1B4F8A;font-size:10px;padding:3px 9px;border-radius:20px">'+p.dept+'</span>';
+    '<span class="ctag" style="background:' + stBg + ';color:' + stC + ';font-size:10px;padding:3px 9px;border-radius:20px">' + p.status + '</span>' +
+    '<span class="ctag" style="background:#EFF6FF;color:#1B4F8A;font-size:10px;padding:3px 9px;border-radius:20px">' + p.dept + '</span>';
   document.getElementById('pbd').innerHTML = [
-    ['Location', p.loc],
-    ['Reports to', p.reports],
-    ['Email', p.email || 'TBC'],
-    ['Notes', p.notes]
-  ].map(function(f){
-    return '<div class="pfield"><span class="pfl">'+f[0]+'</span><span class="pfv">'+f[1]+'</span></div>';
+    ['Location', p.loc], ['Reports to', p.reports],
+    ['Email', p.email || 'TBC'], ['Notes', p.notes]
+  ].map(function(f) {
+    return '<div class="pfield"><span class="pfl">' + f[0] + '</span><span class="pfv">' + f[1] + '</span></div>';
   }).join('');
   document.getElementById('overlay').classList.add('open');
 }
